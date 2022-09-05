@@ -4,3 +4,7 @@ div.question {
 div.answer {
     display: none;
 }
+
+div.box {
+    background-color: darkgrey;
+}
