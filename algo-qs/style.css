@@ -1,5 +1,7 @@
 body {
     margin: 10px;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-style: italic;
 }
 
 div.question {
