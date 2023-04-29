@@ -28,7 +28,7 @@ function update() {
     else {
         legal_moves = findlegal(board_position_computer,board_position_player);
         if (legal_moves) {
-            update();
+            setTimeout(update,400);
         }
     }
 }

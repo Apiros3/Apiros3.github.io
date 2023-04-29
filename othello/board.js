@@ -27,7 +27,7 @@ function board_click(event) {
         draw_board();
         legal_moves = findlegal(board_position_computer,board_position_player);
         if (legal_moves) {
-            setTimeout(update,500);
+            setTimeout(update,400);
         }
         else {
             legal_moves = findlegal(board_position_player,board_position_computer);
