@@ -98,5 +98,3 @@ function draw_board() {
     }
 
 }
-
-draw_board();

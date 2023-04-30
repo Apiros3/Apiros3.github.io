@@ -1,8 +1,10 @@
 function update() {
     var left = 64 - popcount(board_position_computer | board_position_player)
-    if (left == FINAL_SEARCH) winning_sequence = true;
+    if (left <= FINAL_SEARCH) winning_sequence = true;
 
     var listlegal = findlegal(board_position_computer,board_position_player);
+    if (winning_sequence) MAX_DEPTH = left-1;
+
     var maxpos = MINVALUE;
     var move;
     for(let i = 0; i < 64; i++) {
@@ -16,6 +18,12 @@ function update() {
         }
         listlegal >>= 1n;
     }
+    // if (winning_sequence && maxpos > 0) {
+        // document.getElementById("seq").innerHTML = "cp winning";
+    // }
+    // else if (winning_sequence && maxpos <= 0) {
+        // document.getElementById("seq").innerHTML = "you're doing great";
+    // }
     uv = flipresult(board_position_computer,board_position_player,move);
     board_position_computer = uv[0];
     board_position_player = uv[1];
