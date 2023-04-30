@@ -20,12 +20,15 @@ function board_click(event) {
     if (playable && ((1n << BigInt(dy*8+dx)) & legal_moves)) {
         playable = false;
         var uv = flipresult(board_position_player,board_position_computer,dy*8+dx);
+        
         board_position_player = uv[0];
         board_position_computer = uv[1];
 
         legal_moves = 0n;
         draw_board();
+        
         legal_moves = findlegal(board_position_computer,board_position_player);
+        draw_pos(1n << BigInt(dy*8+dx),"#FF0000",0.2);
         if (legal_moves) {
             setTimeout(update,400);
         }
@@ -34,6 +37,7 @@ function board_click(event) {
             if (legal_moves) {
                 playable = true;
                 draw_board();
+                draw_pos(1n << BigInt(dy*8+dx),"#FF0000",0.2);
             }
         }
     }

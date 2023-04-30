@@ -30,6 +30,8 @@ function update() {
     legal_moves = findlegal(board_position_player,board_position_computer);
 
     draw_board();
+    draw_pos(1n << BigInt(move),"#FF0000",0.2);
+
     if (legal_moves) {
         playable = true;
     }
