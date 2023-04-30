@@ -2,6 +2,7 @@ var MINVALUE = -5000000;
 var MAXVALUE = 5000000;
 var multiplier_BP = 6.6;
 var multiplier_FS = 230;
+var multiplier_CN = 5;
 var winning_sequence = false;
 
 function popcount(num) {
@@ -114,7 +115,7 @@ function check(value, player) {
 function costBP(pla) {
     var player = BigInt(pla)
     var ret = 0;
-    var BP_value = [45,1,0.5,-2,-5,-10,-16];
+    var BP_value = [45,1,0.2,-3,-5,-10,-16];
     var BP_checker = [
         0x8100000000000081n, 0x2400810000810024n,
         0x0000240000240000n, 0x18245AA5A55A2418n,
@@ -179,6 +180,11 @@ function findFS(pla, opp) {
     return popcount(player_FS) - popcount(opponent_FS);
 }
 
+function findCN(player, opponent) {
+    // return 0;
+    return popcount(findlegal(player,opponent));
+}
+
 function cost(player, opponent, depth, alpha, beta) {
     if (!depth) {
         if (winning_sequence) {
@@ -187,6 +193,7 @@ function cost(player, opponent, depth, alpha, beta) {
         var position_value = 0;
         position_value += multiplier_BP * (findBP(player,opponent) + Math.random());
         position_value += multiplier_FS * findFS(player,opponent);
+        position_value += multiplier_CN * findCN(player,opponent);
 
         return position_value;
     }
