@@ -35,7 +35,7 @@ function start() {
         document.getElementById("init_range").disabled = true;
         var level = document.getElementById("init_range").value;
         MAX_DEPTH = Math.max(level,0);
-        FINAL_SEARCH = Math.floor(2.55*level+1);
+        FINAL_SEARCH = Math.ceil(2.84*level+1);
 
         if (computer_isBlack) update();
         else {
