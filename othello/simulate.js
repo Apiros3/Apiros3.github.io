@@ -1,7 +1,7 @@
 var MINVALUE = -5000000;
 var MAXVALUE = 5000000;
 var multiplier_BP = 6.6;
-var multiplier_FS = 90;
+var multiplier_FS = 230;
 var winning_sequence = false;
 
 function popcount(num) {
@@ -114,7 +114,7 @@ function check(value, player) {
 function costBP(pla) {
     var player = BigInt(pla)
     var ret = 0;
-    var BP_value = [45,2,1,-2,-4,-9,-16];
+    var BP_value = [45,1,0.5,-2,-5,-10,-16];
     var BP_checker = [
         0x8100000000000081n, 0x2400810000810024n,
         0x0000240000240000n, 0x18245AA5A55A2418n,
