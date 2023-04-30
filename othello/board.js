@@ -84,6 +84,19 @@ function draw_board() {
     document.getElementById("player_stone").innerHTML = popcount(board_position_player);
     document.getElementById("computer_stone").innerHTML = popcount(board_position_computer);
 
+    if(!findlegal(board_position_player,board_position_computer) && !findlegal(board_position_computer,board_position_player)) {
+        var x = popcount(board_position_player)-popcount(board_position_computer);
+        if (x > 0) {
+            document.getElementById("win").innerHTML = "YOU WIN!!"
+        }
+        else if (x < 0) {
+            document.getElementById("win").innerHTML = "You lose..."
+        }
+        else {
+            document.getElementById("win").innerHTML = "YOU TIED!?"
+        }
+    }
+
 }
 
 draw_board();
