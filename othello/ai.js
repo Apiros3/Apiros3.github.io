@@ -18,12 +18,13 @@ function update() {
         }
         listlegal >>= 1n;
     }
-    if (winning_sequence && maxpos > 0) {
-        document.getElementById("seq").innerHTML = "0";
-    }
-    else if (winning_sequence && maxpos <= 0) {
-        document.getElementById("seq").innerHTML = "1";
-    }
+    
+    // if (winning_sequence && maxpos > 0) {
+    //     document.getElementById("seq").innerHTML = "0";
+    // }
+    // else if (winning_sequence && maxpos <= 0) {
+    //     document.getElementById("seq").innerHTML = "1";
+    // }
     uv = flipresult(board_position_computer,board_position_player,move);
     board_position_computer = uv[0];
     board_position_player = uv[1];

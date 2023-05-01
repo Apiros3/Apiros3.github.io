@@ -1,3 +1,6 @@
+//for debugging
+// var board_position_player = 0n;
+// var board_position_computer = 0xFFFFFFFFFFFFFFFFn;
 
 var board_position_player   = 0x0000000810000000n;
 var board_position_computer = 0x0000001008000000n;

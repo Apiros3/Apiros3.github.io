@@ -45,6 +45,28 @@ function board_click(event) {
 const canvas = document.querySelector('canvas');
 c.addEventListener('mousedown',function(e) {board_click(e)});
 
+function end_game() {
+    var p_cnt = popcount(board_position_player);
+    var c_cnt = popcount(board_position_computer);
+    var to_send = p_cnt + "対" + c_cnt;
+    var x = p_cnt - c_cnt;
+    var y = document.getElementById("init_range").value;
+    if (x > 0) {
+        document.getElementById("win").innerHTML = "YOU WIN!!"
+        document.getElementById("seq").innerHTML = "<a class=\"twitter-share-button\" href=\"https://twitter.com/intent/tweet?text=Apiros3のオセロAI(レベル" + y + ")に" + to_send + "で勝ちました！%0d&url=https://apiros3.github.io/othello/index.html\" data-size=\"large\">Tweet</a>"
+    }
+    else if (x < 0) {
+        document.getElementById("win").innerHTML = "You lose..."
+        document.getElementById("seq").innerHTML = "<a class=\"twitter-share-button\" href=\"https://twitter.com/intent/tweet?text=Apiros3のオセロAI(レベル" + y + ")に" + to_send + "で負けました…%0d&url=https://apiros3.github.io/othello/index.html\" data-size=\"large\">Tweet</a>"
+    }
+    else {
+        document.getElementById("win").innerHTML = "YOU TIED!?"
+        document.getElementById("seq").innerHTML = "<a class=\"twitter-share-button\" href=\"https://twitter.com/intent/tweet?text=Apiros3のオセロAI(レベル" + y + ")に" + to_send + "で引き分けました…!%0d&url=https://apiros3.github.io/othello/index.html\" data-size=\"large\">Tweet</a>"
+    }
+    
+
+}
+
 function draw_pos(board_pos, color, rad) {
     var dim = height/8;
     for(let i = 7; i >= 0; i--) {
@@ -88,17 +110,10 @@ function draw_board() {
     document.getElementById("player_stone").innerHTML = popcount(board_position_player);
     document.getElementById("computer_stone").innerHTML = popcount(board_position_computer);
 
+    //Game ended
     if(!findlegal(board_position_player,board_position_computer) && !findlegal(board_position_computer,board_position_player)) {
-        var x = popcount(board_position_player)-popcount(board_position_computer);
-        if (x > 0) {
-            document.getElementById("win").innerHTML = "YOU WIN!!"
-        }
-        else if (x < 0) {
-            document.getElementById("win").innerHTML = "You lose..."
-        }
-        else {
-            document.getElementById("win").innerHTML = "YOU TIED!?"
-        }
+        end_game();
     }
 
 }
+
