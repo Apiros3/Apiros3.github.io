@@ -1,49 +1,198 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Apiros3 INFOPAGE</title>
+    <title>Apiros3 Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="body.css">
 </head>
 <body>
-    <div class = "intro">
-        <p>
-            自分が将来やってみたいこと、予定などをさくさく書いていくページです。<br>
-            ポートフォリオ風に綺麗にまとめたものは：<a href="/personal/portfolio.html">こちら</a>
-        </p>
+    <div class = "top-container">
     </div>
-    <div>
-        競技プログラミング：<br>
-        AtCoder: <br>
-        CodeForces: <br>
+    <div class="top-logo">
+        <img class="main-logo" src="img/100747246.jpeg"> 
     </div>
-    <div>
-        Kaggle: <br>
-    </div>
-    <div>
-        色々開発：<br>
-        <div class = "explanation">
-            オセロAIを作っています！<br>
-            <p>
-                CodinGameに提出したりもしました。<br>
-                リーダーボードのリンクは：<a href="https://www.codingame.com/multiplayer/bot-programming/othello-1/leaderboard">こちら</a><br>
-                最近の提出(2023年4月30日 23:19 GMT)では世界57位(相対評価17.83)でした。<br>
-            </p>
-            <p>
-                元々はC++で書いていたのですが乱数を追加してユーザーが遊べるものも作りました！<br>
-                リンクは：<a href="/othello/index.html">こちら</a><br>
-                難易度は5段階あって、一番強いのとほぼ同じコードを用いたものをCodinGameで使っています。
-            </p>
-            <p>
-                今後やりたいこと：<br>
-                ・全体的な改善(今は盤面評価(静的評価＋確定してる石の数＋合法手の数)だけを元に決めていて、形からの典型みたいなのは知識が足りてないのでそこを勉強して足していきたいところです)<br>
-                ・Qiitaに記事を書く(時間が出来たらやってみたいと思っていましたが、まずは総合的な技術力を高めるのが優先かな)
-            </p>
+    <div class = "intro background-white">
+        <div class="intro-box" style="justify-content: space-between;">
+            <div class="name">
+                <h3>Apiros3 Portfolio Page</h3>
+            </div>
+            <div class="organization">
+                <div class="organization-box">
+                    <img class = "logo" src="img/merton.png">
+                    <a href = "https://www.merton.ox.ac.uk/" class="text">Merton College Oxford</a>
+                </div>
+                <div class="organization-box">
+                    <img class = "logo" src="img/oxford.png">
+                    <a href = "https://www.ox.ac.uk/" class="text">University of Oxford</a>
+                </div>
+                <div class="organization-box">
+                    <img class = "logo" src="img/uniqlo.png">
+                    <a href = "https://www.yanaitadashi-foundation.or.jp/" class="text">Yanai-Tadashi Foundation</a>
+                </div>
+            </div>
+        </div>
+        <div class="intro-box" style="justify-content: flex-start; padding-bottom: 30px;">
+            <div class="profile">
+                Undergraduate Student at Merton College, Oxford<br>
+                Yanai-Tadashi Foundation Scholar 6th<br>
+            </div>
+            <div class="research">
+                Research Interests: <br> 
+                ・Interactive Theorem Proving (ITP)<br>
+                ・Algorithms<br>
+                ・Optimization<br> 
+                and related areas
+            </div>
         </div>
     </div>
-    <div>
-        インターン：<br>
+    <div class="main">
+        <div class="box">
+            <div class="subtitle">
+                <h4>About:</h4>
+            </div>
+            <div class="explanation">
+                <p>
+                    自分が将来やってみたいこと・やってきたこと、予定などをさくさく書いていくPortfolio/独り言ページです。<br>
+                    大阪生まれ、大阪育ちの関西人です！標準語で話しているつもりが関西弁だと指摘されて知ることが多々あります。<br>
+                    現在はイギリス、オックスフォード大学にて数学と計算機科学を専攻しているB1生です。<br>
+                    また、柳井正財団の給付型奨学金からの支援を元に留学しています。
+                </p>
+                <p>
+                    注：このアカウントは本名運用していないのでSNS等へのリンクは少なめです。
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="subtitle">
+                研究・興味：
+            </div>
+            <div class="explanation">
+                <p>
+                    Interactive Theorem Provingにとても興味があります。<br>
+                    計算機科学科の担当チューターとお話をしながら現在はLean言語を基盤に言語仕様と言語自体を扱う勉強をしています。<br>
+                    (少し尖った)派生としてLLMやOptimizationとも関りがあるので、そこも今後勉強していきたいと思っています。
+                </p>
+                <p>
+                    競技プログラミングをやっていてアルゴリズムの勉強をもっとしたいなぁと思うようになりました。<br>
+                    特にグラフ理論をこれから勉強していきたいです。
+                </p>
+                <p>
+                    将来的に色んな論文を書いて出版したいです。<br>
+                    大学在学中に偶然有限のエルデシュ数を獲得できたら面白いなぁ、とも思っています。
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="subtitle">
+                資格：
+            </div>
+            <div class="explanation">
+                <p>
+                    ・TOEFL 115/120 (R29 L30 S27 W29) (CEFR C2相当)<br>
+                    ・International Baccalaureate Diploma (42/45 Overall, 7/7 in Mathematics AA HL, Physics HL, Chemistry HL)<br>
+                    ・運転免許も持っています(普通車)
+                </p>
+                <p>
+                    今後取得したいリスト：<br>
+                    ・基本情報技術者(FE) ←今夏受験予定です！<br>
+                    ・応用情報技術者(AP)<br>
+                    ・アマチュア無線3級（趣味です）
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="subtitle">
+                インターン：
+            </div>
+            <div class="explanation">
+                <p>
+                    色々探しています。<br>
+                    面白そうなものも沢山あるのでこれから日英米の色んなインターンに参加したいです。
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="subtitle">
+                競技プログラミング：
+            </div>
+            <div class = "explanation">
+                <p>
+                    AtCoder(AtC)やCodeForces(CF)上でApiros3というハンドルネームで競技プログラミングをやっています。リアルタイムで更新している現在のレートは：<br>
+                    <a href="https://atcoder.jp/users/apiros3">
+                        <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2Fapiros3">
+                    </a>
+                    <a href="https://codeforces.com/profile/apiros3">
+                        <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fcodeforces%2Fjson%2Fapiros3">
+                    </a><br>
+                    頑張ってどちらかで暖色入りを今年中に果たしたいと考えています！
+                </p>
+                <p>
+                    2022年の冬には大学開始早々にチームメイトを見つけることができて、"✨ Special ✨(ists)"という名前でICPCのUK/Ireland大会に参加させて頂きました！<br>
+                    全体29位でした～<br>
+                    2022年 UKIEPC 
+                    <a href = "http://ukiepc.info/2022/scoreboard/">スコアボード</a>
+                </p>
+            </div>  
+        </div>
+        <div class="box">
+            <div class="subtitle">
+                Kaggle：
+            </div>
+            <div class="explanation">
+                <p>
+                    MLに興味があってやりたいと思っています。夏に友人と取り組んでいく予定です。<br>
+                    経済モデルに少し興味があるのでそこから初めて行けたらいいなぁと思っています。
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="subtitle">
+                色々開発：
+            </div>
+            <div class = "explanation">
+                <div style="font-weight: 600; font-size: 18px;">・オセロAI</div>
+                <div class="flexify">
+                    <div>
+                        オセロAIを作ってみました！<br><br>
+                        CodinGameに提出したりもしました。<br>
+                        リーダーボードの<a href="https://www.codingame.com/multiplayer/bot-programming/othello-1/leaderboard">リンク</a><br>
+                        最近の提出(2023年4月30日 23:19 GMT)では世界57位(相対評価17.83)でした。<br><br>
+                        元々はC++で書いていたのをJavaScriptに書き直し、乱数を追加してユーザーが遊べるものも作りました！<br>
+                        <a href="/othello/index.html">遊んでみる！</a><br>
+                        難易度は5段階あって、一番強いのとほぼ同じコードを用いたものをCodinGameで使っています。<br><br>
+                        JavaScriptで制作したUIを右に載せています。
+                    </div>
+                    <div class="center-image"">
+                        <img class="content-img" src="img/othello.png">
+                    </div>
+                </div>
+                <p>
+                    今後やりたいこと：<br>
+                    ・全体的な改善(今は盤面評価(静的評価＋確定してる石の数＋合法手の数)だけを元に決めていて、形からの典型みたいなのは知識が足りてないのでそこを勉強して足していきたいところです<br>
+                    ・Qiitaに記事を書く(時間が出来たらやってみたいと思っていましたが、まずは総合的な技術力を高めるのが優先かな)
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="subtitle">
+                趣味など！
+            </div>
+            <div class="explanation">
+                <p>
+                    アマチュア撮影家です。<br>
+                    Canon EOS 70Dを使っています。<br>
+                    主に夜景やStreet Photographyが好きです。
+                </p>
+                <p>
+                    他だと最近Rowing、ベース(楽器)、フランス語の勉強に隙間時間を使っています。
+                </p>
+                <div style="font-weight: 600; font-size: 18px; margin-left: 20px;">写真集！</div>
+                <div>
+                    Atode Tasuyo!!
+                </div>
+            </div>
+        </div>
     </div>
-    
-
-
 </body>
 </html>

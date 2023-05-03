@@ -1,0 +1,51 @@
+.top-container {
+    height: 275px;
+}
+.top-logo {
+    position: absolute;
+    left: 45px;
+    top: 165px;
+}
+
+.intro {
+    width: 100%;
+    box-shadow: 0px 0px 5px 4px #AAA
+}
+
+.main-logo {
+    border-radius: 50%;
+    border: 6px solid white;
+    height: 150px;
+    width: 150px;
+}
+
+.intro-box {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 80px;
+}
+
+.name {
+    flex-grow: 2;
+}
+
+.profile, .research {
+    font-size: 3.5vmin;
+}
+
+.organization-box {
+    align-items: center;
+    display: flex;
+}
+
+.logo {
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    padding: 5px;
+}

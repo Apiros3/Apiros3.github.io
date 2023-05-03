@@ -1,0 +1,48 @@
+
+.main {
+    background-color: #DEDEDE;
+    padding: 20px 3% 20px 3%;
+}
+
+.box {
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 3px 3px #C3C3C3
+}
+.subtitle {
+    background-color: #FFF;
+    padding: 20px 20px 0px 30px;
+    font-size: 4vmin;
+    font-weight: 580;
+    /* box-shadow: 10px 10px 5px red; */
+}
+.explanation {
+    background-color: #FFF;
+    padding: 10px 20px;
+    /* padding: ; */
+}
+
+.center-image {
+    display: flex;
+    justify-content: center;
+}
+
+.flexify {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.content-img {
+    width: 60%;
+}
+
+.text {
+    margin: 4px;
+}
+
+.background-white {
+    background-color: #FFFFFF;
+}
