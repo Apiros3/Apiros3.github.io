@@ -9,7 +9,7 @@
 
 .intro {
     width: 100%;
-    /* box-shadow: 0px 0px 5px 4px #AAA */
+    box-shadow: 0px 0px 3px 3px #AAA
 }
 
 .main-logo {
