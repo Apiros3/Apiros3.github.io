@@ -44,8 +44,8 @@
 }
 
 .logo {
-    height: 30px;
-    width: 30px;
+    height: 7vmin;
+    width: 7vmin;
     align-items: center;
     padding: 5px;
 }
