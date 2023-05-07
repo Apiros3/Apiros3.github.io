@@ -6,7 +6,7 @@ function change_html() {
 }
 
 function display(id) {
-    var display_id_list = ["othello-ai", "epidemic-model", "cp-library"]
+    var display_id_list = ["othello-ai", "epidemic-model", "cp-library", "discord-problem-bot"]
     var list_size = display_id_list.length;
     for(let i = 0; i < list_size; i++) {
         if (i == id) {

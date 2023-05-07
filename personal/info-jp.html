@@ -155,6 +155,7 @@
             <p style="padding: 20px 40px 0;" class="background-white">ボタンを押すと内容が切り替わります</p>
             <div class="select flexify background-white" style="justify-content: flex-start;">
                 <button type="button" id="othello-ai-button" onclick="display(0)" disabled="true">オセロAI</button>
+                <button type="button" id="discord-problem-bot-button" onclick="display(3)">AtCoder精問Bot</button>
                 <button type="button" id="cp-library-button" onclick="display(2)">競プロライブラリ</button>
                 <button type="button" id="epidemic-model-button" onclick="display(1)">Epidemic Model</button>
                 
@@ -226,6 +227,37 @@
                 </p>
                 <p>使用言語：JavaScript</p>
             </div> 
+            <div class = "explanation" id = "discord-problem-bot" style="display: none;">
+                <div style="font-weight: 600; font-size: 4vmin;">・AtCoder精問Bot</div>
+                <p>
+                    AtCoder上の問題の中から難易度傾斜が比較的緩めな毎日問題集を作り送信するのと、指定した難易度帯の中からランダムに一問選んでユーザーに送信する機能を備えた2-botシステムを作りました。
+                </p>
+                <div class="flexify">
+                    <img style="width: 35%" src="img/atcoder_daily_problemset.png">
+                    <img style="width: 35%" src="img/atcoder_random_problem.png">
+                </div>
+                <p style="text-align: center;">
+                    参考画像：<i>Botの送信メッセージ例</i>
+                </p>
+                <p>
+                    毎日問題集は24時間ごとに乱択で生成した問題集を登録されたDiscord上のWebHookに送り、ユーザーに表示します。<br>
+                    また、同じチャンネルにもう片方のbotを登録することで、ユーザーのメッセージに反応し、指定した難易度帯の問題を乱択して送信する機能を得ています。
+                </p>
+                <div class="center-image">
+                    <img style="width: 60%" src="img/atcoder_daily_problem_architecture.png">
+                </div>
+                <p style="text-align: center;">
+                    参考画像：<i>システムのアーキテクチャー図</i>
+                </p>
+                <p>
+                    DB側が自動で更新しているので、乱択するときに新しい問題も加わっていくようになっています。<br>
+                    競技プログラミングの精進に重宝すると思うので、これから問題を選ぶときに使っていきたいと思います。<br><br>
+                    コードとUsageをまとめた<a href="https://github.com/Apiros3/random-question-bot">リポジトリ</a>です。比較的簡単に同種のbotをセットアップすることができます。
+                </p>
+                <p>
+                    使用言語・ツール：Python / YAML
+                </p>
+            </div>
         </div>
         <div class="box">
             <div class="subtitle">
