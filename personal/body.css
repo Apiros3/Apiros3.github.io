@@ -21,6 +21,23 @@
     /* transition-duration: 0.4s; */
 }
 
+.lang{
+    width: 70px;
+    height: 20px;
+
+    position: absolute;
+    top: 25px;
+    right: 30px;
+}
+.country-logo{
+    height: 100%;
+    width: auto;
+}
+
+.links{
+    height: 75px;
+}
+
 .center-image {
     display: flex;
     justify-content: center;
