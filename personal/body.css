@@ -21,7 +21,7 @@
     /* transition-duration: 0.4s; */
 }
 
-.lang{
+.langlogo {
     width: 70px;
     height: 20px;
 
@@ -29,12 +29,12 @@
     top: 25px;
     right: 30px;
 }
-.country-logo{
+.country-logo {
     height: 100%;
     width: auto;
 }
 
-.links{
+.links {
     height: 75px;
 }
 
