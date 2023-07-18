@@ -1,0 +1,23 @@
+
+button {
+    background-color: white;
+    border: 2px solid black;
+    color: black;
+    padding: 2vmin 6vmin;
+
+    font-family: Garamond, 游明朝, "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", serif;
+    font-size: 3vmin;
+    line-height: 1.6;
+
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #CCC;
+}
+
+button:disabled {
+    background-color: #666;
+    color: white;
+}

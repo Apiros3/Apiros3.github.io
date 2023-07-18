@@ -1,0 +1,36 @@
+
+body {
+    font-family: Garamond, 游明朝, "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", serif;
+    font-size: 3vmin;
+    line-height: 1.6;
+
+    background-color: #CCCCCC;
+    background-image: url("img/IMG_0853.JPG");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    background-size: 100% auto;
+    margin: 0;
+}
+
+h3 {
+    font-size: 8vmin;
+    margin-top: 9vmin;
+    margin-bottom: 0;
+}
+
+p {
+    margin: 0px;
+    padding: 10px 20px;
+    /* font-size: 3vmin; */
+}
+
+h4 {
+    margin: 0px;
+    font-size: 6vmin;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
