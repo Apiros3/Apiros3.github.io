@@ -8,10 +8,8 @@
     <!-- <script>
 
     </script> -->
-    <script src="competitions.js"></script>
-    <script>
-        rating_list();
-    </script>
+    <script src="auto/display_rating.js"></script>
+    
 </head>
 <body>
     <header>
@@ -47,8 +45,11 @@
                 競技プログラミングを嗜んでます。<br>
                 AtCoderやCodeForces上でコンテストに参加するほか、ICPCなどにも参加しています！
             </p>
+            <p>
                 Current Ratings:<br>
-        
+                    AtCoder: <span id="rating_atcoder">-1</span><br>
+                    CodeForces: <span id="rating_codeforces">-1</span><br>
+                    OMC: <span id="rating_omc">-1</span><br>
             </p>
         </div>
     </div>
@@ -61,6 +62,9 @@
             Footer stuff
         </div>
     </footer>
+    <script>
+        update_rating_once()
+    </script>
 </body>
 
 </html>
