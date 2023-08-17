@@ -5,6 +5,7 @@ import json
 import requests
 from bs4 import BeautifulSoup as bs
 import os
+import datetime
 
 print("retrieve_rating.py starting...")
 
@@ -53,14 +54,17 @@ f.writelines(f'{atcur}\n{cfcur}\n{omccur}')
 f.close()
 
 f = open('display_rating.js', 'w')
+today = datetime.datetime.now()
 f.writelines(
-    f"""
-        function update_rating_once() {{ 
-            document.getElementById("rating_atcoder").innerHTML = {atcur}
-            document.getElementById("rating_codeforces").innerHTML = {cfcur}
-            document.getElementById("rating_omc").innerHTML = {omccur}
-        }} \n
-    """
+f"""
+function update_rating_once() {{ 
+    document.getElementById("rating_atcoder").innerHTML = {atcur}
+    document.getElementById("rating_codeforces").innerHTML = {cfcur}
+    document.getElementById("rating_omc").innerHTML = {omccur}
+    
+    document.getElementById("rating_last_update").innerHTML = "{today.isoformat(timespec='seconds')}"
+}} 
+"""
 )
 
 #use the given data above to also find, current rating for both AtCoder and Codeforces (simply the first instance)
