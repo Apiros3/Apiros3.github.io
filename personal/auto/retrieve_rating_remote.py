@@ -50,6 +50,18 @@ omccur = lis[0].text.split()[-1]
 
 f = open('current_rating.txt', 'w')
 f.writelines(f'{atcur}\n{cfcur}\n{omccur}')
+f.close()
+
+f = open('display_rating.js', 'w')
+f.writelines(
+    f"""
+        function update_rating_once() {{ 
+            document.getElementById("rating_atcoder").innerHTML = {atcur}
+            document.getElementById("rating_codeforces").innerHTML = {cfcur}
+            document.getElementById("rating_omc").innerHTML = {omccur}
+        }} \n
+    """
+)
 
 #use the given data above to also find, current rating for both AtCoder and Codeforces (simply the first instance)
 print("done!!")
