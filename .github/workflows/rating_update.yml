@@ -1,9 +1,9 @@
 name: Rating / Contest Update
 
-# on: [push]
-on :
-  schedule: 
-    - cron: "0 0 * * *"
+on: [push]
+# on :
+#   schedule: 
+#     - cron: "0 0 * * *"
 
 jobs:
   build:
@@ -26,5 +26,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "latest time"
+          git commit -m "new rating"
           git push
