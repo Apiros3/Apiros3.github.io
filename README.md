@@ -4,10 +4,10 @@ This is my github.io project folder. There's a few folders of past projects that
 Please feel free to explore, but I'm not accepting any forks at this time.
 
 ## Usage
-The main site of this repo is:    
-https://apiros3.github.io/personal/info-jp.html    
-along with my blog page, which can be visited from:    
-https://apiros3.github.io/blog/index.html
+The main site of this repo is:      
+https://apiros3.github.io/personal/info-jp.html       
+along with my blog page, which can be visited from:       
+https://apiros3.github.io/blog/index.html    
 
 which is my Portfolio page (in japanese) with a section consisting of past projects (alongside other information about myself).
 
