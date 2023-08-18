@@ -1,4 +1,4 @@
-name: Discord Webhook
+name: Rating / Contest Update
 
 # on: [push]
 on :
@@ -20,9 +20,10 @@ jobs:
         env: 
           CLISTURL: ${{ secrets.CLISTURL }}
         run: |
+          cd personal/auto
           pip install --upgrade pip
-          pip install -r personal/auto/requirements.txt
-          python personal/auto/retrieve_rating_remote.py
+          pip install -r requirements.txt
+          python retrieve_rating_remote.py
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
