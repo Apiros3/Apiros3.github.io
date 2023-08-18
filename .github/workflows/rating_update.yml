@@ -29,5 +29,4 @@ jobs:
           git add .
           git commit -m "new rating"
           git push
-          cd /
-          git submodule foreach git pull origin
+          git submodule update --remote --recursive
