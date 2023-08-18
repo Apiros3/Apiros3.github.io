@@ -1,3 +1,6 @@
 [submodule "epidemic-model"]
 	path = epidemic-model
 	url = https://github.com/Apiros3/epidemic-model
+[submodule "blog"]
+	path = blog
+	url = https://github.com/Apiros3/blog
