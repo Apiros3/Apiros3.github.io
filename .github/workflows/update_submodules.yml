@@ -14,22 +14,12 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v3
-      with:
-        submodules: recursive
     - name: Update submodules
-      id: update
       run: git submodule update --remote --recursive 
-    - name: Run git status
-      id: status
-      run: echo "::set-output name=status::$(git status -s)"
     - name: Add and commit files
       run: |
+        git config user.email "github-actions@github.com"
+        git config user.name "GitHub Action"
         git add .
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -m "Update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.REPO_TOKEN }}
-        branch: main
+        git commit -m "Update submodule"
+        git push
