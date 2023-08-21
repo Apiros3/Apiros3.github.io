@@ -1,11 +1,11 @@
 name: Rating / Contest Update
 
 on :
-  push:
-    branches: 
-      - main
-    paths:
-      - .github/workflows/**
+  # push:
+  #   branches: 
+  #     - main
+  #   paths:
+  #     - .github/workflows/**
   schedule: 
     - cron: "0 0 * * *"
 
@@ -20,9 +20,9 @@ jobs:
         with:
           python-version: "3.8"
           architecture: "x64"
-      - name: Update submodules
-        run: |
-          git submodule update --remote --recursive
+      # - name: Update submodules
+      #   run: |
+      #     git submodule update --remote --recursive
       - name: Updating Rating
         env: 
           CLISTURL: ${{ secrets.CLISTURL }}
