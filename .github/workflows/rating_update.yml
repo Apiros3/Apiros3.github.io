@@ -2,7 +2,10 @@ name: Rating / Contest Update
 
 on :
   push:
-   branches: [main]
+    branches: 
+      - main
+    paths:
+      - .github/workflows/**
   schedule: 
     - cron: "0 0 * * *"
 
@@ -18,7 +21,6 @@ jobs:
           python-version: "3.8"
           architecture: "x64"
       - name: Update submodules
-        id: update 
         run: |
           git submodule update --remote --recursive
       - name: Updating Rating

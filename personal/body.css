@@ -1,0 +1,8 @@
+body {
+    background-image: url('main-img/toppage_background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+    color:azure;
+    margin: 0;
+}
