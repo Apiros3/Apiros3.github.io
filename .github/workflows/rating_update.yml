@@ -1,7 +1,8 @@
 name: Rating / Contest Update
 
-# on: [push]
 on :
+  push:
+   branches: [main]
   schedule: 
     - cron: "0 0 * * *"
 
@@ -16,7 +17,11 @@ jobs:
         with:
           python-version: "3.8"
           architecture: "x64"
-      - name: Running Script
+      - name: Update submodules
+        id: update 
+        run: |
+          git submodule update --remote --recursive
+      - name: Updating Rating
         env: 
           CLISTURL: ${{ secrets.CLISTURL }}
         run: |
@@ -24,9 +29,10 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
           python retrieve_rating_remote.py
+      - name: Add and commit files
+        run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
           git commit -m "new rating"
           git push
-          git submodule update --remote --recursive
