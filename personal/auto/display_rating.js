@@ -1,8 +1,8 @@
 
 function update_rating_once() { 
-    document.getElementById("rating_atcoder").innerHTML = 1300
+    document.getElementById("rating_atcoder").innerHTML = 506
     document.getElementById("rating_codeforces").innerHTML = 1423
     document.getElementById("rating_omc").innerHTML = 921
     
-    document.getElementById("rating_last_update").innerHTML = "2023-08-21T05:26:52"
+    document.getElementById("rating_last_update").innerHTML = "2023-08-22T01:15:14"
 } 
