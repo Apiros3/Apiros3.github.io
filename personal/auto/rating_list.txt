@@ -79,18 +79,3 @@ AtCoder Beginner Contest 246
 AtCoder
 AtCoder Beginner Contest 245
 567 228 2022-03-26T13:40:00
-AtCoder
-AtCoder Heuristic Contest 009
-165 165 2022-03-26T10:00:00
-AtCoder
-AtCoder Beginner Contest 244
-339 -5 2022-03-20T13:40:00
-AtCoder
-AtCoder Regular Contest 137
-344 164 2022-03-19T14:00:00
-AtCoder
-AtCoder Beginner Contest 243
-180 123 2022-03-12T13:40:00
-AtCoder
-AtCoder Beginner Contest 242
-57 57 2022-03-05T13:40:00
