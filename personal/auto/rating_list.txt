@@ -70,6 +70,3 @@ AtCoder Beginner Contest 249
 AtCoder
 AtCoder Beginner Contest 248
 717 -14 2022-04-16T13:40:00
-AtCoder
-AtCoder Beginner Contest 247
-731 -28 2022-04-10T13:40:00
