@@ -2,7 +2,11 @@
 	path = epidemic-model
 	url = https://github.com/Apiros3/epidemic-model
 	branch = main
-[submodule "blog"]
+[submodule "generic-blog"]
 	path = blog
 	url = https://github.com/Apiros3/blog
+	branch = main 
+[submodule "cp-blog"]
+	path = cp-blog 
+	url = https://github.com/Apiros3/cp-blog 
 	branch = main 
