@@ -7,6 +7,6 @@
 	url = https://github.com/Apiros3/blog
 	branch = main 
 [submodule "cp-blog"]
-	path = cp-blog 
-	url = https://github.com/Apiros3/cp-blog 
+	path = cp-blog
+	url = https://github.com/Apiros3/cp-blog.git
 	branch = main 
