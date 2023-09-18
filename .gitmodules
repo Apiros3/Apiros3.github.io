@@ -9,3 +9,6 @@
 [submodule "apps/othello-webapp"]
 	path = apps/othello-webapp
 	url = https://github.com/Apiros3/othello-webapp.git
+[submodule "apps/epidemic-model"]
+	path = apps/epidemic-model
+	url = https://github.com/Apiros3/epidemic-model
