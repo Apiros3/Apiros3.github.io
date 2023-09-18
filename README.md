@@ -10,6 +10,7 @@ Please feel free to explore, but I'm not accepting any forks at this time.
     * [Othello Web Ver.](https://apiros3.github.io/apps/othello-web)
     * [Epidemic Model](https://apiros3.github.io/apps/epidemic-model)   
   * portfolio
+    * [Portfolio (jp)](https://apiros3.github.io/portfolio/info-jp.html)    
   * [Blog](https://apiros3.github.io/blog)
   * [CP Log](https://apiros3.github.io/cp-blog)      
 
