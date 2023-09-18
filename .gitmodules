@@ -6,3 +6,6 @@
 	path = cp-blog
 	url = https://github.com/Apiros3/cp-blog.git
 	branch = main 
+[submodule "apps/othello-webapp"]
+	path = apps/othello-webapp
+	url = https://github.com/Apiros3/othello-webapp.git
