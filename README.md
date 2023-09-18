@@ -5,7 +5,7 @@ Please feel free to explore, but I'm not accepting any forks at this time.
 
 ## Structure:
 
-* [Main](https://www.apiros3.github.io)
+* [Main](https://www.apiros3.github.io/)
   * apps
     * [Othello Web Ver.](https://www.apiros3.github.io/apps/othello-web)
     * [Epidemic Model](https://www.apiros3.github.io/apps/epidemic-model)   
