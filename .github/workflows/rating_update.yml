@@ -27,7 +27,7 @@ jobs:
         env: 
           CLISTURL: ${{ secrets.CLISTURL }}
         run: |
-          cd personal/auto
+          cd portfolio/auto
           pip install --upgrade pip
           pip install -r requirements.txt
           python retrieve_rating_remote.py
