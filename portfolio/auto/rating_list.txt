@@ -31,33 +31,3 @@ AtCoder Beginner Contest 270
 AtCoder
 AtCoder Beginner Contest 269
 1228 17 2022-09-17T13:40:00
-AtCoder
-AtCoder Beginner Contest 260
-1211 5 2022-07-17T13:40:00
-AtCoder
-AtCoder Beginner Contest 259
-1206 11 2022-07-09T13:40:00
-AtCoder
-AtCoder Beginner Contest 258
-1195 25 2022-07-02T13:40:00
-AtCoder
-AtCoder Regular Contest 143
-1170 20 2022-06-26T14:00:00
-AtCoder
-AtCoder Beginner Contest 257
-1150 82 2022-06-25T13:40:00
-AtCoder
-AtCoder Beginner Contest 255
-1068 42 2022-06-11T13:40:00
-AtCoder
-AtCoder Regular Contest 141
-1026 55 2022-05-29T14:00:00
-AtCoder
-AtCoder Beginner Contest 252
-971 28 2022-05-21T13:40:00
-AtCoder
-AtCoder Regular Contest 140
-943 22 2022-05-15T14:00:00
-AtCoder
-AtCoder Beginner Contest 251
-921 67 2022-05-14T13:40:00
