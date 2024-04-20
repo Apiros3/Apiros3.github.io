@@ -4,107 +4,29 @@
     <title>Apiros3's Mainpage</title>
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="blog/logos/favicon.jpeg">
-    <style>
-        table, th, td {
-            border: 1px solid;
-        }
-        td {
-            padding: 0 10px;
-        }
-    </style>
+    <script src="script.js"></script>
+    <link rel = "stylesheet", href="style.css">
 </head>
 <body>
     <div>
-        Apiros3 MAINPAGE
+        Hello! I'm Apiros3, and welcome to my homepage.
     </div>
-
-    <div>
-        <pre>
-        簡易図：
-        <a href = "https://apiros3.github.io">This</a>
-        |- apps
-            |- <a href="https://apiros3.github.io/apps/othello-webapp">Othello Web Ver.</a>
-            |- <a href="https://apiros3.github.io/apps/epidemic-model">Epidemic Model</a>
-        |- portfolio
-            |- <a href = "https://apiros3.github.io/portfolio/info-jp.html">Portfolio (jp)</a>
-        |- <a href = "https://apiros3.github.io/blog">Blog / Diary</a>
-        |- <a href = "https://apiros3.github.io/cp-blog">CP - Log</a>
-
-        </pre>
-    </div>
-
     <div>
         About:
-        <table>
-            <tr>
-                <th>Section:</th>
-                <th>Content:</th>
-                <th>Date:</th>
-            </tr><tr>
-                <th>
-                    Education:
-                </th><td>
-                    University of Oxford, MMathCompSci <br>
-                    (Master of Mathematics and Computer Science)
-                </td><td>
-                    Oct 2022 ~ Jun 2026
-                </td>
-            </tr><tr>
-                <th rowspan="4">
-                    Affiliations:
-                </th>
-                <td>
-                    Yanai-Tadashi Foundation, Scholar
-                </td><td>
-                    Oct 2022 ~ Jun 2026
-                </td>
-            </tr><tr>
-                <td>
-<!--                     University of Oxford Japanese Society, Treasurer -->
-                </td><td>
-<!--                     Apr 2023 ~ Mar 2024 -->
-                </td>
-            </tr><tr>
-                <td>
-<!--                     University of Oxford CompSoc, Head of Talks -->
-                </td><td>
-<!--                     Apr 2023 ~ Mar 2024 -->
-                </td>
-            </tr><tr>
-                <td>
-<!--                     University of Oxford Artificial Intelligence Society, Labs Researcher -->
-                </td><td>
-<!--                     Nov 2023 ~ Jun 2024 -->
-                </td>
-            </tr><tr>
-                <th>
-                    Publications:
-                </th><td>
-                    -COMING SOON-
-                </td><td>
-                    
-                </td>
-            </tr><tr>
-                <th rowspan="2">
-                    Employment:
-                </th><td>
-                    Nikkei, Data Science Intern
-                </td><td>
-                    Sep 2023
-                </td>
-            </tr><tr>
-                <td>
-                    teamLab, Machine Learning (/Computer Vision) Intern
-                </td><td>
-                    Jul 2023 - Aug 2023
-                </td>
-            </tr>
-    
-    
-    
-        </table>
+        <p>
+            I am currently in my 2nd year of undergraduate studies in Mathematics and Computer Science at Merton College, University of Oxford. <br>
+            My research interests are tied to Programming Languages, specifically those related to dependent types and interactive theorem proving.
+        </p>
+        <p>
+            To learn more about me, visit my <a href="portfolio/index.html">portfolio</a>!
+        </p>
     </div>
-    
-    
+    <div>
+        Recent Events:
+        <table id = "recent_events"></table>
+    </div>
+    <script>
+        initialize();
+    </script>
 </body>
 </html>
