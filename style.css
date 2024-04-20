@@ -1,4 +1,12 @@
-table, th, td {
-    border: 1px solid black;
-    min-width: 120px;
+td {
+    border-bottom: 1px dotted;
+}
+
+.event_date {
+    font-size: smaller;
+    color: gray;
+}
+.event_context {
+    font-size: smaller;
+    margin: 12px 0;
 }
