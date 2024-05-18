@@ -9,7 +9,7 @@ Order: Date, content
 */
 
 events = [
-    ["May 18, 2024", 'The OEIS entries <a href="https://oeis.org/A372141">A372141</a> and <a href="https://oeis.org/A372141">A372141</a> regarding palindromic primes for a general base has been approved and is now public.'],
+    ["May 18, 2024", 'The OEIS entries <a href="https://oeis.org/A372141">A372141</a> and <a href="https://oeis.org/A372142">A372142</a> regarding palindromic primes for a general base has been approved and is now public.'],
     ["Apr 12 2024", 'I participated in <a href="https://www.cs.le.ac.uk/events/mgs2024/">Midlands Graduate School (MGS) 2024</a> hosted at the University of Leicester, taking Category Theory, Proof Theory, Type Theory, and Session Types courses.'],
     ["Feb 25 2024", 'The OEIS entry <a href="https://oeis.org/A369580">A369580</a> regarding a probability sequence on a coin flipping game was approved and is now public.']
 ]
