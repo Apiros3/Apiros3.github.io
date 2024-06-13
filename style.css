@@ -1,4 +1,4 @@
-td {
+table.recent_events td {
     border-bottom: 1px dotted;
 }
 
@@ -9,4 +9,12 @@ td {
 .event_context {
     font-size: smaller;
     margin: 12px 0;
+}
+
+.grant_date {
+    font-size: smaller;
+}
+.grant_context {
+    font-size: smaller;
+    margin: 1px 7px;
 }
