@@ -4,5 +4,5 @@ function update_rating_once() {
     document.getElementById("rating_codeforces").innerHTML = 1664
     document.getElementById("rating_omc").innerHTML = 1080
     
-    document.getElementById("rating_last_update").innerHTML = "2024-11-21T00:31:01"
+    document.getElementById("rating_last_update").innerHTML = "2024-11-22T00:31:37"
 } 
