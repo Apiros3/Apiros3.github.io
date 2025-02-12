@@ -17,10 +17,10 @@ Codeforces
 Codeforces Round 140
 1423 297 2022-12-16T16:35:00
 Codeforces
-Codeforces Round #828
+Codeforces Round 828
 1126 496 2022-10-16T16:50:00
 Codeforces
-Codeforces Round #826
+Codeforces Round 826
 630 630 2022-10-11T16:50:00
 AtCoder
 AtCoder Heuristic Contest 014
