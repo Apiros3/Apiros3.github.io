@@ -4,36 +4,70 @@
     <title>Apiros3's Mainpage</title>
     <meta charset="utf-8">
     <link rel="icon" type="image/x-icon" href="blog/logos/favicon.jpeg">
+    <script src="https://unpkg.com/viz.js@2.1.2/viz.js"></script>
+    <script src="https://unpkg.com/viz.js@2.1.2/full.render.js"></script>
     <script src="script.js"></script>
     <link rel = "stylesheet", href="style.css">
+    
 </head>
 <body>
+    <div class="main_background">
+    <h1>
+        Hello! I'm Apiros3, and welcome! 
+        <!-- You can find me on <a href="https://twitter.com/Apiros3">Twitter</a>. -->
+    </h1>
     <div>
-        Hello! I'm Apiros3, and welcome to my homepage. You can find me on <a href="https://twitter.com/Apiros3">Twitter</a>.
-    </div>
-    <div>
-        About:
+        <!-- About: -->
         <p>
             I am currently in my 3rd year of undergraduate studies in Mathematics and Computer Science at Merton College, University of Oxford. <br>
-            My research interests are tied to Programming Languages, specifically those related to dependent types and interactive theorem proving. 
+            My current interests are:
+            <ul>
+                <li>Dependent Types</li>
+                <li>Higher Inductive Types / Infinity Categories</li>
+                <li>General Denotational Semantics</li>
+                <li>Homotopy Type Theory</li>
+            </ul>
+            My studies are mostly focused on areas tied to Programming Languages, Algebra, and Topology.
         </p>
         <p>
             I'm working under Professor <a href="https://www.cs.ox.ac.uk/people/nobuko.yoshida/">Nobuko Yoshida</a> as research assistant in the <a href="https://mrg.cs.ox.ac.uk/">Mobility Reading Group</a>, at the University of Oxford since June 2024. <br>
             <!-- I'm also working on a research project under <a href="https://www.oxai.org/">Oxford AI Society (OxAI)</a> related to stable diffusion. <br> -->
-            I hope to work on projects related to Isabelle in the next few months as well.
+            <!-- I hope to work on projects related to Isabelle in the next few months as well. -->
+            This summer, I hope to make self-contained notes that explain datatypes of functional programs from a higher-inductive / infinite category perspective.
         </p>
         <p>
-            <!-- To learn more about me, visit my <a href="portfolio/index.html">thought page</a>! -->
+            In the past I've attended MGS2024, MGS2025, so you might have seen me there!
         </p>
     </div>
-    <div class = "grants">
-        <p class = "grants-title">Grants & Scholarships:</p>
-        <table id = "grants_and_scholarships" class="grants_and_scholarships"></table>
+
+    <div>
+        <p>
+            You can usually find my CV <a href="cv/cv_comp.pdf">here</a>. <br>
+            To see what I've studied / what I plan to study, look <a href="graph/index.html">here</a>!
+        </p>
+
     </div>
-    <div class = "events">
-        <p class = "event-title">Recent News:</p>
+
+    <!-- <div class = "notes">
+        <p class = "notes-title">Notes with Ongoing Edits:</p>
+        <table id = "notesupd" class="notes"></table>
+    </div> -->
+    <div class = "publications">
+        <p class ="publications-title">Publications:</p>
+        <table id = "publication_list" class = "publication_list"></table>
+    </div>
+    <button type="button" class="collapsible grants-title">Grants & Scholarships [+]</button>
+    <div class = "grants coll_content">
+        <table id = "grants_and_scholarships" class="grants_and_scholarships"></table> 
+    </div>
+    <button type="button" class="collapsible event-title">Recent News [+]</button>
+    <div class = "events coll_content">
         <table id = "recent_events" class="recent_events"></table>
     </div>
+
+    </div>
+    
+
     <script>
         initialize();
     </script>

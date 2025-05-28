@@ -1,17 +1,4 @@
-body {
-  /* 1. Point to your square image */
-  background-image: url('img/paM.jpg');
 
-  /* 2. Repeat it both horizontally and vertically */
-  background-repeat: repeat;
-
-  /* (Optional) Fix its position so it scrolls with the page */
-  background-attachment: fixed;
-
-  /* (Optional) Center the start point */
-  background-position: center top;
-
-}
 
 div.main_background {
     margin: 2rem auto;
