@@ -1,4 +1,0 @@
-[submodule "blog"]
-	branch = main
-[submodule "epidemic-model"]
-	branch = main
