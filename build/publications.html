@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Publications - Apiros3</title>
+  <link rel="stylesheet" href="../asset/main.css">
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
+      color: white;
+      padding: 2em 0;
+      text-align: center;
+      margin-bottom: 2em;
+    }
+    .hero h1 {
+      font-size: 2.5em;
+      margin: 0 0 0.5em 0;
+      font-weight: 300;
+    }
+    .hero p {
+      font-size: 1.1em;
+      margin: 0;
+      opacity: 0.9;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1em;
+      color: #007cba;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .publication-list {
+      list-style: none;
+      padding: 0;
+    }
+    .publication-item {
+      margin: 1.5em 0;
+      padding: 1.5em;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: #fafafa;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: box-shadow 0.2s;
+    }
+    .publication-item:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .publication-info {
+      flex: 1;
+    }
+    .publication-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 0.5em 0;
+    }
+    .publication-year {
+      color: #666;
+      font-size: 0.9em;
+    }
+    .publication-download {
+      background: #28a745;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9em;
+      margin-left: 1em;
+    }
+    .publication-download:hover {
+      background: #218838;
+    }
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e9ecef;
+      padding: 1rem 0;
+      margin-bottom: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .site-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      color: #333;
+      text-decoration: none;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .brand:hover {
+      color: #007cba;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+    }
+    .nav-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+    .nav-item {
+      margin: 0;
+    }
+    .nav-link {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95em;
+      padding: 0.5rem 0;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-link:hover, .nav-link.current {
+      color: #007cba;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #007cba;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after, .nav-link.current::after {
+      width: 100%;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      color: #333;
+      padding: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-top: 1px solid #e9ecef;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .main-nav.show {
+        display: block;
+      }
+      .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+      }
+      .nav-item {
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .nav-item:last-child {
+        border-bottom: none;
+      }
+      .nav-link {
+        display: block;
+        padding: 1rem 2rem;
+        color: #333;
+      }
+      .nav-link::after {
+        display: none;
+      }
+      .publication-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .publication-download {
+        margin-left: 0;
+        margin-top: 1em;
+      }
+    }
+  </style>
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">Apiros3</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="publications.html" class="nav-link current">Publications</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <h1>Publications</h1>
+      <p>Research papers and academic publications</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <ul class="publication-list">
+      <li class="publication-item">
+        <div class="publication-info">
+          <h3 class="publication-title">Itp25</h3>
+          <span class="publication-year">(Unknown)</span>
+        </div>
+        <a href="../Notes/publication/itp25.pdf" class="publication-download" target="_blank">PDF</a>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>

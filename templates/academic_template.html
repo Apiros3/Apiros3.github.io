@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>$title$</title>
+  <link rel="stylesheet" href="../asset/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script>
+  <style>
+    .markdown-content {
+      line-height: 1.6;
+      max-width: none;
+    }
+    .markdown-content h1, .markdown-content h2, .markdown-content h3, 
+    .markdown-content h4, .markdown-content h5, .markdown-content h6 {
+      margin-top: 2em;
+      margin-bottom: 1em;
+      color: #333;
+    }
+    .markdown-content h1 { font-size: 2em; border-bottom: 2px solid #eee; padding-bottom: 0.3em; }
+    .markdown-content h2 { font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 0.2em; }
+    .markdown-content h3 { font-size: 1.3em; }
+    .markdown-content p { margin-bottom: 1em; }
+    .markdown-content ul, .markdown-content ol { margin-bottom: 1em; padding-left: 2em; }
+    .markdown-content blockquote { 
+      border-left: 4px solid #ddd; 
+      margin: 1em 0; 
+      padding-left: 1em; 
+      color: #666; 
+    }
+    .markdown-content code { 
+      background: #f5f5f5; 
+      padding: 0.2em 0.4em; 
+      border-radius: 3px; 
+      font-family: 'Courier New', monospace; 
+    }
+    .markdown-content pre { 
+      background: #f5f5f5; 
+      padding: 1em; 
+      border-radius: 5px; 
+      overflow-x: auto; 
+      margin: 1em 0; 
+    }
+    .markdown-content pre code { 
+      background: none; 
+      padding: 0; 
+    }
+    .markdown-content table { 
+      border-collapse: collapse; 
+      width: 100%; 
+      margin: 1em 0; 
+    }
+    .markdown-content th, .markdown-content td { 
+      border: 1px solid #ddd; 
+      padding: 0.5em; 
+      text-align: left; 
+    }
+    .markdown-content th { 
+      background: #f5f5f5; 
+      font-weight: bold; 
+    }
+    .post-actions {
+      margin: 1em 0;
+    }
+    .pdf-download {
+      display: inline-block;
+      padding: 0.5em 1em;
+      background: #007cba;
+      color: white;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .pdf-download:hover {
+      background: #005a87;
+    }
+    .site-header {
+      background: #007cba;
+      color: white;
+      padding: 1em 0;
+      margin-bottom: 2em;
+    }
+    .brand {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .nav-menu {
+      background: #005a87;
+      padding: 0.5em 0;
+      margin-top: 1em;
+    }
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.3em 0.8em;
+      margin: 0.2em 0;
+      border-radius: 3px;
+      font-size: 0.9em;
+      transition: background 0.2s;
+      display: block;
+    }
+    .nav-menu a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .nav-menu.show {
+        display: block;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../../index.html">📚 My Notes</a>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+    <nav class="nav-menu" id="navMenu">
+      <div class="container">
+        <!-- Navigation will be added by script -->
+      </div>
+    </nav>
+  </header>
+  <script>
+    function toggleNav() {
+      const nav = document.getElementById('navMenu');
+      nav.classList.toggle('show');
+    }
+  </script>
+
+  <main class="container">
+    <article class="post">
+      <header>
+        <h1>$title$</h1>
+        $if(date)$<p class="meta">$date$</p>$endif$
+        $if(tags)$<p class="meta">$for(tags)$$tags$$sep$, $endfor$</p>$endif$
+        <div class="post-actions">
+          $if(pdf_url)$<a href="../../$pdf_url$" class="pdf-download">📄 Download PDF</a>$endif$
+        </div>
+      </header>
+      <div class="post-body markdown-content">
+        $body$
+      </div>
+    </article>
+  </main>
+</body>
+</html>

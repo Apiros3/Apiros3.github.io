@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Apiros3 - Academic Portfolio</title>
+  <link rel="stylesheet" href="asset/main.css?v=3">
+  <style>
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 3em;
+      margin: 2em 0;
+    }
+    .main-content {
+      min-width: 0; /* Prevents grid overflow */
+    }
+    .sidebar {
+      background: #f8f9fa;
+      padding: 2em;
+      border-radius: 8px;
+      height: fit-content;
+      position: sticky;
+      top: 2em;
+    }
+    .sidebar h3 {
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 1em;
+      font-size: 1.2em;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5em;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin: 0.5em 0;
+    }
+    .sidebar a {
+      color: #007cba;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+    .contact-info-sidebar {
+      font-size: 0.9em;
+      line-height: 1.6;
+    }
+    .contact-info-sidebar p {
+      margin: 0.5em 0;
+    }
+    .content-section {
+      margin: 2em 0;
+      padding: 1.5em 0;
+    }
+    .content-section h2 {
+      color: #333;
+      border-bottom: 2px solid #007cba;
+      padding-bottom: 0.5em;
+      margin-bottom: 1.5em;
+      font-size: 1.8em;
+    }
+    .post-list {
+      list-style: none;
+      padding: 0;
+    }
+    .post-item {
+      margin: 0.8em 0;
+      padding: 0.8em 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.2s;
+    }
+    .post-item:hover {
+      background-color: #f8f9fa;
+      margin: 0.8em -1em;
+      padding: 0.8em 1em;
+      border-radius: 4px;
+    }
+    .post-item:last-child {
+      border-bottom: none;
+    }
+    .post-title {
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1em;
+      font-weight: 500;
+      flex: 1;
+    }
+    .post-title:hover {
+      color: #007cba;
+    }
+    .post-meta {
+      color: #666;
+      font-size: 0.85em;
+      margin: 0.3em 0;
+    }
+    .post-date {
+      color: #888;
+      font-size: 0.8em;
+    }
+     .post-tags {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 0.3em;
+       margin-top: 0.5em;
+     }
+     .post-tag {
+       background: linear-gradient(135deg, #FF6B6B 0%, #E53E3E 100%);
+       color: white;
+       padding: 0.4em 0.9em;
+       border-radius: 15px;
+       font-size: 0.85em;
+       font-weight: 700;
+       border: 2px solid #C53030;
+       transition: all 0.3s ease;
+       display: inline-block;
+       margin: 0.15em;
+       text-transform: lowercase;
+       letter-spacing: 0.5px;
+       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+     }
+    .post-download {
+      color: #007cba;
+      text-decoration: none;
+      font-size: 0.8em;
+      margin-left: 1em;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .post-download:hover {
+      opacity: 1;
+    }
+    .publication-list {
+      list-style: none;
+      padding: 0;
+    }
+    .publication-item {
+      margin: 1.5em 0;
+      padding: 1.5em;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: box-shadow 0.2s;
+    }
+    .publication-item:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .publication-info {
+      flex: 1;
+    }
+    .publication-title {
+      margin: 0 0 0.5em 0;
+      font-size: 1.1em;
+      color: #333;
+    }
+    .publication-year {
+      color: #666;
+      font-size: 0.9em;
+    }
+    .publication-download {
+      background: #28a745;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9em;
+      margin-left: 1em;
+    }
+    .publication-download:hover {
+      background: #218838;
+    }
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e9ecef;
+      padding: 1rem 0;
+      margin-bottom: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .site-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      color: #333;
+      text-decoration: none;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .brand:hover {
+      color: #007cba;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+    }
+    .nav-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+    .nav-item {
+      margin: 0;
+    }
+    .nav-link {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95em;
+      padding: 0.5rem 0;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-link:hover {
+      color: #007cba;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #007cba;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      color: #333;
+      padding: 0.5rem;
+    }
+    .contact-section {
+      background: #f8f9fa;
+      padding: 2em;
+      border-radius: 8px;
+      margin: 2em 0;
+    }
+    .contact-section h3 {
+      margin-top: 0;
+      color: #333;
+    }
+    .contact-info {
+      color: #666;
+      line-height: 1.6;
+    }
+    .research-interests {
+      background: #f0f8ff;
+      padding: 1.5em;
+      border-radius: 8px;
+      margin: 2em 0;
+      border-left: 4px solid #007cba;
+    }
+    .research-interests h3 {
+      margin-top: 0;
+      color: #007cba;
+    }
+    .research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      margin-top: 1em;
+    }
+    .research-tag {
+      background: #007cba;
+      color: white;
+      padding: 0.3em 0.8em;
+      border-radius: 15px;
+      font-size: 0.9em;
+    }
+    .articles-container {
+      margin-top: 1em;
+    }
+    .load-more-container {
+      text-align: center;
+      margin-top: 2em;
+      padding: 1.5em;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    .load-more-btn {
+      background: #007cba;
+      color: white;
+      border: none;
+      padding: 0.8em 2em;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 500;
+      transition: all 0.2s;
+      margin-bottom: 1em;
+    }
+    .load-more-btn:hover {
+      background: #005a87;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .load-more-btn:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .articles-count {
+      display: block;
+      color: #666;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+    .hidden {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-top: 1px solid #e9ecef;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .main-nav.show {
+        display: block;
+      }
+      .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+      }
+      .nav-item {
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .nav-item:last-child {
+        border-bottom: none;
+      }
+      .nav-link {
+        display: block;
+        padding: 1rem 2rem;
+        color: #333;
+      }
+      .nav-link::after {
+        display: none;
+      }
+      .post-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .post-download, .publication-download {
+        margin-left: 0;
+        margin-top: 1em;
+      }
+      .research-tags {
+        justify-content: center;
+      }
+      .main-layout {
+        grid-template-columns: 1fr;
+        gap: 2em;
+      }
+      .sidebar {
+        position: static;
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="./index.html">Apiros3</a>
+      <nav class="main-nav">
+               <ul class="nav-list">
+                 <li class="nav-item"><a href="./index.html" class="nav-link">About</a></li>
+                 <li class="nav-item"><a href="build/publications.html" class="nav-link">Publications</a></li>
+                 <li class="nav-item"><a href="build/index.html" class="nav-link">Blog</a></li>
+               </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+  <script>
+    let articlesPerLoad = 5;
+    let currentlyVisible = 5;
+    let allArticles = [];
+
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+    
+    function initializeLoadMore() {
+      const articlesList = document.getElementById('articlesList');
+      allArticles = Array.from(articlesList.children);
+      
+      // Hide all articles initially
+      allArticles.forEach((article, index) => {
+        if (index >= currentlyVisible) {
+          article.style.display = 'none';
+        }
+      });
+      
+      updateLoadMoreButton();
+    }
+    
+    function loadMoreArticles() {
+      const newVisibleCount = currentlyVisible + articlesPerLoad;
+      
+      // Show more articles
+      for (let i = currentlyVisible; i < newVisibleCount && i < allArticles.length; i++) {
+        allArticles[i].style.display = 'flex';
+      }
+      
+      currentlyVisible = Math.min(newVisibleCount, allArticles.length);
+      updateLoadMoreButton();
+    }
+    
+    function updateLoadMoreButton() {
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      const articlesCount = document.getElementById('articlesCount');
+      
+      if (currentlyVisible >= allArticles.length) {
+        loadMoreBtn.disabled = true;
+        loadMoreBtn.textContent = 'All Articles Loaded';
+        articlesCount.textContent = `Showing all ${allArticles.length} articles`;
+      } else {
+        loadMoreBtn.disabled = false;
+        loadMoreBtn.textContent = `Load ${Math.min(articlesPerLoad, allArticles.length - currentlyVisible)} More Articles`;
+        articlesCount.textContent = `Showing ${currentlyVisible} of ${allArticles.length} articles`;
+      }
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+        // Close mobile menu if open
+        const nav = document.querySelector('.main-nav');
+        nav.classList.remove('show');
+      });
+    });
+    
+    // Initialize load more when page loads
+    document.addEventListener('DOMContentLoaded', initializeLoadMore);
+  </script>
+
+  <div class="container">
+    <p><strong>Apiros3</strong> - Research Scientist | Mathematics & Computer Science</p>
+  </div>
+
+  <main class="container">
+    <div class="main-layout">
+      <div class="main-content">
+        <section class="content-section" id="about">
+          <h2>About</h2>
+          <p>Welcome to my academic portfolio. I am a research scientist working at the intersection of mathematics and computer science. My research focuses on algebraic structures, formal methods, and theoretical computer science, with particular emphasis on the connections between algebra and logic in computational systems.</p>
+          
+        </section>
+
+
+        <section class="content-section" id="articles">
+          <h2>Recent Blog Posts</h2>
+          <div class="articles-container">
+            <ul class="post-list" id="articlesList">
+           <li class="post-item">
+             <a href="build/posts/template/index.html" class="post-title">Template</a>
+             <span class="post-date">2025-09-06</span>
+             <a href="build/pdf/template.pdf" class="post-download" target="_blank">PDF</a>
+           </li>
+          <li class="post-item">
+            <a href="build/posts/statistics/index.html" class="post-title">Bayesian Statistics and Machine Learning</a>
+            <span class="post-date">2025-05-20</span>
+            <a href="build/pdf/statistics.pdf" class="post-download" target="_blank">PDF</a>
+          </li>
+          <li class="post-item">
+            <a href="build/posts/linear-algebra/index.html" class="post-title">Eigenvalues and Eigenvectors</a>
+            <span class="post-date">2025-04-05</span>
+            <a href="build/pdf/linear-algebra.pdf" class="post-download" target="_blank">PDF</a>
+          </li>
+          <li class="post-item">
+            <a href="build/posts/calculus/index.html" class="post-title">Fundamental Theorem of Calculus</a>
+            <span class="post-date">2025-03-10</span>
+            <a href="build/pdf/calculus.pdf" class="post-download" target="_blank">PDF</a>
+          </li>
+          <li class="post-item">
+            <a href="build/posts/graph-theory/index.html" class="post-title">Graph Theory and Network Analysis</a>
+            <span class="post-date">2025-02-28</span>
+            <a href="build/pdf/graph-theory.pdf" class="post-download" target="_blank">PDF</a>
+          </li>
+          <li class="post-item">
+            <a href="build/posts/quantum-mechanics/index.html" class="post-title">Introduction to Quantum Mechanics</a>
+            <span class="post-date">2025-01-15</span>
+            <a href="build/pdf/quantum-mechanics.pdf" class="post-download" target="_blank">PDF</a>
+          </li>
+          <li class="post-item">
+            <a href="build/posts/topology/index.html" class="post-title">Introduction to Topology</a>
+            <span class="post-date">2025-01-20</span>
+            <a href="build/pdf/topology.pdf" class="post-download" target="_blank">PDF</a>
+          </li>
+          <li class="post-item">
+            <a href="build/posts/number-theory/index.html" class="post-title">Elementary Number Theory</a>
+            <span class="post-date">2025-01-25</span>
+            <a href="build/pdf/number-theory.pdf" class="post-download" target="_blank">PDF</a>
+          </li>
+        </ul>
+        <div class="load-more-container">
+          <button id="loadMoreBtn" onclick="loadMoreArticles()" class="load-more-btn">Load More Articles</button>
+          <span id="articlesCount" class="articles-count">Showing 5 of 8 articles</span>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+             <div class="sidebar">
+               <h3>Contact</h3>
+        <div class="contact-info-sidebar">
+          <p><strong>Email:</strong><br>your.email@institution.edu</p>
+          <p><strong>Institution:</strong><br>[Your Institution]</p>
+          <p><strong>Department:</strong><br>Mathematics & Computer Science</p>
+          <p><strong>Location:</strong><br>[Your Location]</p>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,1 @@
+An introduction to Bayesian statistics and its applications in machine learning, covering Bayes' theorem, prior and posterior distributions, and practical examples with the Beta-Binomial model.

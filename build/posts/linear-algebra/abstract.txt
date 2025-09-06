@@ -1,0 +1,1 @@
+A comprehensive guide to eigenvalues and eigenvectors, exploring their geometric interpretation, computational methods, and applications in data analysis and machine learning.

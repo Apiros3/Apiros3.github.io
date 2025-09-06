@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Quantum Mechanics</title>
+  <link rel="stylesheet" href="../asset/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script>
+  <script type="application/json" data-tags>["physics","quantum-mechanics","mathematics","science"]</script>
+  <style>
+    .markdown-content {
+      line-height: 1.6;
+      max-width: none;
+    }
+    .markdown-content h1, .markdown-content h2, .markdown-content h3, 
+    .markdown-content h4, .markdown-content h5, .markdown-content h6 {
+      margin-top: 2em;
+      margin-bottom: 1em;
+      color: #333;
+    }
+    .markdown-content h1 { font-size: 2em; }
+    .markdown-content h2 { font-size: 1.5em; }
+    .markdown-content h3 { font-size: 1.3em; }
+    .markdown-content p { margin-bottom: 1em; }
+    .markdown-content ul, .markdown-content ol { margin-bottom: 1em; padding-left: 2em; }
+    .markdown-content blockquote { 
+      border-left: 4px solid #ddd; 
+      margin: 1em 0; 
+      padding-left: 1em; 
+      color: #666; 
+    }
+    .markdown-content code { 
+      background: #f5f5f5; 
+      padding: 0.2em 0.4em; 
+      border-radius: 3px; 
+      font-family: 'Courier New', monospace; 
+    }
+    .markdown-content pre { 
+      background: #f5f5f5; 
+      padding: 1em; 
+      border-radius: 5px; 
+      overflow-x: auto; 
+      margin: 1em 0; 
+    }
+    .markdown-content pre code { 
+      background: none; 
+      padding: 0; 
+    }
+    .markdown-content table { 
+      border-collapse: collapse; 
+      width: 100%; 
+      margin: 1em 0; 
+    }
+    .markdown-content th, .markdown-content td { 
+      border: 1px solid #ddd; 
+      padding: 0.5em; 
+      text-align: left; 
+    }
+    .markdown-content th { 
+      background: #f5f5f5; 
+      font-weight: bold; 
+    }
+    .view-toggle {
+      margin-bottom: 1em;
+    }
+    .view-toggle a {
+      display: inline-block;
+      padding: 0.5em 1em;
+      margin-right: 0.5em;
+      background: #f0f0f0;
+      color: #333;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .post-actions {
+      margin: 1em 0;
+    }
+    .pdf-download {
+      display: inline-block;
+      padding: 0.5em 1em;
+      background: #007cba;
+      color: white;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .pdf-download:hover {
+      background: #005a87;
+    }
+    .site-header {
+      background: #007cba;
+      color: white;
+      padding: 1em 0;
+      margin-bottom: 2em;
+    }
+    .brand {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .nav-menu {
+      background: #005a87;
+      padding: 0.5em 0;
+      margin-top: 1em;
+    }
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.3em 0.8em;
+      margin: 0.2em 0;
+      border-radius: 3px;
+      font-size: 0.9em;
+      transition: background 0.2s;
+      display: block;
+    }
+    .nav-menu a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      margin-top: 0.5em;
+    }
+     .post-tag {
+       background: #f8f9fa;
+       color: #666;
+       padding: 0.2em 0.6em;
+       border-radius: 12px;
+       font-size: 0.75em;
+       font-weight: 400;
+       border: 1px solid #e9ecef;
+       transition: all 0.2s ease;
+       display: inline-block;
+       margin: 0.1em;
+       text-transform: lowercase;
+       letter-spacing: 0.3px;
+     }
+     .post-tag:hover {
+       background: #e9ecef;
+       color: #495057;
+     }
+     .post-abstract {
+       color: #555;
+       font-size: 1.1em;
+       line-height: 1.6;
+       margin: 1em 0;
+       padding: 1em;
+       background: #f8f9fa;
+       border-left: 4px solid #007cba;
+       border-radius: 0 4px 4px 0;
+       font-style: italic;
+     }
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .nav-menu.show {
+        display: block;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+  </style>
+  <script>
+    window.addEventListener("load", function() {
+      // Render math elements that already have the math class
+      const mathElements = document.querySelectorAll(".math");
+      mathElements.forEach(function(element) {
+        const isDisplay = element.classList.contains("display");
+        try {
+          katex.render(element.textContent, element, {
+            displayMode: isDisplay,
+            throwOnError: false
+          });
+        } catch (e) {
+          console.error("KaTeX rendering error:", e);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../../index.html">Blog</a>
+    </div>
+  </header>
+  <script>
+    // Parse and display tags from JSON
+    function parseTags() {
+      const tagsContainer = document.getElementById('tags-container');
+      if (tagsContainer) {
+        // Get the tags JSON from a script tag
+        const tagsScript = document.querySelector('script[type="application/json"][data-tags]');
+        if (tagsScript) {
+          try {
+            const tags = JSON.parse(tagsScript.textContent);
+            tags.forEach(tag => {
+              const tagElement = document.createElement('span');
+              tagElement.className = 'post-tag';
+              tagElement.textContent = '#' + tag;
+              tagsContainer.appendChild(tagElement);
+            });
+          } catch (e) {
+            console.error('Error parsing tags:', e);
+          }
+        }
+      }
+    }
+    
+    // Run when page loads
+    document.addEventListener('DOMContentLoaded', parseTags);
+  </script>
+
+  <main class="container">
+    <article class="post">
+      <header>
+        <h1>Quantum Mechanics</h1>
+        <p class="meta">2025-01-15</p>
+        
+        <div class="post-tags" id="tags-container"></div>
+        <div class="post-actions">
+          <a href="../../pdf/quantum-mechanics.pdf" class="pdf-download">Download PDF</a>
+        </div>
+      </header>
+      <div class="post-body markdown-content">
+        <h1 id="the-wave-function">The Wave Function</h1>
+        <p>In quantum mechanics, the state of a particle is described by a wave function <span class="math inline">\psi(x,t)</span> that satisfies the Schrödinger equation:</p>
+        <p><span class="math display">i\hbar \frac{\partial \psi}{\partial t} = \hat{H} \psi</span></p>
+        <p>where <span class="math inline">\hat{H}</span> is the Hamiltonian operator and <span class="math inline">\hbar</span> is the reduced Planck constant.</p>
+        <h1 id="the-uncertainty-principle">The Uncertainty Principle</h1>
+        <p>Heisenberg’s uncertainty principle states that:</p>
+        <p><span class="math display">\Delta x \Delta p \geq \frac{\hbar}{2}</span></p>
+        <p>This fundamental limit means we cannot simultaneously know both the position and momentum of a particle with arbitrary precision.</p>
+        <h1 id="quantum-superposition">Quantum Superposition</h1>
+        <p>One of the most fascinating aspects of quantum mechanics is superposition. A quantum system can exist in multiple states simultaneously until measured. For example, an electron can be in a superposition of spin-up and spin-down states:</p>
+        <p><span class="math display">|\psi\rangle = \alpha |\uparrow\rangle + \beta |\downarrow\rangle</span></p>
+        <p>where <span class="math inline">|\alpha|^2 + |\beta|^2 = 1</span>.</p>
+        <h1 id="the-double-slit-experiment">The Double-Slit Experiment</h1>
+        <p>The double-slit experiment demonstrates wave-particle duality. When electrons pass through two slits, they create an interference pattern on a screen, showing their wave-like nature.</p>
+        <p>The probability amplitude for an electron to reach point <span class="math inline">x</span> on the screen is:</p>
+        <p><span class="math display">\psi(x) = \psi_1(x) + \psi_2(x)</span></p>
+        <p>where <span class="math inline">\psi_1</span> and <span class="math inline">\psi_2</span> are the amplitudes from each slit.</p>
+        <h1 id="conclusion">Conclusion</h1>
+        <p>Quantum mechanics reveals a world far stranger than classical physics, where particles can be in multiple places at once and measurement fundamentally changes the system being observed.</p>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

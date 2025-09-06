@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+         <title>Blog - Apiros3</title>
+  <link rel="stylesheet" href="../asset/main.css">
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
+      color: white;
+      padding: 2em 0;
+      text-align: center;
+      margin-bottom: 2em;
+    }
+    .hero h1 {
+      font-size: 2.5em;
+      margin: 0 0 0.5em 0;
+      font-weight: 300;
+    }
+    .hero p {
+      font-size: 1.1em;
+      margin: 0;
+      opacity: 0.9;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1em;
+      color: #007cba;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .post-list {
+      list-style: none;
+      padding: 0;
+    }
+    .post-item {
+      margin: 1.5em 0;
+      padding: 1.5em;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+    .post-item:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5em;
+    }
+    .post-title {
+      text-decoration: none;
+      color: #333;
+      font-size: 1.2em;
+      font-weight: bold;
+      flex: 1;
+    }
+    .post-title:hover {
+      color: #007cba;
+    }
+    .post-meta {
+      color: #666;
+      font-size: 0.9em;
+      margin: 0.5em 0;
+    }
+    .post-abstract {
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin: 0.5em 0 1em 0;
+      font-style: italic;
+    }
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      margin-top: 0.5em;
+    }
+     .post-tag {
+       background: #f8f9fa;
+       color: #666;
+       padding: 0.2em 0.6em;
+       border-radius: 12px;
+       font-size: 0.75em;
+       font-weight: 400;
+       border: 1px solid #e9ecef;
+       transition: all 0.2s ease;
+       display: inline-block;
+       margin: 0.1em;
+       text-transform: lowercase;
+       letter-spacing: 0.3px;
+     }
+     .post-tag:hover {
+       background: #e9ecef;
+       color: #495057;
+     }
+    .post-download {
+      background: #007cba;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9em;
+      margin-left: 1em;
+      white-space: nowrap;
+    }
+    .post-download:hover {
+      background: #005a87;
+    }
+    .filter-section {
+      margin: 2em 0;
+      padding: 1.5em;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+    }
+    .filter-section h3 {
+      margin: 0 0 1em 0;
+      color: #333;
+      font-size: 1.2em;
+    }
+    .tag-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+    .tag-filter {
+      background: #fff;
+      border: 1px solid #ddd;
+      color: #666;
+      padding: 0.5em 1em;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.2s ease;
+    }
+    .tag-filter:hover {
+      background: #f0f0f0;
+      border-color: #007cba;
+    }
+    .tag-filter.active {
+      background: #007cba;
+      color: white;
+      border-color: #007cba;
+    }
+    .post-item {
+      transition: opacity 0.3s ease;
+    }
+    .post-item.hidden {
+      display: none;
+    }
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e9ecef;
+      padding: 1rem 0;
+      margin-bottom: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .site-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      color: #333;
+      text-decoration: none;
+      font-size: 1.5em;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .brand:hover {
+      color: #007cba;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+    }
+    .nav-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+    .nav-item {
+      margin: 0;
+    }
+    .nav-link {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95em;
+      padding: 0.5rem 0;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-link:hover, .nav-link.current {
+      color: #007cba;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #007cba;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after, .nav-link.current::after {
+      width: 100%;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.2em;
+      cursor: pointer;
+      color: #333;
+      padding: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-top: 1px solid #e9ecef;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .main-nav.show {
+        display: block;
+      }
+      .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+      }
+      .nav-item {
+        border-bottom: 1px solid #f0f0f0;
+      }
+      .nav-item:last-child {
+        border-bottom: none;
+      }
+      .nav-link {
+        display: block;
+        padding: 1rem 2rem;
+        color: #333;
+      }
+      .nav-link::after {
+        display: none;
+      }
+      .post-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .post-download {
+        margin-left: 0;
+        margin-top: 1em;
+      }
+    }
+  </style>
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">Apiros3</a>
+      <nav class="main-nav">
+               <ul class="nav-list">
+                 <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li>
+                 <li class="nav-item"><a href="publications.html" class="nav-link">Publications</a></li>
+                 <li class="nav-item"><a href="index.html" class="nav-link current">Blog</a></li>
+               </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+             <h1>Blog</h1>
+             <p>Complete list of blog posts and research notes</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    
+    <div class="filter-section">
+      <h3>Filter by Tag</h3>
+      <div class="tag-filters">
+        <button class="tag-filter active" data-tag="all">All</button>
+        <button class="tag-filter" data-tag="mathematics">Mathematics</button>
+        <button class="tag-filter" data-tag="statistics">Statistics</button>
+        <button class="tag-filter" data-tag="machine-learning">Machine Learning</button>
+        <button class="tag-filter" data-tag="bayesian">Bayesian</button>
+        <button class="tag-filter" data-tag="data-science">Data Science</button>
+        <button class="tag-filter" data-tag="linear-algebra">Linear Algebra</button>
+        <button class="tag-filter" data-tag="eigenvalues">Eigenvalues</button>
+        <button class="tag-filter" data-tag="matrices">Matrices</button>
+        <button class="tag-filter" data-tag="calculus">Calculus</button>
+        <button class="tag-filter" data-tag="analysis">Analysis</button>
+        <button class="tag-filter" data-tag="education">Education</button>
+        <button class="tag-filter" data-tag="computer-science">Computer Science</button>
+        <button class="tag-filter" data-tag="algorithms">Algorithms</button>
+        <button class="tag-filter" data-tag="networks">Networks</button>
+        <button class="tag-filter" data-tag="physics">Physics</button>
+        <button class="tag-filter" data-tag="quantum-mechanics">Quantum Mechanics</button>
+        <button class="tag-filter" data-tag="science">Science</button>
+        <button class="tag-filter" data-tag="topology">Topology</button>
+        <button class="tag-filter" data-tag="geometry">Geometry</button>
+        <button class="tag-filter" data-tag="number-theory">Number Theory</button>
+        <button class="tag-filter" data-tag="algebra">Algebra</button>
+        <button class="tag-filter" data-tag="primes">Primes</button>
+        <button class="tag-filter" data-tag="template">Template</button>
+        <button class="tag-filter" data-tag="example">Example</button>
+      </div>
+    </div>
+    
+    <ul class="post-list" id="articlesList">
+      <li class="post-item" data-tags="template,example">
+        <div class="post-header">
+          <a href="posts/template/index.html" class="post-title">Template</a>
+          <a href="../pdf/template.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-09-06</span>
+          <div class="post-tags">
+            <span class="post-tag">#template</span>
+            <span class="post-tag">#example</span>
+          </div>
+        </div>
+        <div class="post-abstract">This is a template article demonstrating the structure and formatting of blog posts on this site.</div>
+      </li>
+      <li class="post-item" data-tags="statistics,machine-learning,bayesian,data-science">
+        <div class="post-header">
+          <a href="posts/statistics/index.html" class="post-title">Bayesian Statistics and Machine Learning</a>
+          <a href="../pdf/statistics.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-05-20</span>
+          <div class="post-tags">
+            <span class="post-tag">#statistics</span>
+            <span class="post-tag">#machine-learning</span>
+            <span class="post-tag">#bayesian</span>
+            <span class="post-tag">#data-science</span>
+          </div>
+        </div>
+        <div class="post-abstract">An introduction to Bayesian statistics and its applications in machine learning, covering Bayes' theorem, prior and posterior distributions, and practical examples with the Beta-Binomial model.</div>
+      </li>
+      <li class="post-item" data-tags="mathematics,linear-algebra,eigenvalues,matrices">
+        <div class="post-header">
+          <a href="posts/linear-algebra/index.html" class="post-title">Eigenvalues and Eigenvectors</a>
+          <a href="../pdf/linear-algebra.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-04-05</span>
+          <div class="post-tags">
+            <span class="post-tag">#mathematics</span>
+            <span class="post-tag">#linear-algebra</span>
+            <span class="post-tag">#eigenvalues</span>
+            <span class="post-tag">#matrices</span>
+          </div>
+        </div>
+        <div class="post-abstract">A comprehensive guide to eigenvalues and eigenvectors, exploring their geometric interpretation, computational methods, and applications in data analysis and machine learning.</div>
+      </li>
+      <li class="post-item" data-tags="mathematics,calculus,analysis,education">
+        <div class="post-header">
+          <a href="posts/calculus/index.html" class="post-title">Fundamental Theorem of Calculus</a>
+          <a href="../pdf/calculus.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-03-10</span>
+          <div class="post-tags">
+            <span class="post-tag">#mathematics</span>
+            <span class="post-tag">#calculus</span>
+            <span class="post-tag">#analysis</span>
+            <span class="post-tag">#education</span>
+          </div>
+        </div>
+        <div class="post-abstract">An exploration of the fundamental theorem of calculus, connecting differentiation and integration through rigorous mathematical proofs and intuitive explanations.</div>
+      </li>
+      <li class="post-item" data-tags="mathematics,computer-science,algorithms,networks">
+        <div class="post-header">
+          <a href="posts/graph-theory/index.html" class="post-title">Graph Theory and Network Analysis</a>
+          <a href="../pdf/graph-theory.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-02-28</span>
+          <div class="post-tags">
+            <span class="post-tag">#mathematics</span>
+            <span class="post-tag">#computer-science</span>
+            <span class="post-tag">#algorithms</span>
+            <span class="post-tag">#networks</span>
+          </div>
+        </div>
+        <div class="post-abstract">Introduction to graph theory concepts and their applications in network analysis, covering graph representations, traversal algorithms, and real-world network problems.</div>
+      </li>
+      <li class="post-item" data-tags="physics,quantum-mechanics,mathematics,science">
+        <div class="post-header">
+          <a href="posts/quantum-mechanics/index.html" class="post-title">Introduction to Quantum Mechanics</a>
+          <a href="../pdf/quantum-mechanics.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-01-15</span>
+          <div class="post-tags">
+            <span class="post-tag">#physics</span>
+            <span class="post-tag">#quantum-mechanics</span>
+            <span class="post-tag">#mathematics</span>
+            <span class="post-tag">#science</span>
+          </div>
+        </div>
+        <div class="post-abstract">A mathematical introduction to quantum mechanics, covering wave functions, Schrödinger's equation, and the fundamental principles that govern quantum systems.</div>
+      </li>
+      <li class="post-item" data-tags="mathematics,topology,analysis,geometry">
+        <div class="post-header">
+          <a href="posts/topology/index.html" class="post-title">Introduction to Topology</a>
+          <a href="../pdf/topology.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-01-20</span>
+          <div class="post-tags">
+            <span class="post-tag">#mathematics</span>
+            <span class="post-tag">#topology</span>
+            <span class="post-tag">#analysis</span>
+            <span class="post-tag">#geometry</span>
+          </div>
+        </div>
+        <div class="post-abstract">An introduction to topological spaces, continuity, and the fundamental concepts that form the basis of modern topology and its applications in mathematics.</div>
+      </li>
+      <li class="post-item" data-tags="mathematics,number-theory,algebra,primes">
+        <div class="post-header">
+          <a href="posts/number-theory/index.html" class="post-title">Elementary Number Theory</a>
+          <a href="../pdf/number-theory.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-01-25</span>
+          <div class="post-tags">
+            <span class="post-tag">#mathematics</span>
+            <span class="post-tag">#number-theory</span>
+            <span class="post-tag">#algebra</span>
+            <span class="post-tag">#primes</span>
+          </div>
+        </div>
+        <div class="post-abstract">Foundational concepts in number theory, including prime numbers, divisibility, modular arithmetic, and their applications in cryptography and computer science.</div>
+      </li>
+    </ul>
+  </main>
+  
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+    
+    // Tag filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.tag-filter');
+      const postItems = document.querySelectorAll('.post-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const selectedTag = this.getAttribute('data-tag');
+          
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Filter posts
+          postItems.forEach(item => {
+            const itemTags = item.getAttribute('data-tags');
+            
+            if (selectedTag === 'all' || (itemTags && itemTags.includes(selectedTag))) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
