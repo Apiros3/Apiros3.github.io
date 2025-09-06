@@ -1,17 +1,3 @@
-[submodule "generic-blog"]
-	path = blog
-	url = https://github.com/Apiros3/blog
-	branch = main 
-[submodule "cp-blog"]
-	path = cp-blog
-	url = https://github.com/Apiros3/cp-blog.git
-	branch = main 
-[submodule "apps/othello-webapp"]
-	path = apps/othello-webapp
-	url = https://github.com/Apiros3/othello-webapp.git
-[submodule "apps/epidemic-model"]
-	path = apps/epidemic-model
-	url = https://github.com/Apiros3/epidemic-model
 [submodule "Notes"]
 	path = Notes
 	url = https://github.com/Apiros3/Notes
