@@ -19,6 +19,7 @@
     --code-purple: #a78bfa;
     --code-purple-hover: #8b5cf6;
     --border: #e9e5ff;
+    --border-light: #f3f0ff;
     --shadow: rgba(196, 181, 253, 0.08);
     --shadow-light: rgba(196, 181, 253, 0.04);
     --radius: 8px;
@@ -50,9 +51,41 @@ body {
     margin: 0 auto;
 }
 
-/* Individual blog posts get slightly more width */
-.post .container {
-    max-width: 1000px;
+/* Individual blog posts get significantly more width - only for actual blog post pages */
+body:has(.post) main.container {
+    max-width: 1200px !important;
+    min-width: 800px !important;
+}
+
+/* Main listing pages (blog index, publications) get more reasonable width */
+.post-list,
+.publication-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Filter sections also get reasonable width */
+.filter-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Back links and other main page elements get reasonable width */
+.back-link {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    display: block;
+}
+
+/* Ensure blog post content uses full width */
+.post {
+    max-width: none;
+    width: 100%;
+}
+
+.post-body {
+    max-width: none;
+    width: 100%;
 }
 
 /* Typography */

@@ -17,6 +17,7 @@ from script.page_generators import generate_main_index, generate_blog_listing, g
 def main():
     """Main generation function."""
     print("🚀 Generating academic portfolio...")
+    print("📄 Loading site configuration from site.meta.json...")
     
     # Files are generated in place
     

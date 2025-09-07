@@ -7,7 +7,7 @@ from .config import (
     SITE_TITLE, SITE_DESCRIPTION, SITE_AUTHOR, SITE_EMAIL, 
     SITE_INSTITUTION, SITE_DEPARTMENT, SITE_LOCATION,
     CSS_FILES, KATEX_CSS, KATEX_JS, KATEX_AUTO_RENDER, MATH_DELIMITERS,
-    NAV_ITEMS, PUB_LINK_COLORS
+    NAV_BRAND, NAV_ITEMS, PUB_LINK_COLORS
 )
 
 
@@ -66,7 +66,7 @@ def generate_navigation(current_page: str = "about", base_path: str = "") -> str
     
     return f"""  <header class="site-header">
     <div class="container">
-      <a class="brand" href="{brand_link}">{SITE_TITLE}</a>
+      <a class="brand" href="{brand_link}">{NAV_BRAND}</a>
       <nav class="main-nav">
         <ul class="nav-list">
           {''.join(nav_items)}
@@ -89,12 +89,13 @@ def generate_hero(title: str, subtitle: str) -> str:
 
 def generate_contact_sidebar() -> str:
     """Generate contact information sidebar."""
+    department_html = f'<p><strong>Department:</strong><br>{SITE_DEPARTMENT}</p>' if SITE_DEPARTMENT else ''
     return f"""      <div class="sidebar">
         <h3>Contact</h3>
         <div class="contact-info-sidebar">
           <p><strong>Email:</strong><br>{SITE_EMAIL}</p>
           <p><strong>Institution:</strong><br>{SITE_INSTITUTION}</p>
-          <p><strong>Department:</strong><br>{SITE_DEPARTMENT}</p>
+          {department_html}
           <p><strong>Location:</strong><br>{SITE_LOCATION}</p>
         </div>
       </div>"""
@@ -102,6 +103,9 @@ def generate_contact_sidebar() -> str:
 
 def generate_contact_footer() -> str:
     """Generate contact information footer."""
+    department_html = f"""        <div class="contact-item">
+          <strong>Department:</strong><br>{SITE_DEPARTMENT}
+        </div>""" if SITE_DEPARTMENT else ''
     return f"""  <footer class="contact-footer">
     <div class="container">
       <h3>Contact</h3>
@@ -112,9 +116,7 @@ def generate_contact_footer() -> str:
         <div class="contact-item">
           <strong>Institution:</strong><br>{SITE_INSTITUTION}
         </div>
-        <div class="contact-item">
-          <strong>Department:</strong><br>{SITE_DEPARTMENT}
-        </div>
+        {department_html}
         <div class="contact-item">
           <strong>Location:</strong><br>{SITE_LOCATION}
         </div>

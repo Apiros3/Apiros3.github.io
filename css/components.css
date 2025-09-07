@@ -182,19 +182,24 @@ li.hidden {
 .post-download {
     background: var(--primary);
     color: white;
-    padding: 0.5em 1em;
-    border-radius: var(--radius-sm);
+    padding: 0.6em 1.2em;
+    border-radius: var(--radius);
     text-decoration: none;
     font-size: 0.9em;
+    font-weight: 500;
     transition: var(--transition);
     position: relative;
     z-index: 1;
+    display: inline-block;
+    box-shadow: 0 2px 4px var(--shadow-light);
 }
 
 .post-download:hover {
     background: var(--primary-dark);
     color: white;
     text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px var(--shadow);
 }
 
 /* Post meta */

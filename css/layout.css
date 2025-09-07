@@ -27,44 +27,79 @@
 /* Contact footer */
 .contact-footer {
     border-top: 1px solid var(--border);
-    padding: 1rem 0;
-    margin-top: 1.5rem;
+    padding: 0.6rem 0;
+    margin-top: 1rem;
 }
 
 .contact-footer h3 {
     color: var(--dark);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.4rem;
     text-align: center;
-    font-size: 1em;
+    font-size: 0.95em;
 }
 
 .contact-info-footer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0.8rem;
-    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    max-width: 400px;
     margin: 0 auto;
 }
 
 .contact-item {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.2rem 0;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.9em;
+    white-space: nowrap;
 }
 
-    .contact-item strong {
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item strong {
     color: var(--dark);
-    display: block;
-    margin-bottom: 0.3em;
+    width: 90px;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.contact-item br {
+    display: none;
 }
 
 /* Mobile responsive for contact footer */
 @media (max-width: 768px) {
     .contact-info-footer {
-        grid-template-columns: 1fr;
-        gap: 0.6rem;
+        max-width: 100%;
+        gap: 0.1rem;
+    }
+    
+    .contact-item {
+        flex-direction: row;
+        gap: 0.3rem;
+        padding: 0.2rem 0;
+        font-size: 0.8em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .contact-item strong {
+        width: 70px;
+        font-size: 0.75em;
+        text-align: right;
     }
     
     .contact-footer {
-        padding: 1rem 0;
+        padding: 0.8rem 0;
     }
 }
 

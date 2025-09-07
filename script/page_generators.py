@@ -8,14 +8,18 @@ from .template_engine import (
     generate_contact_sidebar, generate_contact_footer, generate_nav_script, generate_post_item,
     generate_publication_item, generate_tag_filters, generate_tag_filter_script
 )
-from .config import SITE_TITLE, SITE_DESCRIPTION
+from .config import (
+    SITE_TITLE, SITE_DESCRIPTION, ABOUT_TITLE, ABOUT_CONTENT, 
+    NAV_BRAND, NAV_ITEMS, RECENT_POSTS_TITLE, RECENT_POSTS_LIMIT,
+    RECENT_POSTS_SHOW_ABSTRACT, RECENT_POSTS_SHOW_TAGS
+)
 
 
 def generate_main_index(posts: List[Dict[str, Any]]) -> str:
     """Generate the main index page."""
-    # Generate recent posts (first 5)
+    # Generate recent posts (limited by config)
     recent_items = []
-    for post in posts[:5]:
+    for post in posts[:RECENT_POSTS_LIMIT]:
         recent_items.append(generate_post_item(post, ""))
     
     return f"""{generate_html_head(f"{SITE_TITLE} - Academic Portfolio")}
@@ -26,12 +30,12 @@ def generate_main_index(posts: List[Dict[str, Any]]) -> str:
     <div class="main-layout">
       <div class="main-content">
         <section class="content-section" id="about">
-          <h2>About</h2>
-          <p>Welcome to my academic portfolio. I am a research scientist working at the intersection of mathematics and computer science. My research focuses on algebraic structures, formal methods, and theoretical computer science, with particular emphasis on the connections between algebra and logic in computational systems.</p>
+          <h2>{ABOUT_TITLE}</h2>
+          <p>{ABOUT_CONTENT}</p>
         </section>
 
         <section class="content-section" id="articles">
-          <h2>Recent Blog Posts</h2>
+          <h2>{RECENT_POSTS_TITLE}</h2>
           <div class="articles-container">
             <ul class="post-list">
               {''.join(recent_items)}
