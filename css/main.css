@@ -1,0 +1,84 @@
+/* Main CSS file - imports all other CSS files */
+@import url('base.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('markdown.css');
+
+/* Additional global styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Print styles */
+@media print {
+    .site-header,
+    .site-footer,
+    .nav-toggle,
+    .btn,
+    .post-download,
+    .publication-links {
+        display: none !important;
+    }
+    
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+    
+    .hero {
+        background: none !important;
+        color: black !important;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .hero h1 {
+        color: black !important;
+    }
+    
+    .card,
+    .post-item,
+    .publication-item {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+    }
+    
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fg: #e9ecef;
+        --bg: #212529;
+        --muted: #6c757d;
+        --accent: #6ea8fe;
+        --primary: #0d6efd;
+        --primary-dark: #0b5ed7;
+        --light: #343a40;
+        --dark: #f8f9fa;
+        --border: #495057;
+        --shadow: rgba(0,0,0,0.3);
+        --shadow-light: rgba(0,0,0,0.2);
+    }
+}

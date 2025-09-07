@@ -13,7 +13,7 @@ for f in "$@"; do
         continue
     fi
     
-    outdir="build/posts/$slug"
+    outdir="posts/$slug"
     mkdir -p "$outdir"
     
     meta_json="posts/${slug}.meta.json"
@@ -47,10 +47,18 @@ for f in "$@"; do
         --resource-path=.:posts \
         -o "$outdir/content.md"
     
+    # Generate PDF from TeX file
+    echo "Generating PDF for $base.tex..."
+    cd posts && pdflatex -interaction=nonstopmode "$base.tex" && cd ..
+    if [ -f "posts/$base.pdf" ]; then
+        mv "posts/$base.pdf" "$outdir/$slug.pdf"
+        echo "✓ PDF generated: $outdir/$slug.pdf"
+    fi
+    
     # Generate HTML from Markdown (this becomes the main index.html)
     pandoc "$outdir/content.md" -s -t html5 --katex \
         --template=templates/markdown_post.html \
-        --metadata=pdf_url:"pdf/$slug.pdf" \
+        --metadata=pdf_url:"$slug.pdf" \
         --metadata=title:"$(echo $slug | sed 's/-/ /g' | sed 's/\b\w/\U&/g')" \
         --metadata=date:"$date" \
         $TAG_ARGS \

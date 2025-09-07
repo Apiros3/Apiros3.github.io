@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>$title$</title>
+  <title>Statistics</title>
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script>
-  $if(tags_json)$<script type="application/json" data-tags>$tags_json$</script>$endif$
+  <script type="application/json" data-tags>["statistics","machine-learning","bayesian","data-science"]</script>
   <style>
     .markdown-content {
       line-height: 1.6;
@@ -173,6 +173,23 @@
       }
     }
   </style>
+  <script>
+    window.addEventListener("load", function() {
+      // Render math elements that already have the math class
+      const mathElements = document.querySelectorAll(".math");
+      mathElements.forEach(function(element) {
+        const isDisplay = element.classList.contains("display");
+        try {
+          katex.render(element.textContent, element, {
+            displayMode: isDisplay,
+            throwOnError: false
+          });
+        } catch (e) {
+          console.error("KaTeX rendering error:", e);
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -222,16 +239,60 @@
   <main class="container">
     <article class="post">
       <header>
-        <h1>$title$</h1>
-        $if(date)$<p class="meta">$date$</p>$endif$
-        $if(abstract)$<div class="post-abstract">$abstract$</div>$endif$
-        $if(tags_json)$<div class="post-tags" id="tags-container"></div>$endif$
+        <h1>Statistics</h1>
+        <p class="meta">2025-05-20</p>
+        
+        <div class="post-tags" id="tags-container"></div>
         <div class="post-actions">
-          $if(pdf_url)$<a href="../../$pdf_url$" class="pdf-download">Download PDF</a>$endif$
+          <a href="../../statistics.pdf" class="pdf-download">Download PDF</a>
         </div>
       </header>
       <div class="post-body markdown-content">
-        $body$
+        <h1 id="bayes-theorem">Bayes’ Theorem</h1>
+        <p>The foundation of Bayesian statistics is Bayes’ theorem:</p>
+        <p><span class="math display">P(A|B) = \frac{P(B|A)P(A)}{P(B)}</span></p>
+        <p>In the context of machine learning, this becomes:</p>
+        <p><span class="math display">P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}</span></p>
+        <p>where <span class="math inline">\theta</span> represents model parameters and <span class="math inline">D</span> represents data.</p>
+        <h1 id="prior-likelihood-and-posterior">Prior, Likelihood, and Posterior</h1>
+        <ul>
+        <li><p><strong>Prior</strong> <span class="math inline">P(\theta)</span>: Our beliefs about parameters before seeing data</p></li>
+        <li><p><strong>Likelihood</strong> <span class="math inline">P(D|\theta)</span>: Probability of data given parameters</p></li>
+        <li><p><strong>Posterior</strong> <span class="math inline">P(\theta|D)</span>: Updated beliefs after seeing data</p></li>
+        </ul>
+        <h1 id="conjugate-priors">Conjugate Priors</h1>
+        <p>A prior is <strong>conjugate</strong> to a likelihood if the posterior belongs to the same family as the prior.</p>
+        <h2 id="beta-binomial-example">Beta-Binomial Example</h2>
+        <p>For a binomial likelihood with Beta prior:</p>
+        <p><span class="math display">\begin{aligned}
+        \text{Likelihood: } &amp;P(x|n,p) = \binom{n}{x} p^x (1-p)^{n-x} \\
+        \text{Prior: } &amp;P(p) = \text{Beta}(\alpha, \beta) \\
+        \text{Posterior: } &amp;P(p|x) = \text{Beta}(\alpha + x, \beta + n - x)\end{aligned}</span></p>
+        <h1 id="maximum-a-posteriori-map">Maximum A Posteriori (MAP)</h1>
+        <p>The MAP estimate maximizes the posterior:</p>
+        <p><span class="math display">\hat{\theta}_{MAP} = \arg\max_{\theta} P(\theta|D) = \arg\max_{\theta} P(D|\theta)P(\theta)</span></p>
+        <h1 id="regularization">Regularization</h1>
+        <p>Bayesian methods naturally provide regularization. For linear regression with Gaussian priors:</p>
+        <p><span class="math display">P(\mathbf{w}|D) \propto \exp\left(-\frac{1}{2\sigma^2}\|y - X\mathbf{w}\|^2 - \frac{\lambda}{2}\|\mathbf{w}\|^2\right)</span></p>
+        <p>This is equivalent to L2 regularization (Ridge regression).</p>
+        <h1 id="markov-chain-monte-carlo">Markov Chain Monte Carlo</h1>
+        <p>For complex posteriors, we use MCMC methods like the Metropolis-Hastings algorithm:</p>
+        <ol type="1">
+        <li><p>Sample <span class="math inline">\theta&#39;</span> from proposal distribution <span class="math inline">q(\theta&#39;|\theta^{(t)})</span></p></li>
+        <li><p>Accept with probability <span class="math inline">\min\left(1, \frac{P(\theta&#39;|D)q(\theta^{(t)}|\theta&#39;)}{P(\theta^{(t)}|D)q(\theta&#39;|\theta^{(t)})}\right)</span></p></li>
+        <li><p>If accepted, set <span class="math inline">\theta^{(t+1)} = \theta&#39;</span>; otherwise, <span class="math inline">\theta^{(t+1)} = \theta^{(t)}</span></p></li>
+        </ol>
+        <h1 id="applications-in-ml">Applications in ML</h1>
+        <p>Bayesian methods are used in:</p>
+        <ul>
+        <li><p>Gaussian Process regression</p></li>
+        <li><p>Bayesian neural networks</p></li>
+        <li><p>Latent Dirichlet Allocation (LDA)</p></li>
+        <li><p>Variational inference</p></li>
+        <li><p>Uncertainty quantification</p></li>
+        </ul>
+        <h1 id="conclusion">Conclusion</h1>
+        <p>Bayesian statistics provides a principled framework for incorporating uncertainty and prior knowledge into machine learning models.</p>
       </div>
     </article>
   </main>

@@ -1,1 +1,0 @@
-An introduction to topological spaces, continuity, and the fundamental concepts that form the basis of modern topology and its applications in mathematics.

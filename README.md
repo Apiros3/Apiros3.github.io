@@ -1,78 +1,225 @@
-# Academic Portfolio
+# Academic Portfolio Build System
 
-A professional academic portfolio website with clean, modern design.
+A comprehensive build system for generating an academic portfolio website from TeX files and metadata.
 
-## Features
+## 🚀 Quick Start
 
-- **Professional Academic Design**: Clean, modern layout optimized for academic portfolios
-- **Responsive Design**: Works on desktop, tablet, and mobile devices
-- **Automatic Content Integration**: Pulls articles and publications from your existing content
-- **Interactive Elements**: Expandable article lists and smooth transitions
-
-## Quick Start
-
-1. **View Your Portfolio**: Open `index.html` in a web browser
-2. **Generate Updated Portfolio**: Run `python script/generate_index.py` to update with new content
-
-## Files Structure
-
-```
-├── index.html                 # Main portfolio page (GitHub Pages entry point)
-├── asset/
-│   └── main.css              # Base styles
-├── script/
-│   ├── generate_index.py     # Portfolio generator
-│   └── generate_publications.py     # Publication scanner
-├── build/                    # Generated content
-└── posts/                    # Your articles
+### Windows (PowerShell/CMD)
+```bash
+.\build.bat
 ```
 
-## Content Management
+### Windows (PowerShell)
+```powershell
+.\build.ps1
+```
 
-The portfolio automatically pulls content from:
+### Linux/macOS (Make)
+```bash
+make all
+```
 
-- **Articles**: Located in `posts/` directory with `.tex` files
-- **Publications**: Located in `Notes/publication/` directory with `.pdf` files
-- **Metadata**: Uses `.meta.json` files for article titles and tags
+## 📁 Project Structure
 
-## Deployment
+```
+├── index.html                 # Main homepage (GitHub Pages entry point)
+├── build/                     # Generated website files
+│   ├── index.html            # Blog listing page
+│   ├── publications.html     # Publications page
+│   ├── posts/                # Individual blog posts
+│   │   ├── calculus/
+│   │   ├── linear-algebra/
+│   │   └── ...
+│   └── pdf/                  # PDF files
+├── posts/                    # TeX source files
+│   ├── 2025-01-15-quantum-mechanics.tex
+│   ├── 2025-03-10-calculus.tex
+│   └── ...
+├── Notes/publication/        # Publication metadata
+│   └── itp25.meta.json
+├── templates/                # HTML templates
+├── script/                   # Python generation scripts
+├── build_html.sh            # TeX to HTML conversion
+├── build.bat                # Windows build script
+├── build.ps1                # PowerShell build script
+├── Makefile                 # Make-based build system
+└── README.md                # This file
+```
+
+## 🔧 Build System Components
+
+### 1. TeX to HTML Conversion
+- **Script**: `build_html.sh`
+- **Input**: TeX files in `posts/` directory
+- **Output**: HTML files in `build/posts/`
+- **Tool**: Pandoc for conversion
+
+### 2. Blog Listing Generation
+- **File**: `build/index.html`
+- **Features**: Tag filtering, clickable articles, abstracts
+- **Data Source**: TeX files and metadata
+
+### 3. Publications Page
+- **File**: `build/publications.html`
+- **Data Source**: `Notes/publication/*.meta.json` files
+- **Features**: Rich metadata display, multiple link types
+
+### 4. Main Homepage
+- **File**: `index.html`
+- **Purpose**: GitHub Pages entry point
+- **Features**: Recent articles, contact info, navigation
+
+## 📝 Adding New Content
+
+### Adding a New Blog Post
+
+1. **Create TeX file** in `posts/` directory:
+   ```bash
+   # Format: YYYY-MM-DD-topic.tex
+   posts/2025-12-01-new-topic.tex
+   ```
+
+2. **Create metadata file** (optional):
+   ```json
+   {
+     "title": "Your Article Title",
+     "date": "2025-12-01",
+     "tags": ["mathematics", "analysis"],
+     "abstract": "Brief description of the article..."
+   }
+   ```
+
+3. **Run build system**:
+   ```bash
+   .\build.bat  # Windows
+   make all     # Linux/macOS
+   ```
+
+### Adding a New Publication
+
+1. **Create metadata file** in `Notes/publication/`:
+   ```json
+   {
+     "title": "Your Paper Title",
+     "authors": ["Author One", "Author Two"],
+     "conference": "Conference Name",
+     "year": "2025",
+     "abstract": "Abstract text...",
+     "arxiv": "https://arxiv.org/abs/...",
+     "doi": "https://doi.org/...",
+     "code": "https://github.com/...",
+     "venue": "CONF 2025",
+     "pages": "1-10"
+   }
+   ```
+
+2. **Add PDF file** (optional):
+   ```bash
+   Notes/publication/your-paper.pdf
+   ```
+
+3. **Run build system** to update publications page
+
+## 🛠️ Build System Details
+
+### Windows Build Script (`build.bat`)
+- Cleans build directory (preserves important files)
+- Converts TeX files to HTML using pandoc
+- Verifies all required files exist
+- Provides detailed status output
+
+### PowerShell Build Script (`build.ps1`)
+- Same functionality as batch script
+- Better error handling and colored output
+- Cross-platform PowerShell support
+
+### Makefile
+- Traditional Unix build system
+- Multiple targets: `all`, `clean`, `blog`, `main`, `pub`
+- Dependency tracking
+- Help system
+
+### Python Build System (`build_system.py`)
+- Comprehensive build orchestration
+- Error handling and verification
+- Cross-platform compatibility
+
+## 🔍 Verification
+
+The build system verifies:
+- ✅ Main index page exists
+- ✅ Blog listing page exists  
+- ✅ Publications page exists
+- ✅ All blog post pages generated
+- ✅ PDF files available
+
+## 🚀 Deployment
 
 ### GitHub Pages
-
-1. Push your repository to GitHub
+1. Push to GitHub repository
 2. Enable GitHub Pages in repository settings
-3. Set source to "Deploy from a branch" and select "main"
-4. Your portfolio will be available at `https://yourusername.github.io/your-repo-name`
+3. Set source to "Deploy from a branch"
+4. Select main branch and `/ (root)` folder
+5. The `index.html` file serves as the entry point
 
 ### Local Development
+```bash
+# View main page
+start index.html
 
-1. Open `index.html` in a web browser
-2. Run `python script/generate_index.py` to update content
-3. Refresh the browser to see updates
+# View blog
+start build/index.html
 
-## Customization
+# View publications
+start build/publications.html
+```
 
-To customize the portfolio:
+## 📋 Dependencies
 
-1. Edit the content directly in `index.html`
-2. Modify the `script/generate_index.py` file to change the generation logic
-3. Update the CSS styles in the `<style>` section of `index.html`
+- **Pandoc**: TeX to HTML conversion
+- **Python**: Build system scripts (optional)
+- **Bash**: TeX conversion script (Windows: Git Bash or WSL)
 
-## Technical Details
+## 🐛 Troubleshooting
 
-- **HTML5**: Semantic markup for accessibility
-- **CSS3**: Modern styling with flexbox and grid
-- **JavaScript**: Minimal JavaScript for interactivity
-- **Python**: Content generation system
-- **Responsive**: Mobile-first responsive design
+### Common Issues
 
-## Browser Support
+1. **"pandoc not found"**
+   - Install pandoc: https://pandoc.org/installing.html
+   - Ensure it's in your PATH
 
-- Chrome 60+
-- Firefox 60+
-- Safari 12+
-- Edge 79+
+2. **"Python not found"**
+   - Install Python: https://python.org/downloads/
+   - Ensure it's in your PATH
 
-## License
+3. **Build files missing after clean**
+   - The build system now preserves important files
+   - If files are missing, they'll be recreated automatically
 
-This project is open source. Feel free to modify and use for your own academic portfolio.
+4. **TeX conversion errors**
+   - Check TeX file syntax
+   - Ensure all required packages are available
+   - Check pandoc version compatibility
+
+### Getting Help
+
+- Check the build output for specific error messages
+- Verify all dependencies are installed
+- Ensure you're running from the project root directory
+- Check file permissions and paths
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test the build system
+5. Submit a pull request
+
+---
+
+**Happy building! 🎉**

@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>$title$</title>
+  <title>Linear Algebra</title>
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script>
-  $if(tags_json)$<script type="application/json" data-tags>$tags_json$</script>$endif$
+  <script type="application/json" data-tags>["mathematics","linear-algebra","eigenvalues","matrices"]</script>
   <style>
     .markdown-content {
       line-height: 1.6;
@@ -173,6 +173,23 @@
       }
     }
   </style>
+  <script>
+    window.addEventListener("load", function() {
+      // Render math elements that already have the math class
+      const mathElements = document.querySelectorAll(".math");
+      mathElements.forEach(function(element) {
+        const isDisplay = element.classList.contains("display");
+        try {
+          katex.render(element.textContent, element, {
+            displayMode: isDisplay,
+            throwOnError: false
+          });
+        } catch (e) {
+          console.error("KaTeX rendering error:", e);
+        }
+      });
+    });
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -222,16 +239,62 @@
   <main class="container">
     <article class="post">
       <header>
-        <h1>$title$</h1>
-        $if(date)$<p class="meta">$date$</p>$endif$
-        $if(abstract)$<div class="post-abstract">$abstract$</div>$endif$
-        $if(tags_json)$<div class="post-tags" id="tags-container"></div>$endif$
+        <h1>Linear Algebra</h1>
+        <p class="meta">2025-04-05</p>
+        
+        <div class="post-tags" id="tags-container"></div>
         <div class="post-actions">
-          $if(pdf_url)$<a href="../../$pdf_url$" class="pdf-download">Download PDF</a>$endif$
+          <a href="../../linear-algebra.pdf" class="pdf-download">Download PDF</a>
         </div>
       </header>
       <div class="post-body markdown-content">
-        $body$
+        <h1 id="definition">Definition</h1>
+        <p>Let <span class="math inline">A</span> be an <span class="math inline">n \times n</span> matrix. A non-zero vector <span class="math inline">\mathbf{v}</span> is an <strong>eigenvector</strong> of <span class="math inline">A</span> if:</p>
+        <p><span class="math display">A\mathbf{v} = \lambda\mathbf{v}</span></p>
+        <p>for some scalar <span class="math inline">\lambda</span>, called the <strong>eigenvalue</strong>.</p>
+        <h1 id="characteristic-polynomial">Characteristic Polynomial</h1>
+        <p>The eigenvalues of <span class="math inline">A</span> are the roots of the characteristic polynomial:</p>
+        <p><span class="math display">p(\lambda) = \det(A - \lambda I) = 0</span></p>
+        <h1 id="example-22-matrix">Example: 2×2 Matrix</h1>
+        <p>Consider the matrix: <span class="math display">A = \begin{pmatrix}
+        3 &amp; 1 \\
+        0 &amp; 2
+        \end{pmatrix}</span></p>
+        <p>The characteristic polynomial is: <span class="math display">\begin{aligned}
+        \det(A - \lambda I) &amp;= \det\begin{pmatrix}
+        3-\lambda &amp; 1 \\
+        0 &amp; 2-\lambda
+        \end{pmatrix} \\
+        &amp;= (3-\lambda)(2-\lambda) - 0 \cdot 1 \\
+        &amp;= \lambda^2 - 5\lambda + 6 \\
+        &amp;= (\lambda - 2)(\lambda - 3)\end{aligned}</span></p>
+        <p>So the eigenvalues are <span class="math inline">\lambda_1 = 2</span> and <span class="math inline">\lambda_2 = 3</span>.</p>
+        <h1 id="eigenvectors">Eigenvectors</h1>
+        <p>For <span class="math inline">\lambda_1 = 2</span>: <span class="math display">(A - 2I)\mathbf{v} = \begin{pmatrix}
+        1 &amp; 1 \\
+        0 &amp; 0
+        \end{pmatrix}\mathbf{v} = \mathbf{0}</span></p>
+        <p>This gives us <span class="math inline">\mathbf{v}_1 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}</span>.</p>
+        <p>For <span class="math inline">\lambda_2 = 3</span>: <span class="math display">(A - 3I)\mathbf{v} = \begin{pmatrix}
+        0 &amp; 1 \\
+        0 &amp; -1
+        \end{pmatrix}\mathbf{v} = \mathbf{0}</span></p>
+        <p>This gives us <span class="math inline">\mathbf{v}_2 = \begin{pmatrix} 1 \\ 0 \end{pmatrix}</span>.</p>
+        <h1 id="diagonalization">Diagonalization</h1>
+        <p>If <span class="math inline">A</span> has <span class="math inline">n</span> linearly independent eigenvectors, it can be diagonalized as:</p>
+        <p><span class="math display">A = PDP^{-1}</span></p>
+        <p>where <span class="math inline">P</span> contains the eigenvectors and <span class="math inline">D</span> is a diagonal matrix of eigenvalues.</p>
+        <h1 id="applications">Applications</h1>
+        <p>Eigenvalues and eigenvectors are fundamental in:</p>
+        <ul>
+        <li><p>Principal Component Analysis (PCA)</p></li>
+        <li><p>Quantum mechanics</p></li>
+        <li><p>Stability analysis of dynamical systems</p></li>
+        <li><p>Google’s PageRank algorithm</p></li>
+        <li><p>Image compression</p></li>
+        </ul>
+        <h1 id="conclusion">Conclusion</h1>
+        <p>Eigenvalues and eigenvectors provide deep insights into the structure and behavior of linear transformations.</p>
       </div>
     </article>
   </main>

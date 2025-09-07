@@ -18,6 +18,7 @@ Create a `.meta.json` file for each publication in the `Notes/publication/` dire
 ### Optional Fields
 - `arxiv`: arXiv link (if available)
 - `doi`: DOI link (if available)
+- `code`: Code repository link (if available)
 - `venue`: Specific venue details
 - `pages`: Page numbers
 - `volume`: Volume number
@@ -34,6 +35,7 @@ Create a `.meta.json` file for each publication in the `Notes/publication/` dire
   "year": "2024",
   "abstract": "We present a novel approach to quantum computing that improves upon existing methods by 40%. Our technique combines machine learning with quantum algorithms to achieve unprecedented performance in optimization problems.",
   "arxiv": "https://arxiv.org/abs/2401.12345",
+  "code": "https://github.com/username/repository",
   "venue": "ICQC 2024",
   "pages": "123-135"
 }

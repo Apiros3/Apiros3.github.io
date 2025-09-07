@@ -1,1 +1,0 @@
-Introduction to graph theory concepts and their applications in network analysis, covering graph representations, traversal algorithms, and real-world network problems.

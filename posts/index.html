@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Publications - Apiros3</title>
+  <title>Blog Posts - Apiros3</title>
   <link rel="stylesheet" href="../asset/main.css">
   <style>
-    
     .hero {
       background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
       color: white;
@@ -134,7 +133,6 @@
         display: none;
       }
     }
-    
     .back-link {
       display: inline-block;
       margin-bottom: 1em;
@@ -145,11 +143,11 @@
     .back-link:hover {
       text-decoration: underline;
     }
-    .publication-list {
+    .post-list {
       list-style: none;
       padding: 0;
     }
-    .publication-item {
+    .post-item {
       margin: 2em 0;
       padding: 2em;
       border: 1px solid #eee;
@@ -159,84 +157,49 @@
       flex-direction: column;
       transition: box-shadow 0.2s;
     }
-    .publication-item:hover {
+    .post-item:hover {
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .publication-header {
+    .post-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 1em;
     }
-    .publication-title {
+    .post-title {
       font-size: 1.3em;
       font-weight: bold;
       color: #333;
       margin: 0;
       flex: 1;
       line-height: 1.3;
+      text-decoration: none;
     }
-    .publication-links {
-      display: flex;
-      gap: 0.5em;
-      margin-left: 1em;
+    .post-title:hover {
+      color: #007cba;
     }
-    .pub-link {
+    .post-download {
+      background: #007cba;
+      color: white;
       padding: 0.4em 0.8em;
       border-radius: 4px;
       text-decoration: none;
       font-size: 0.85em;
       font-weight: 500;
       white-space: nowrap;
+      margin-left: 1em;
     }
-    .arxiv-link {
-      background: #ff6b35;
-      color: white;
-    }
-    .arxiv-link:hover {
-      background: #e55a2b;
-    }
-    .doi-link {
-      background: #007cba;
-      color: white;
-    }
-    .doi-link:hover {
+    .post-download:hover {
       background: #005a87;
     }
-    .pdf-link {
-      background: #28a745;
-      color: white;
-    }
-    .pdf-link:hover {
-      background: #218838;
-    }
-    .code-link {
-      background: #6f42c1;
-      color: white;
-    }
-    .code-link:hover {
-      background: #5a32a3;
-    }
-    .publication-meta {
+    .post-meta {
       margin-bottom: 1em;
     }
-    .publication-authors {
-      color: #555;
-      font-size: 1em;
-      margin-bottom: 0.3em;
-      font-weight: 500;
-    }
-    .publication-venue {
+    .post-date {
       color: #666;
       font-size: 0.95em;
-      font-style: italic;
     }
-    .publication-pages {
-      color: #666;
-      font-size: 0.9em;
-      margin-top: 0.2em;
-    }
-    .publication-abstract {
+    .post-abstract {
       color: #555;
       font-size: 1em;
       line-height: 1.6;
@@ -247,11 +210,11 @@
       border-radius: 0 4px 4px 0;
     }
     @media (max-width: 768px) {
-      .publication-header {
+      .post-header {
         flex-direction: column;
         align-items: flex-start;
       }
-      .publication-links {
+      .post-download {
         margin-left: 0;
         margin-top: 0.5em;
       }
@@ -271,8 +234,8 @@
       <nav class="main-nav">
         <ul class="nav-list">
           <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="publications.html" class="nav-link current">Publications</a></li>
-          <li class="nav-item"><a href="index.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="../build/publications.html" class="nav-link">Publications</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link current">Blog</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
@@ -281,30 +244,53 @@
 
   <div class="hero">
     <div class="container">
-      <h1>Publications</h1>
-      <p>Research papers and academic publications</p>
+      <h1>Blog Posts</h1>
+      <p>Research notes and academic blog posts</p>
     </div>
   </div>
 
   <main class="container">
     <a href="../index.html" class="back-link">← Back to Mainpage</a>
     
-    <ul class="publication-list">
+    <ul class="post-list">
+      <li class="post-item">
+        <div class="post-header">
+          <a href="linear-algebra/index.html" class="post-title">Linear Algebra</a>
+          <a href="linear-algebra/linear-algebra.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-04-05</span>
+        </div>
+        <div class="post-abstract">
+          Comprehensive notes on linear algebra concepts, including vector spaces, linear transformations, eigenvalues, and applications.
+        </div>
+      </li>
       
-        <li class="publication-item">
-          <div class="publication-header">
-            <h3 class="publication-title">Formalising Subject Reduction and Progress for Multiparty Session Processes</h3>
-            <div class="publication-links">
-              <a href="https://arxiv.org/abs/2501.12345" class="pub-link arxiv-link" target="_blank">arXiv</a><a href="https://doi.org/10.1000/182" class="pub-link doi-link" target="_blank">DOI</a><a href="https://github.com/Apiros3/smpst-sr-smer" class="pub-link code-link" target="_blank">Code</a><a href="../Notes/publication/itp25.pdf" class="pub-link pdf-link" target="_blank">PDF</a>
-            </div>
-          </div>
-          <div class="publication-meta">
-            <div class="publication-authors">Burak Ekici, Tadayoshi Kamegai, Nobuko Yoshida</div>
-            <div class="publication-venue">International Conference on Interactive Theorem Proving (ITP), 2025</div>
-            <div class="publication-pages">1-15</div>
-          </div>
-          <div class="publication-abstract">Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck. We present a fully mechanised proof of the theorem, where recursive type unfoldings are modelled as infinite trees, leveraging coinductive reasoning. This marks the first formal proof to incorporate precise subtyping, aiming to extend the typability of processes thus precision of the type system. The proof is grounded in fundamental properties such as subject reduction and progress. ...</div>
-        </li>
+      <li class="post-item">
+        <div class="post-header">
+          <a href="statistics/index.html" class="post-title">Statistics</a>
+          <a href="statistics/statistics.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-05-20</span>
+        </div>
+        <div class="post-abstract">
+          Statistical methods and probability theory with practical applications and examples.
+        </div>
+      </li>
+      
+      <li class="post-item">
+        <div class="post-header">
+          <a href="template/index.html" class="post-title">Template</a>
+          <a href="template/template.pdf" class="post-download" target="_blank">PDF</a>
+        </div>
+        <div class="post-meta">
+          <span class="post-date">2025-09-06</span>
+        </div>
+        <div class="post-abstract">
+          Template for creating new blog posts and academic notes.
+        </div>
+      </li>
     </ul>
   </main>
 </body>

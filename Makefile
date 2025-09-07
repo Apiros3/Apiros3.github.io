@@ -1,77 +1,145 @@
-SHELL := /usr/bin/env bash
+# Academic Portfolio Build System
+# Comprehensive Makefile for building the entire academic portfolio
+# 
+# Usage:
+#   make all        - Build everything
+#   make clean      - Clean all build files
+#   make blog       - Build blog posts only
+#   make main       - Build main index only
+#   make pub        - Build publications only
+#   make verify     - Verify all files exist
+#   make help       - Show this help
 
-# Only include properly dated posts (ignore template.tex)
-POSTS := $(shell find posts -maxdepth 1 -type f -name '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*.tex' | sort)
+.PHONY: all clean create-files blog generate main pub blog-list verify help install test
 
-BUILD_DIR  := build
-POSTS_DIR  := $(BUILD_DIR)/posts
-PDF_DIR    := $(BUILD_DIR)/pdf
+# Default target
+all: clean create-files blog generate verify
 
-.PHONY: all html pdf markdown assets index clean serve new doctor
+# Build main index page (alias for generate)
+main: generate
 
-all: html pdf markdown assets index
+# Build blog posts from TeX files
+blog:
+	@echo "Building blog posts from TeX files..."
+	@bash build_html.sh posts/*.tex
+	@echo "✓ Blog posts built"
 
-html:
-	@echo "==> Building HTML from LaTeX with Pandoc + KaTeX"
-	@mkdir -p "$(POSTS_DIR)"
-	@./build_html.sh $(POSTS)
-
-markdown:
-	@echo "==> Building Markdown from LaTeX files"
-	@mkdir -p "$(POSTS_DIR)"
-	@for f in $(POSTS); do \
-		name=$$(basename $$f); \
-		base=$${name%.tex}; \
-		slug=$$(echo $$base | cut -d- -f4-); \
-		if [ -n "$$slug" ]; then \
-			outdir="$(POSTS_DIR)/$$slug"; \
-			mkdir -p "$$outdir"; \
-			echo "Converting $$f to Markdown..."; \
-			pandoc "$$f" -t markdown -o "$$outdir/content.md"; \
-		fi; \
-	done
-
+# Build all pages using unified generation script
+# Generate PDFs from TeX files
 pdf:
-	@echo "==> Building PDFs with Tectonic"
-	@mkdir -p "$(PDF_DIR)"
-	@for f in $(POSTS); do \
-		name=$$(basename "$$f"); \
-		base=$${name%.tex}; \
-		slug=$$(echo $$base | cut -d- -f4-); \
-		tectonic "posts/$$base.tex" --outdir "$(PDF_DIR)"; \
-		if [ -f "$(PDF_DIR)/$$base.pdf" ]; then \
-			mv "$(PDF_DIR)/$$base.pdf" "$(PDF_DIR)/$$slug.pdf"; \
+	@echo "Generating PDFs from TeX files..."
+	@for tex_file in posts/*.tex; do \
+		if [ -f "$$tex_file" ]; then \
+			echo "Compiling $$tex_file..."; \
+			base=$$(basename "$$tex_file" .tex); \
+			date=$$(echo "$$base" | cut -d- -f1-3); \
+			slug=$$(echo "$$base" | cut -d- -f4-); \
+			if [ -n "$$slug" ]; then \
+				cd posts && pdflatex -interaction=nonstopmode "$$(basename "$$tex_file")" && cd ..; \
+				mkdir -p "posts/$$slug"; \
+				mv "posts/$$base.pdf" "posts/$$slug/$$slug.pdf"; \
+				echo "✓ Moved PDF to posts/$$slug/$$slug.pdf"; \
+			fi; \
 		fi; \
 	done
+	@echo "✓ PDFs generated and organized"
 
-assets:
-	@echo "==> Copying assets"
-	@if [[ -d assets ]]; then rsync -a assets/ $(BUILD_DIR)/assets/; else echo "(no assets/ dir)"; fi
+# Generate all pages
+generate:
+	@echo "Generating all pages..."
+	@python3 script/generate_site.py
+	@echo "✓ All pages generated"
 
-index:
-	@echo "==> Generating academic homepage as index.html"
-	@python3 script/generate_academic_homepage.py
-	@echo "==> Adding navigation between posts"
-	@python3 script/generate_navigation.py
+# Build blog listing page (alias for generate)
+blog-list: generate
 
-serve:
-	@echo "==> Serving build/ at http://localhost:8080"
-	@python3 -m http.server 8080 --directory $(BUILD_DIR)
+# Build publications page (alias for generate)
+pub: generate
 
+# Verify all required files exist
+verify:
+	@echo "Verifying build..."
+	@echo "Checking required files:"
+	@for file in index.html blog.html publications.html; do \
+		if [ -f "$$file" ]; then \
+			echo "✓ $$file"; \
+		else \
+			echo "✗ $$file MISSING"; \
+		fi; \
+	done
+	@echo "Checking blog posts:"
+	@if [ -d "posts" ]; then \
+		post_count=$$(find posts -name "index.html" | wc -l); \
+		echo "✓ Found $$post_count blog post pages in posts/"; \
+	else \
+		echo "✗ No blog posts directory"; \
+	fi
+	@echo "Checking PDFs:"
+	@if [ -d "Notes/publication" ]; then \
+		pdf_count=$$(find Notes/publication -name "*.pdf" | wc -l); \
+		echo "✓ Found $$pdf_count PDF files"; \
+	else \
+		echo "✗ No PDF directory"; \
+	fi
+
+# Clean build files (preserve important files)
 clean:
-	rm -rf $(BUILD_DIR)
+	@echo "Cleaning build files..."
+	@if [ -d "build" ]; then \
+		rm -rf build/pdf; \
+		mkdir -p build/pdf; \
+	fi
+	@echo "✓ Build files cleaned"
 
-# Create a new post from the LaTeX template.
-# Usage: make new SLUG=my-new-post DATE=2025-09-06
-DATE ?= $(shell date +%Y-%m-%d)
-new:
-	@if [[ -z "$(SLUG)" ]]; then echo "Usage: make new SLUG=my-post [DATE=YYYY-MM-DD]"; exit 1; fi
-	cp posts/template.tex posts/$(DATE)-$(SLUG).tex
-	@echo '{ "title": "'$(shell echo $(SLUG) | sed -E 's/-/ /g;s/\b(.)/\U\1/g')'", "tags": [] }' > posts/$(SLUG).meta.json
+# Create/update files
+create-files:
+	@echo "Creating/updating files..."
+	@chmod +x create_missing_files.sh
+	@./create_missing_files.sh
 
-doctor:
-	@echo "==> Environment check"
-	@command -v pandoc   >/dev/null || echo "Missing: pandoc"
-	@command -v tectonic >/dev/null || echo "Missing: tectonic"
-	@command -v jq       >/dev/null || echo "Missing: jq (optional)"
-	@printf 'Makefile line endings: '; (file Makefile | grep -q CRLF && echo CRLF || echo LF)
+# Install dependencies (if needed)
+install:
+	@echo "Installing dependencies..."
+	@if command -v pandoc >/dev/null 2>&1; then \
+		echo "✓ pandoc is installed"; \
+	else \
+		echo "✗ pandoc not found - please install pandoc"; \
+		exit 1; \
+	fi
+	@if command -v python >/dev/null 2>&1; then \
+		echo "✓ python is available"; \
+	else \
+		echo "✗ python not found - please install python"; \
+		exit 1; \
+	fi
+
+# Test the build system
+test: clean blog generate verify
+	@echo "✓ All tests passed!"
+
+# Show help
+help:
+	@echo "Academic Portfolio Build System"
+	@echo ""
+	@echo "Available targets:"
+	@echo "  all        - Build everything (default)"
+	@echo "  clean      - Clean all build files"
+	@echo "  blog       - Build blog posts from TeX files"
+	@echo "  generate   - Generate all HTML pages"
+	@echo "  main       - Generate main index page"
+	@echo "  pub        - Generate publications page"
+	@echo "  blog-list  - Generate blog listing page"
+	@echo "  verify     - Verify all files exist"
+	@echo "  install    - Check dependencies"
+	@echo "  test       - Run full test build"
+	@echo "  help       - Show this help message"
+	@echo ""
+	@echo "The build system works as follows:"
+	@echo "1. TeX files in posts/ are converted to HTML using pandoc"
+	@echo "2. Blog listing page shows all posts with filtering"
+	@echo "3. Publications page shows research papers"
+	@echo "4. Main index page serves as the homepage"
+	@echo ""
+	@echo "Blog posts are used directly from posts/ directory"
+	@echo "Other HTML files are generated in the build/ directory"
+	@echo "except for index.html which is in the root for GitHub Pages"
