@@ -4,9 +4,15 @@ Unified site generation script for academic portfolio.
 Generates all HTML pages from metadata and TeX sources.
 """
 from pathlib import Path
-from .config import BUILD
-from .data_loader import get_all_posts, get_publications, copy_blog_posts, copy_pdf_files
-from .page_generators import generate_main_index, generate_blog_listing, generate_publications_page
+import sys
+import os
+
+# Add the script directory to the path so we can import modules
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
+from script.config import BUILD
+from script.data_loader import get_all_posts, get_publications, copy_blog_posts, copy_pdf_files
+from script.page_generators import generate_main_index, generate_blog_listing, generate_publications_page
 
 
 def main():
@@ -30,11 +36,17 @@ def main():
     
     print("Generating blog listing...")
     blog_html = generate_blog_listing(posts)
-    (BUILD / "index.html").write_text(blog_html, encoding="utf-8")
+    # Create posts directory if it doesn't exist
+    posts_dir = Path("posts")
+    posts_dir.mkdir(exist_ok=True)
+    (posts_dir / "index.html").write_text(blog_html, encoding="utf-8")
     
     print("Generating publications page...")
     pub_html = generate_publications_page(publications)
-    (BUILD / "publications.html").write_text(pub_html, encoding="utf-8")
+    # Create publications directory if it doesn't exist
+    publications_dir = Path("publications")
+    publications_dir.mkdir(exist_ok=True)
+    (publications_dir / "index.html").write_text(pub_html, encoding="utf-8")
     
     # Copy blog post files
     print("Copying blog post files...")
@@ -47,10 +59,10 @@ def main():
     print("✅ Site generation completed!")
     print(f"Generated files:")
     print(f"  📄 index.html (main page)")
-    print(f"  📄 build/index.html (blog listing)")
-    print(f"  📄 build/publications.html (publications)")
-    print(f"  📁 build/posts/ (blog post HTML files)")
-    print(f"  📁 build/pdf/ (PDF files)")
+    print(f"  📄 posts/index.html (blog listing)")
+    print(f"  📄 publications/index.html (publications)")
+    print(f"  📁 posts/ (blog post HTML files)")
+    print(f"  📁 Notes/publication/ (PDF files)")
 
 
 if __name__ == "__main__":

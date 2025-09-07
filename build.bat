@@ -14,32 +14,15 @@ if not exist "posts" (
     exit /b 1
 )
 
-REM Clean build directory (but preserve important files)
+REM Clean build directory (remove entirely since we no longer use it)
 echo.
 echo === Cleaning Build Directory ===
 if exist "build" (
-    REM Backup important files
-    if exist "build\index.html" copy "build\index.html" "build\index.html.backup" >nul
-    if exist "build\publications.html" copy "build\publications.html" "build\publications.html.backup" >nul
-    
-    REM Clean posts and pdf directories
-    if exist "build\posts" rmdir /s /q build\posts
-    if exist "build\pdf" rmdir /s /q build\pdf
-    mkdir build\posts
-    mkdir build\pdf
-    
-    REM Restore important files
-    if exist "build\index.html.backup" (
-        move "build\index.html.backup" "build\index.html" >nul
-    )
-    if exist "build\publications.html.backup" (
-        move "build\publications.html.backup" "build\publications.html" >nul
-    )
+    rmdir /s /q build
+    echo ✓ Removed build directory
 ) else (
-    mkdir build\posts
-    mkdir build\pdf
+    echo ✓ No build directory to clean
 )
-echo ✓ Build directory cleaned
 
 REM Build blog posts from TeX files
 echo.
@@ -57,6 +40,17 @@ if exist "build_html.sh" (
     exit /b 1
 )
 
+REM Generate all pages using Python script
+echo.
+echo === Generating All Pages ===
+python script/generate_site.py
+if !errorlevel! equ 0 (
+    echo ✓ All pages generated successfully
+) else (
+    echo ✗ Error generating pages
+    exit /b 1
+)
+
 REM Check required files
 echo.
 echo === Verifying Required Files ===
@@ -69,14 +63,14 @@ if exist "index.html" (
     set missing=1
 )
 
-if exist "build\index.html" (
+if exist "posts\index.html" (
     echo ✓ Blog listing page exists
 ) else (
     echo ✗ Blog listing page missing
     set missing=1
 )
 
-if exist "build\publications.html" (
+if exist "publications\index.html" (
     echo ✓ Publications page exists
 ) else (
     echo ✗ Publications page missing
@@ -85,7 +79,7 @@ if exist "build\publications.html" (
 
 REM Count blog posts
 set post_count=0
-for /d %%d in (build\posts\*) do (
+for /d %%d in (posts\*) do (
     if exist "%%d\index.html" (
         set /a post_count+=1
     )
@@ -94,7 +88,7 @@ echo ✓ Found !post_count! blog post pages
 
 REM Count PDFs
 set pdf_count=0
-for %%f in (build\pdf\*.pdf) do (
+for %%f in (Notes\publication\*.pdf) do (
     set /a pdf_count+=1
 )
 echo ✓ Found !pdf_count! PDF files
@@ -107,8 +101,8 @@ if !missing! equ 0 (
     echo.
     echo To view the site:
     echo   - Main page: start index.html
-    echo   - Blog: start build\index.html
-    echo   - Publications: start build\publications.html
+    echo   - Blog: start posts\index.html
+    echo   - Publications: start publications\index.html
 ) else (
     echo ❌ Build completed with errors.
     echo Some required files are missing.

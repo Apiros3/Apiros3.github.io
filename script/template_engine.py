@@ -11,14 +11,14 @@ from .config import (
 )
 
 
-def generate_html_head(title: str, css_files: List[str] = None, include_math: bool = False) -> str:
+def generate_html_head(title: str, css_files: List[str] = None, include_math: bool = False, base_path: str = "") -> str:
     """Generate HTML head section."""
     if css_files is None:
         css_files = CSS_FILES
     
     css_links = ""
     for css_file in css_files:
-        css_links += f'  <link rel="stylesheet" href="{css_file}">\n'
+        css_links += f'  <link rel="stylesheet" href="{base_path}{css_file}">\n'
     
     math_links = ""
     math_script = ""

@@ -11,14 +11,14 @@ if (-not (Test-Path "posts")) {
     exit 1
 }
 
-# Clean build directory
+# Clean build directory (remove entirely since we no longer use it)
 Write-Host "`n=== Cleaning Build Directory ===" -ForegroundColor Yellow
 if (Test-Path "build") {
     Remove-Item -Recurse -Force "build"
+    Write-Host "✓ Removed build directory" -ForegroundColor Green
+} else {
+    Write-Host "✓ No build directory to clean" -ForegroundColor Green
 }
-New-Item -ItemType Directory -Path "build\posts" -Force | Out-Null
-New-Item -ItemType Directory -Path "build\pdf" -Force | Out-Null
-Write-Host "✓ Build directory cleaned" -ForegroundColor Green
 
 # Build blog posts from TeX files
 Write-Host "`n=== Building Blog Posts ===" -ForegroundColor Yellow
@@ -40,6 +40,21 @@ if (Test-Path "build_html.sh") {
     exit 1
 }
 
+# Generate all pages using Python script
+Write-Host "`n=== Generating All Pages ===" -ForegroundColor Yellow
+try {
+    python script/generate_site.py
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "✓ All pages generated successfully" -ForegroundColor Green
+    } else {
+        Write-Host "✗ Error generating pages" -ForegroundColor Red
+        exit 1
+    }
+} catch {
+    Write-Host "✗ Error running Python script: $_" -ForegroundColor Red
+    exit 1
+}
+
 # Check required files
 Write-Host "`n=== Verifying Required Files ===" -ForegroundColor Yellow
 $missing = 0
@@ -51,14 +66,14 @@ if (Test-Path "index.html") {
     $missing = 1
 }
 
-if (Test-Path "build\index.html") {
+if (Test-Path "posts\index.html") {
     Write-Host "✓ Blog listing page exists" -ForegroundColor Green
 } else {
     Write-Host "✗ Blog listing page missing" -ForegroundColor Red
     $missing = 1
 }
 
-if (Test-Path "build\publications.html") {
+if (Test-Path "publications\index.html") {
     Write-Host "✓ Publications page exists" -ForegroundColor Green
 } else {
     Write-Host "✗ Publications page missing" -ForegroundColor Red
@@ -66,11 +81,11 @@ if (Test-Path "build\publications.html") {
 }
 
 # Count blog posts
-$postCount = (Get-ChildItem -Path "build\posts" -Directory | Where-Object { Test-Path "$($_.FullName)\index.html" }).Count
+$postCount = (Get-ChildItem -Path "posts" -Directory | Where-Object { Test-Path "$($_.FullName)\index.html" }).Count
 Write-Host "✓ Found $postCount blog post pages" -ForegroundColor Green
 
 # Count PDFs
-$pdfCount = (Get-ChildItem -Path "build\pdf" -Filter "*.pdf").Count
+$pdfCount = (Get-ChildItem -Path "Notes\publication" -Filter "*.pdf" -ErrorAction SilentlyContinue).Count
 Write-Host "✓ Found $pdfCount PDF files" -ForegroundColor Green
 
 # Final status
@@ -81,8 +96,8 @@ if ($missing -eq 0) {
     Write-Host ""
     Write-Host "To view the site:" -ForegroundColor Cyan
     Write-Host "  - Main page: start index.html" -ForegroundColor White
-    Write-Host "  - Blog: start build\index.html" -ForegroundColor White
-    Write-Host "  - Publications: start build\publications.html" -ForegroundColor White
+    Write-Host "  - Blog: start posts\index.html" -ForegroundColor White
+    Write-Host "  - Publications: start publications\index.html" -ForegroundColor White
 } else {
     Write-Host "❌ Build completed with errors." -ForegroundColor Red
     Write-Host "Some required files are missing." -ForegroundColor Red

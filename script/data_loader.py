@@ -5,11 +5,11 @@ import json
 import re
 import datetime
 from pathlib import Path
-from typing import List, Dict, Any, Optional
-from .config import POSTS_SRC, BUILD
+from typing import List, Dict, Any, Optional, Tuple
+from .config import POSTS_SRC, BUILD, POSTS_OUT, PDF_OUT
 
 
-def parse_tex_filename(tex_path: Path) -> tuple[str, str]:
+def parse_tex_filename(tex_path: Path) -> Tuple[str, str]:
     """Parse YYYY-MM-DD-slug.tex filename format."""
     base = tex_path.stem
     match = re.match(r"(\d{4}-\d{2}-\d{2})-(.+)", base)

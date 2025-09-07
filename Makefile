@@ -47,7 +47,7 @@ pdf:
 # Generate all pages
 generate:
 	@echo "Generating all pages..."
-	@python3 script/generate_site.py
+	@python3 script/generate_site_new.py
 	@echo "✓ All pages generated"
 
 # Build blog listing page (alias for generate)
@@ -60,7 +60,7 @@ pub: generate
 verify:
 	@echo "Verifying build..."
 	@echo "Checking required files:"
-	@for file in index.html blog.html publications.html; do \
+	@for file in index.html posts/index.html publications/index.html; do \
 		if [ -f "$$file" ]; then \
 			echo "✓ $$file"; \
 		else \
@@ -82,12 +82,14 @@ verify:
 		echo "✗ No PDF directory"; \
 	fi
 
-# Clean build files (preserve important files)
+# Clean build files (remove build directory entirely)
 clean:
 	@echo "Cleaning build files..."
 	@if [ -d "build" ]; then \
-		rm -rf build/pdf; \
-		mkdir -p build/pdf; \
+		rm -rf build; \
+		echo "✓ Removed build directory"; \
+	else \
+		echo "✓ No build directory to clean"; \
 	fi
 	@echo "✓ Build files cleaned"
 
@@ -141,5 +143,7 @@ help:
 	@echo "4. Main index page serves as the homepage"
 	@echo ""
 	@echo "Blog posts are used directly from posts/ directory"
-	@echo "Other HTML files are generated in the build/ directory"
-	@echo "except for index.html which is in the root for GitHub Pages"
+	@echo "All HTML files are generated in their respective directories:"
+	@echo "  - index.html (root directory)"
+	@echo "  - posts/index.html (blog listing)"
+	@echo "  - publications/index.html (publications page)"

@@ -96,7 +96,7 @@ def build_publications_page():
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Publications - Apiros3</title>
-  <link rel="stylesheet" href="../asset/main.css">
+  <link rel="stylesheet" href="../css/main.css">
   <style>
     .hero {{
       background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
@@ -387,15 +387,15 @@ def build_publications_page():
 def main():
     print("Starting publications generation...")
     
-    # Create build directory if it doesn't exist
-    build_dir = Path("build")
-    build_dir.mkdir(exist_ok=True)
+    # Create publications directory if it doesn't exist
+    publications_dir = Path("publications")
+    publications_dir.mkdir(exist_ok=True)
     
     # Generate publications page
     publications_html = build_publications_page()
     if publications_html:
-        (build_dir / "publications.html").write_text(publications_html, encoding="utf-8")
-        print("Generated build/publications.html")
+        (publications_dir / "index.html").write_text(publications_html, encoding="utf-8")
+        print("Generated publications/index.html")
     else:
         print("No publications found or error occurred")
         sys.exit(1)

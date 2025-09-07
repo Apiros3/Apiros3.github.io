@@ -23,7 +23,7 @@ make all
 
 ```
 ├── index.html                 # Main homepage (GitHub Pages entry point)
-├── build/                     # Generated website files
+├── posts/                     # Blog posts and generated files
 │   ├── index.html            # Blog listing page
 │   ├── publications.html     # Publications page
 │   ├── posts/                # Individual blog posts
@@ -51,16 +51,16 @@ make all
 ### 1. TeX to HTML Conversion
 - **Script**: `build_html.sh`
 - **Input**: TeX files in `posts/` directory
-- **Output**: HTML files in `build/posts/`
+- **Output**: HTML files in `posts/` directory
 - **Tool**: Pandoc for conversion
 
 ### 2. Blog Listing Generation
-- **File**: `build/index.html`
+- **File**: `posts/index.html`
 - **Features**: Tag filtering, clickable articles, abstracts
 - **Data Source**: TeX files and metadata
 
 ### 3. Publications Page
-- **File**: `build/publications.html`
+- **File**: `publications/index.html`
 - **Data Source**: `Notes/publication/*.meta.json` files
 - **Features**: Rich metadata display, multiple link types
 
@@ -168,10 +168,10 @@ The build system verifies:
 start index.html
 
 # View blog
-start build/index.html
+start posts/index.html
 
 # View publications
-start build/publications.html
+start publications/index.html
 ```
 
 ## 📋 Dependencies

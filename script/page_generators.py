@@ -39,7 +39,7 @@ def generate_main_index(posts: List[Dict[str, Any]]) -> str:
               {''.join(recent_items)}
             </ul>
             <div class="load-more-container">
-              <a href="build/index.html" class="load-more-btn">View All Articles</a>
+              <a href="posts/index.html" class="load-more-btn">View All Articles</a>
             </div>
           </div>
         </section>
@@ -83,7 +83,7 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
           {abstract_html}
         </li>""")
     
-    return f"""{generate_html_head(f"Blog - {SITE_TITLE}")}
+    return f"""{generate_html_head(f"Blog - {SITE_TITLE}", base_path="../")}
 <body>
 {generate_navigation("blog")}
 
@@ -111,7 +111,7 @@ def generate_publications_page(publications: List[Dict[str, Any]]) -> str:
     for pub in publications:
         pub_items.append(generate_publication_item(pub, "../"))
     
-    return f"""{generate_html_head(f"Publications - {SITE_TITLE}")}
+    return f"""{generate_html_head(f"Publications - {SITE_TITLE}", base_path="../")}
 <body>
 {generate_navigation("publications")}
 

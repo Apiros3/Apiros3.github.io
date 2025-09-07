@@ -4,233 +4,8 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Apiros3 - Academic Portfolio</title>
-  <link rel="stylesheet" href="asset/main.css">
-  <style>
-    
-    .hero {
-      background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
-      color: white;
-      padding: 2em 0;
-      text-align: center;
-      margin-bottom: 2em;
-    }
-    .hero h1 {
-      font-size: 2.5em;
-      margin: 0 0 0.5em 0;
-      font-weight: 300;
-    }
-    .hero p {
-      font-size: 1.1em;
-      margin: 0;
-      opacity: 0.9;
-    }
-    .site-header {
-      background: #fff;
-      border-bottom: 1px solid #e9ecef;
-      padding: 1rem 0;
-      margin-bottom: 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .site-header .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .brand {
-      color: #333;
-      text-decoration: none;
-      font-size: 1.5em;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-    .brand:hover {
-      color: #007cba;
-    }
-    .main-nav {
-      display: flex;
-      align-items: center;
-    }
-    .nav-list {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 2rem;
-    }
-    .nav-item {
-      margin: 0;
-    }
-    .nav-link {
-      color: #333;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95em;
-      padding: 0.5rem 0;
-      transition: color 0.2s ease;
-      position: relative;
-    }
-    .nav-link:hover, .nav-link.current {
-      color: #007cba;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #007cba;
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after, .nav-link.current::after {
-      width: 100%;
-    }
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.2em;
-      cursor: pointer;
-      color: #333;
-      padding: 0.5rem;
-    }
-    @media (max-width: 768px) {
-      .nav-toggle {
-        display: block;
-      }
-      .main-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-top: 1px solid #e9ecef;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      }
-      .main-nav.show {
-        display: block;
-      }
-      .nav-list {
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
-      }
-      .nav-item {
-        border-bottom: 1px solid #f0f0f0;
-      }
-      .nav-item:last-child {
-        border-bottom: none;
-      }
-      .nav-link {
-        display: block;
-        padding: 1rem 2rem;
-        color: #333;
-      }
-      .nav-link::after {
-        display: none;
-      }
-    }
-    
-    .main-layout {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 3rem;
-      margin: 2rem 0;
-    }
-    .content-section {
-      margin-bottom: 3rem;
-    }
-    .content-section h2 {
-      color: #333;
-      border-bottom: 2px solid #007cba;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .post-list {
-      list-style: none;
-      padding: 0;
-    }
-    .post-item {
-      margin: 1.5em 0;
-      padding: 1.5em;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      background: #fafafa;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: box-shadow 0.2s;
-    }
-    .post-item:hover {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .post-title {
-      text-decoration: none;
-      color: #333;
-      font-size: 1.2em;
-      font-weight: bold;
-      flex: 1;
-    }
-    .post-title:hover {
-      color: #007cba;
-    }
-    .post-date {
-      color: #666;
-      font-size: 0.9em;
-      margin: 0 1em;
-    }
-    .post-download {
-      background: #007cba;
-      color: white;
-      padding: 0.5em 1em;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 0.9em;
-    }
-    .post-download:hover {
-      background: #005a87;
-    }
-    .sidebar {
-      background: #f8f9fa;
-      padding: 2rem;
-      border-radius: 8px;
-      height: fit-content;
-      position: sticky;
-      top: 2rem;
-    }
-    .sidebar h3 {
-      color: #333;
-      margin-bottom: 1rem;
-    }
-    .contact-info-sidebar p {
-      margin: 1rem 0;
-      line-height: 1.5;
-    }
-    @media (max-width: 768px) {
-      .main-layout {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .post-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .post-download {
-        margin-left: 0;
-        margin-top: 1em;
-      }
-    }
-  </style>
-  <script>
-    function toggleNav() {
-      const nav = document.querySelector('.main-nav');
-      nav.classList.toggle('show');
-    }
-  </script>
+  <link rel="stylesheet" href="css/main.css">
+
 </head>
 <body>
   <header class="site-header">
@@ -238,9 +13,7 @@
       <a class="brand" href="./index.html">Apiros3</a>
       <nav class="main-nav">
         <ul class="nav-list">
-          <li class="nav-item"><a href="./index.html" class="nav-link current">About</a></li>
-          <li class="nav-item"><a href="build/publications.html" class="nav-link">Publications</a></li>
-          <li class="nav-item"><a href="posts/index.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="./index.html" class="nav-link current">About</a></li><li class="nav-item"><a href="publications/index.html" class="nav-link">Publications</a></li><li class="nav-item"><a href="posts/index.html" class="nav-link">Blog</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
@@ -270,17 +43,17 @@
         <li class="post-item">
           <a href="posts/template/index.html" class="post-title">Template</a>
           <span class="post-date">2025-09-06</span>
-          <a href="posts/template/template.pdf" class="post-download" target="_blank">PDF</a>
+          
         </li>
         <li class="post-item">
           <a href="posts/statistics/index.html" class="post-title">Bayesian Statistics and Machine Learning</a>
           <span class="post-date">2025-05-20</span>
-          <a href="posts/statistics/statistics.pdf" class="post-download" target="_blank">PDF</a>
+          
         </li>
         <li class="post-item">
           <a href="posts/linear-algebra/index.html" class="post-title">Eigenvalues and Eigenvectors</a>
           <span class="post-date">2025-04-05</span>
-          <a href="posts/linear-algebra/linear-algebra.pdf" class="post-download" target="_blank">PDF</a>
+          
         </li>
             </ul>
             <div class="load-more-container">
@@ -301,5 +74,11 @@
       </div>
     </div>
   </main>
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>

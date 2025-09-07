@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Publications - Apiros3</title>
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="./index.html">Apiros3</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="./index.html" class="nav-link">About</a></li><li class="nav-item"><a href="publications/index.html" class="nav-link current">Publications</a></li><li class="nav-item"><a href="posts/index.html" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <h1>Publications</h1>
+      <p>Research papers and academic publications</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <a href="../index.html" class="back-link">← Back to Mainpage</a>
+    
+    <ul class="publication-list">
+      
+        <li class="publication-item">
+          <div class="publication-header">
+            <h3 class="publication-title">Formalising Subject Reduction and Progress for Multiparty Session Processes</h3>
+            <div class="publication-links">
+              <a href="https://arxiv.org/abs/2501.12345" class="pub-link arxiv-link" target="_blank">arXiv</a><a href="https://doi.org/10.1000/182" class="pub-link doi-link" target="_blank">DOI</a><a href="https://github.com/Apiros3/smpst-sr-smer" class="pub-link code-link" target="_blank">Code</a><a href="../Notes/publication/itp25.pdf" class="pub-link pdf-link" target="_blank">PDF</a>
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-authors">Burak Ekici, Tadayoshi Kamegai, Nobuko Yoshida</div>
+            <div class="publication-venue">International Conference on Interactive Theorem Proving (ITP), 2025</div>
+            <div class="publication-pages">1-15</div>
+          </div>
+          <div class="publication-abstract">Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck. We present a fully mechanised proof of the theorem, where recursive type unfoldings are modelled as infinite trees, leveraging coinductive reasoning. This marks the first formal proof to incorporate precise subtyping, aiming to extend the typability of processes thus precision of the type system. The proof is grounded in fundamental properties such as subject reduction and progress. ...</div>
+        </li>
+    </ul>
+  </main>
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

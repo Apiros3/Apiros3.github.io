@@ -42,8 +42,8 @@ MATH_DELIMITERS = [
 # Navigation configuration
 NAV_ITEMS = [
     {"name": "About", "url": "./index.html", "current": False},
-    {"name": "Publications", "url": "build/publications.html", "current": False},
-    {"name": "Blog", "url": "build/index.html", "current": False}
+    {"name": "Publications", "url": "publications/index.html", "current": False},
+    {"name": "Blog", "url": "posts/index.html", "current": False}
 ]
 
 # Publication link colors
