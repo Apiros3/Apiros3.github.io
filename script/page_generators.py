@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import List, Dict, Any
 from .template_engine import (
     generate_html_head, generate_navigation, generate_hero, 
-    generate_contact_sidebar, generate_nav_script, generate_post_item,
+    generate_contact_sidebar, generate_contact_footer, generate_nav_script, generate_post_item,
     generate_publication_item, generate_tag_filters, generate_tag_filter_script
 )
 from .config import SITE_TITLE, SITE_DESCRIPTION
@@ -21,8 +21,6 @@ def generate_main_index(posts: List[Dict[str, Any]]) -> str:
     return f"""{generate_html_head(f"{SITE_TITLE} - Academic Portfolio")}
 <body>
 {generate_navigation("about")}
-
-{generate_hero(SITE_TITLE, "Research Scientist, Mathematics & Computer Science")}
 
   <main class="container">
     <div class="main-layout">
@@ -44,10 +42,10 @@ def generate_main_index(posts: List[Dict[str, Any]]) -> str:
           </div>
         </section>
       </div>
-      
-{generate_contact_sidebar()}
     </div>
   </main>
+
+{generate_contact_footer()}
 {generate_nav_script()}
 </body>
 </html>"""
@@ -71,23 +69,23 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
         
         pdf_link = f'<a href="{post["slug"]}/{post["slug"]}.pdf" class="post-download" target="_blank">PDF</a>' if post.get("has_pdf", False) else ''
         all_items.append(f"""
-        <li class="post-item" data-tags="{','.join(post["tags"])}">
-          <div class="post-header">
-            <a href="{post["slug"]}/index.html" class="post-title">{post["title"]}</a>
-            {pdf_link}
-          </div>
-          <div class="post-meta">
-            <span class="post-date">{post["date"]}</span>
-            {tags_html}
-          </div>
-          {abstract_html}
+        <li data-tags="{','.join(post["tags"])}">
+          <a href="{post["slug"]}/index.html" class="post-item">
+            <div class="post-header">
+              <div class="post-title">{post["title"]}</div>
+              {pdf_link}
+            </div>
+            {abstract_html}
+            <div class="post-meta">
+              <span class="post-date">{post["date"]}</span>
+              {tags_html}
+            </div>
+          </a>
         </li>""")
     
     return f"""{generate_html_head(f"Blog - {SITE_TITLE}", base_path="../")}
 <body>
 {generate_navigation("blog", "../")}
-
-{generate_hero("Blog", "Complete list of blog posts and research notes")}
 
   <main class="container">
     <a href="../index.html" class="back-link">← Back to Mainpage</a>
@@ -114,8 +112,6 @@ def generate_publications_page(publications: List[Dict[str, Any]]) -> str:
     return f"""{generate_html_head(f"Publications - {SITE_TITLE}", base_path="../")}
 <body>
 {generate_navigation("publications", "../")}
-
-{generate_hero("Publications", "Research papers and academic publications")}
 
   <main class="container">
     <a href="../index.html" class="back-link">← Back to Mainpage</a>

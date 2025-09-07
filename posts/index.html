@@ -20,13 +20,6 @@
     </div>
   </header>
 
-  <div class="hero">
-    <div class="container">
-      <h1>Blog</h1>
-      <p>Complete list of blog posts and research notes</p>
-    </div>
-  </div>
-
   <main class="container">
     <a href="../index.html" class="back-link">← Back to Mainpage</a>
     
@@ -39,44 +32,50 @@
     
     <ul class="post-list">
       
-        <li class="post-item" data-tags="">
-          <div class="post-header">
-            <a href="template/index.html" class="post-title">Template</a>
-            
-          </div>
-          <div class="post-meta">
-            <span class="post-date">2025-09-06</span>
-            
-          </div>
-          <div class="post-abstract">This is a template article demonstrating the structure and formatting of blog posts on this site.</div>
+        <li data-tags="">
+          <a href="template/index.html" class="post-item">
+            <div class="post-header">
+              <div class="post-title">Template</div>
+              
+            </div>
+            <div class="post-abstract">This is a template article demonstrating the structure and formatting of blog posts on this site.</div>
+            <div class="post-meta">
+              <span class="post-date">2025-09-06</span>
+              
+            </div>
+          </a>
         </li>
-        <li class="post-item" data-tags="statistics,machine-learning,bayesian,data-science">
-          <div class="post-header">
-            <a href="statistics/index.html" class="post-title">Bayesian Statistics and Machine Learning</a>
-            
-          </div>
-          <div class="post-meta">
-            <span class="post-date">2025-05-20</span>
-            
+        <li data-tags="statistics,machine-learning,bayesian,data-science">
+          <a href="statistics/index.html" class="post-item">
+            <div class="post-header">
+              <div class="post-title">Bayesian Statistics and Machine Learning</div>
+              
+            </div>
+            <div class="post-abstract">An introduction to Bayesian statistics and its applications in machine learning, covering Bayes' theorem, prior and posterior distributions, and practical examples with the Beta-Binomial model.</div>
+            <div class="post-meta">
+              <span class="post-date">2025-05-20</span>
+              
             <div class="post-tags">
               <span class="post-tag">#statistics</span><span class="post-tag">#machine-learning</span><span class="post-tag">#bayesian</span><span class="post-tag">#data-science</span>
             </div>
-          </div>
-          <div class="post-abstract">An introduction to Bayesian statistics and its applications in machine learning, covering Bayes' theorem, prior and posterior distributions, and practical examples with the Beta-Binomial model.</div>
+            </div>
+          </a>
         </li>
-        <li class="post-item" data-tags="mathematics,linear-algebra,eigenvalues,matrices">
-          <div class="post-header">
-            <a href="linear-algebra/index.html" class="post-title">Eigenvalues and Eigenvectors</a>
-            
-          </div>
-          <div class="post-meta">
-            <span class="post-date">2025-04-05</span>
-            
+        <li data-tags="mathematics,linear-algebra,eigenvalues,matrices">
+          <a href="linear-algebra/index.html" class="post-item">
+            <div class="post-header">
+              <div class="post-title">Eigenvalues and Eigenvectors</div>
+              
+            </div>
+            <div class="post-abstract">A comprehensive guide to eigenvalues and eigenvectors, exploring their geometric interpretation, computational methods, and applications in data analysis and machine learning.</div>
+            <div class="post-meta">
+              <span class="post-date">2025-04-05</span>
+              
             <div class="post-tags">
               <span class="post-tag">#mathematics</span><span class="post-tag">#linear-algebra</span><span class="post-tag">#eigenvalues</span><span class="post-tag">#matrices</span>
             </div>
-          </div>
-          <div class="post-abstract">A comprehensive guide to eigenvalues and eigenvectors, exploring their geometric interpretation, computational methods, and applications in data analysis and machine learning.</div>
+            </div>
+          </a>
         </li>
     </ul>
   </main>
@@ -90,7 +89,7 @@
     // Tag filtering functionality
     document.addEventListener('DOMContentLoaded', function() {
       const filterButtons = document.querySelectorAll('.tag-filter');
-      const postItems = document.querySelectorAll('.post-item');
+      const postItems = document.querySelectorAll('.post-list li');
       
       filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -103,7 +102,7 @@
           // Filter posts
           postItems.forEach(item => {
             const itemTags = item.getAttribute('data-tags');
-            if (selectedTag === 'all' || (itemTags && itemTags.includes(selectedTag))) {
+            if (selectedTag === 'all' || (itemTags && itemTags.trim() !== '' && itemTags.includes(selectedTag))) {
               item.classList.remove('hidden');
             } else {
               item.classList.add('hidden');

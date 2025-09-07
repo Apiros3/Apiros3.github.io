@@ -100,6 +100,29 @@ def generate_contact_sidebar() -> str:
       </div>"""
 
 
+def generate_contact_footer() -> str:
+    """Generate contact information footer."""
+    return f"""  <footer class="contact-footer">
+    <div class="container">
+      <h3>Contact</h3>
+      <div class="contact-info-footer">
+        <div class="contact-item">
+          <strong>Email:</strong><br>{SITE_EMAIL}
+        </div>
+        <div class="contact-item">
+          <strong>Institution:</strong><br>{SITE_INSTITUTION}
+        </div>
+        <div class="contact-item">
+          <strong>Department:</strong><br>{SITE_DEPARTMENT}
+        </div>
+        <div class="contact-item">
+          <strong>Location:</strong><br>{SITE_LOCATION}
+        </div>
+      </div>
+    </div>
+  </footer>"""
+
+
 def generate_nav_script() -> str:
     """Generate navigation toggle script."""
     return """  <script>
@@ -219,7 +242,7 @@ def generate_tag_filter_script() -> str:
     // Tag filtering functionality
     document.addEventListener('DOMContentLoaded', function() {
       const filterButtons = document.querySelectorAll('.tag-filter');
-      const postItems = document.querySelectorAll('.post-item');
+      const postItems = document.querySelectorAll('.post-list li');
       
       filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -232,7 +255,7 @@ def generate_tag_filter_script() -> str:
           // Filter posts
           postItems.forEach(item => {
             const itemTags = item.getAttribute('data-tags');
-            if (selectedTag === 'all' || (itemTags && itemTags.includes(selectedTag))) {
+            if (selectedTag === 'all' || (itemTags && itemTags.trim() !== '' && itemTags.includes(selectedTag))) {
               item.classList.remove('hidden');
             } else {
               item.classList.add('hidden');

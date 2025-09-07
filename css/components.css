@@ -120,43 +120,63 @@
 
 /* Post items */
 .post-item {
-    margin: 1.5em 0;
-    padding: 1.5em;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--light);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 1em 0;
+    padding: 0.8em 0;
+    border-bottom: 1px solid var(--border);
+    display: block;
     transition: var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    background: none;
 }
 
 .post-item:hover {
-    box-shadow: 0 4px 16px var(--shadow);
-    transform: translateY(-2px);
+    text-decoration: none;
+    color: inherit;
+    background: var(--light);
+    padding: 0.8em;
+    border-radius: var(--radius);
+    margin: 1em -0.8em;
 }
 
-.post-item.hidden {
+.post-item.hidden,
+li.hidden {
     display: none;
 }
 
-.post-title {
-    text-decoration: none;
-    color: var(--dark);
-    font-size: 1.2em;
-    font-weight: bold;
-    flex: 1;
-    transition: var(--transition);
+/* Post header styling */
+.post-header {
+    margin-bottom: 0.2em;
 }
 
-.post-title:hover {
+.post-title {
+    color: var(--dark);
+    font-size: 1.3em;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: var(--transition);
+    display: block;
+    margin-bottom: 0.1em;
+}
+
+.post-item:hover .post-title {
     color: var(--primary);
+}
+
+/* Post meta styling */
+.post-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8em;
+    margin-top: 0.5em;
+    flex-wrap: wrap;
 }
 
 .post-date {
     color: var(--muted);
-    font-size: 0.9em;
-    margin: 0 1em;
+    font-size: 0.8em;
+    font-weight: 400;
 }
 
 .post-download {
@@ -167,11 +187,14 @@
     text-decoration: none;
     font-size: 0.9em;
     transition: var(--transition);
+    position: relative;
+    z-index: 1;
 }
 
 .post-download:hover {
     background: var(--primary-dark);
     color: white;
+    text-decoration: none;
 }
 
 /* Post meta */
@@ -187,52 +210,40 @@
 }
 
 .post-tag {
-    background: var(--light);
     color: var(--muted);
-    padding: 0.2em 0.6em;
-    border-radius: var(--radius-lg);
-    font-size: 0.75em;
-    font-weight: 400;
-    border: 1px solid var(--border);
-    transition: var(--transition);
+    font-size: 0.7em;
+    font-weight: 300;
     display: inline-block;
-    margin: 0.1em;
+    margin: 0;
     text-transform: lowercase;
-    letter-spacing: 0.3px;
-}
-
-.post-tag:hover {
-    background: var(--border);
-    color: var(--dark);
+    opacity: 0.7;
 }
 
 .post-abstract {
     color: var(--muted);
-    font-size: 1em;
-    line-height: 1.6;
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 0.3em 0 0 0;
     font-style: italic;
-    background: var(--light);
-    padding: 1em;
-    border-left: 4px solid var(--accent);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    margin: 1em 0;
 }
 
 /* Publication items */
 .publication-item {
-    margin: 2em 0;
-    padding: 2em;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--light);
+    margin: 1em 0;
+    padding: 0.8em 0;
+    border-bottom: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     transition: var(--transition);
+    background: none;
 }
 
+
 .publication-item:hover {
-    box-shadow: 0 6px 20px var(--shadow);
-    transform: translateY(-2px);
+    background: var(--light);
+    padding: 0.8em;
+    border-radius: var(--radius);
+    margin: 1em -0.8em;
 }
 
 .publication-header {
@@ -332,26 +343,23 @@
 
 .publication-abstract {
     color: var(--muted);
-    font-size: 1em;
-    line-height: 1.6;
+    font-size: 0.9em;
+    line-height: 1.4;
     font-style: italic;
-    background: var(--light);
-    padding: 1em;
-    border-left: 4px solid var(--accent);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin: 0.3em 0 0 0;
 }
 
 /* Filter components */
 .filter-section {
-    margin: 2em 0;
-    padding: 1.5em;
-    background: var(--light);
-    border-radius: var(--radius);
+    margin: 1.5em 0;
+    padding: 1em 0;
+    border-bottom: 1px solid var(--border);
 }
 
 .filter-section h3 {
-    margin: 0 0 1em 0;
+    margin: 0 0 0.8em 0;
     color: var(--dark);
+    font-size: 1em;
 }
 
 .tag-filters {

@@ -4,6 +4,11 @@
     max-width: none;
 }
 
+/* Individual blog post styling for better width usage */
+.post {
+    max-width: none;
+}
+
 .markdown-content h1,
 .markdown-content h2,
 .markdown-content h3,
