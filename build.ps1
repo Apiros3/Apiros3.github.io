@@ -11,14 +11,20 @@ if (-not (Test-Path "posts")) {
     exit 1
 }
 
-# Clean build directory (remove entirely since we no longer use it)
-Write-Host "`n=== Cleaning Build Directory ===" -ForegroundColor Yellow
-if (Test-Path "build") {
-    Remove-Item -Recurse -Force "build"
-    Write-Host "✓ Removed build directory" -ForegroundColor Green
-} else {
-    Write-Host "✓ No build directory to clean" -ForegroundColor Green
+# Clean generated files
+Write-Host "`n=== Cleaning Generated Files ===" -ForegroundColor Yellow
+Write-Host "Cleaning generated HTML files..." -ForegroundColor White
+if (Test-Path "index.html") { Remove-Item "index.html" }
+if (Test-Path "posts\index.html") { Remove-Item "posts\index.html" }
+if (Test-Path "publications\index.html") { Remove-Item "publications\index.html" }
+Write-Host "Cleaning blog post directories..." -ForegroundColor White
+Get-ChildItem -Path "posts" -Directory | ForEach-Object {
+    if (Test-Path $_.FullName) {
+        Remove-Item -Recurse -Force $_.FullName
+        Write-Host "✓ Removed $($_.Name)" -ForegroundColor Green
+    }
 }
+Write-Host "✓ Generated files cleaned" -ForegroundColor Green
 
 # Build blog posts from TeX files
 Write-Host "`n=== Building Blog Posts ===" -ForegroundColor Yellow

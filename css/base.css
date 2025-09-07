@@ -1,26 +1,26 @@
-/* Base styles and CSS variables */
+/* Base styles and CSS variables - Very Light Purple Theme */
 :root {
-    --fg: #111;
-    --bg: #fff;
-    --muted: #6b7280;
-    --accent: #4b63ff;
-    --primary: #007cba;
-    --primary-dark: #005a87;
-    --secondary: #6b7280;
-    --success: #28a745;
-    --warning: #ff6b35;
-    --danger: #dc3545;
-    --info: #17a2b8;
-    --light: #f8f9fa;
-    --dark: #343a40;
-    --warning-hover: #e55a2b;
-    --success-hover: #218838;
-    --danger-hover: #c82333;
-    --code-purple: #6f42c1;
-    --code-purple-hover: #5a32a3;
-    --border: #e9ecef;
-    --shadow: rgba(0,0,0,0.1);
-    --shadow-light: rgba(0,0,0,0.05);
+    --fg: #5b4b8a;
+    --bg: #fefcff;
+    --muted: #a8a0c7;
+    --accent: #c4b5fd;
+    --primary: #c4b5fd;
+    --primary-dark: #a78bfa;
+    --secondary: #a8a0c7;
+    --success: #6ee7b7;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --info: #67e8f9;
+    --light: #faf7ff;
+    --dark: #7c6fa8;
+    --warning-hover: #f59e0b;
+    --success-hover: #34d399;
+    --danger-hover: #f87171;
+    --code-purple: #a78bfa;
+    --code-purple-hover: #8b5cf6;
+    --border: #e9e5ff;
+    --shadow: rgba(196, 181, 253, 0.08);
+    --shadow-light: rgba(196, 181, 253, 0.04);
     --radius: 8px;
     --radius-sm: 4px;
     --radius-lg: 12px;
@@ -141,8 +141,8 @@ blockquote {
 .theorem, .lemma, .definition, .proof {
     margin: 1.2rem 0;
     padding: 0.85rem 1rem;
-    background: #f9fafc;
-    border-left: 4px solid #dfe4ff;
+    background: #f8f5ff;
+    border-left: 4px solid var(--accent);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 

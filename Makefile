@@ -3,7 +3,7 @@
 # 
 # Usage:
 #   make all        - Build everything
-#   make clean      - Clean all build files
+#   make clean      - Clean all generated files
 #   make blog       - Build blog posts only
 #   make main       - Build main index only
 #   make pub        - Build publications only
@@ -58,7 +58,7 @@ pub: generate
 
 # Verify all required files exist
 verify:
-	@echo "Verifying build..."
+	@echo "Verifying generated files..."
 	@echo "Checking required files:"
 	@for file in index.html posts/index.html publications/index.html; do \
 		if [ -f "$$file" ]; then \
@@ -82,16 +82,23 @@ verify:
 		echo "✗ No PDF directory"; \
 	fi
 
-# Clean build files (remove build directory entirely)
+# Clean generated files and directories
 clean:
-	@echo "Cleaning build files..."
-	@if [ -d "build" ]; then \
-		rm -rf build; \
-		echo "✓ Removed build directory"; \
-	else \
-		echo "✓ No build directory to clean"; \
+	@echo "Cleaning generated files..."
+	@echo "Removing generated HTML files..."
+	@rm -f index.html
+	@rm -f posts/index.html
+	@rm -f publications/index.html
+	@echo "Removing blog post directories..."
+	@if [ -d "posts" ]; then \
+		for dir in posts/*/; do \
+			if [ -d "$$dir" ]; then \
+				rm -rf "$$dir"; \
+				echo "✓ Removed $$dir"; \
+			fi; \
+		done; \
 	fi
-	@echo "✓ Build files cleaned"
+	@echo "✓ Generated files cleaned"
 
 # Create/update files
 create-files:
@@ -125,7 +132,7 @@ help:
 	@echo ""
 	@echo "Available targets:"
 	@echo "  all        - Build everything (default)"
-	@echo "  clean      - Clean all build files"
+	@echo "  clean      - Clean all generated files"
 	@echo "  blog       - Build blog posts from TeX files"
 	@echo "  generate   - Generate all HTML pages"
 	@echo "  main       - Generate main index page"
@@ -133,7 +140,7 @@ help:
 	@echo "  blog-list  - Generate blog listing page"
 	@echo "  verify     - Verify all files exist"
 	@echo "  install    - Check dependencies"
-	@echo "  test       - Run full test build"
+	@echo "  test       - Run full test"
 	@echo "  help       - Show this help message"
 	@echo ""
 	@echo "The build system works as follows:"

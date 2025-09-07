@@ -46,16 +46,27 @@ def generate_html_head(title: str, css_files: List[str] = None, include_math: bo
 </head>"""
 
 
-def generate_navigation(current_page: str = "about") -> str:
+def generate_navigation(current_page: str = "about", base_path: str = "") -> str:
     """Generate navigation menu."""
     nav_items = []
     for item in NAV_ITEMS:
         current_class = " current" if item["name"].lower() == current_page else ""
-        nav_items.append(f'<li class="nav-item"><a href="{item["url"]}" class="nav-link{current_class}">{item["name"]}</a></li>')
+        # Adjust URLs based on base_path
+        if base_path and not item["url"].startswith("http"):
+            if item["url"].startswith("./"):
+                item_url = base_path + item["url"][2:]  # Remove "./" and add base_path
+            else:
+                item_url = base_path + item["url"]
+        else:
+            item_url = item["url"]
+        nav_items.append(f'<li class="nav-item"><a href="{item_url}" class="nav-link{current_class}">{item["name"]}</a></li>')
+    
+    # Adjust brand link based on base_path
+    brand_link = base_path + "index.html" if base_path else "./index.html"
     
     return f"""  <header class="site-header">
     <div class="container">
-      <a class="brand" href="./index.html">{SITE_TITLE}</a>
+      <a class="brand" href="{brand_link}">{SITE_TITLE}</a>
       <nav class="main-nav">
         <ul class="nav-list">
           {''.join(nav_items)}

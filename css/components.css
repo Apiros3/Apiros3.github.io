@@ -86,7 +86,8 @@
 }
 
 .card:hover {
-    box-shadow: 0 2px 8px var(--shadow);
+    box-shadow: 0 4px 16px var(--shadow);
+    transform: translateY(-2px);
 }
 
 .card-header {
@@ -131,7 +132,8 @@
 }
 
 .post-item:hover {
-    box-shadow: 0 2px 8px var(--shadow);
+    box-shadow: 0 4px 16px var(--shadow);
+    transform: translateY(-2px);
 }
 
 .post-item.hidden {
@@ -211,7 +213,7 @@
     font-style: italic;
     background: var(--light);
     padding: 1em;
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid var(--accent);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     margin: 1em 0;
 }
@@ -229,7 +231,8 @@
 }
 
 .publication-item:hover {
-    box-shadow: 0 4px 12px var(--shadow);
+    box-shadow: 0 6px 20px var(--shadow);
+    transform: translateY(-2px);
 }
 
 .publication-header {
@@ -334,7 +337,7 @@
     font-style: italic;
     background: var(--light);
     padding: 1em;
-    border-left: 4px solid var(--primary);
+    border-left: 4px solid var(--accent);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 

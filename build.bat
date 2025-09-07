@@ -14,15 +14,21 @@ if not exist "posts" (
     exit /b 1
 )
 
-REM Clean build directory (remove entirely since we no longer use it)
+REM Clean generated files
 echo.
-echo === Cleaning Build Directory ===
-if exist "build" (
-    rmdir /s /q build
-    echo ✓ Removed build directory
-) else (
-    echo ✓ No build directory to clean
+echo === Cleaning Generated Files ===
+echo Cleaning generated HTML files...
+if exist "index.html" del "index.html"
+if exist "posts\index.html" del "posts\index.html"
+if exist "publications\index.html" del "publications\index.html"
+echo Cleaning blog post directories...
+for /d %%d in (posts\*) do (
+    if exist "%%d" (
+        rmdir /s /q "%%d"
+        echo ✓ Removed %%d
+    )
 )
+echo ✓ Generated files cleaned
 
 REM Build blog posts from TeX files
 echo.

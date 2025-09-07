@@ -10,7 +10,6 @@ import os
 # Add the script directory to the path so we can import modules
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from script.config import BUILD
 from script.data_loader import get_all_posts, get_publications, copy_blog_posts, copy_pdf_files
 from script.page_generators import generate_main_index, generate_blog_listing, generate_publications_page
 
@@ -19,8 +18,7 @@ def main():
     """Main generation function."""
     print("🚀 Generating academic portfolio...")
     
-    # Create build directory
-    BUILD.mkdir(exist_ok=True)
+    # Files are generated in place
     
     # Get data
     posts = get_all_posts()
@@ -36,10 +34,8 @@ def main():
     
     print("Generating blog listing...")
     blog_html = generate_blog_listing(posts)
-    # Create posts directory if it doesn't exist
-    posts_dir = Path("posts")
-    posts_dir.mkdir(exist_ok=True)
-    (posts_dir / "index.html").write_text(blog_html, encoding="utf-8")
+    # Write blog listing to posts directory (already exists from blog build)
+    Path("posts/index.html").write_text(blog_html, encoding="utf-8")
     
     print("Generating publications page...")
     pub_html = generate_publications_page(publications)

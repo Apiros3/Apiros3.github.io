@@ -49,7 +49,7 @@ make all
 ## 🔧 Build System Components
 
 ### 1. TeX to HTML Conversion
-- **Script**: `build_html.sh`
+- **Script**: `build_html.sh` (TeX to HTML conversion)
 - **Input**: TeX files in `posts/` directory
 - **Output**: HTML files in `posts/` directory
 - **Tool**: Pandoc for conversion
@@ -123,7 +123,7 @@ make all
 ## 🛠️ Build System Details
 
 ### Windows Build Script (`build.bat`)
-- Cleans build directory (preserves important files)
+- Cleans generated files and directories
 - Converts TeX files to HTML using pandoc
 - Verifies all required files exist
 - Provides detailed status output
@@ -192,8 +192,8 @@ start publications/index.html
    - Install Python: https://python.org/downloads/
    - Ensure it's in your PATH
 
-3. **Build files missing after clean**
-   - The build system now preserves important files
+3. **Generated files missing after clean**
+   - The build system cleans all generated files
    - If files are missing, they'll be recreated automatically
 
 4. **TeX conversion errors**

@@ -6,7 +6,7 @@ import re
 import datetime
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
-from .config import POSTS_SRC, BUILD, POSTS_OUT, PDF_OUT
+from .config import POSTS_SRC
 
 
 def parse_tex_filename(tex_path: Path) -> Tuple[str, str]:
@@ -80,49 +80,10 @@ def get_publications() -> List[Dict[str, Any]]:
 
 
 def copy_blog_posts(posts: List[Dict[str, Any]]) -> None:
-    """Copy individual blog post HTML files to build directory."""
-    POSTS_OUT.mkdir(exist_ok=True)
-    
-    for post in posts:
-        slug = post["slug"]
-        src_dir = POSTS_SRC / slug
-        dst_dir = POSTS_OUT / slug
-        
-        if src_dir.exists():
-            # Create destination directory
-            dst_dir.mkdir(exist_ok=True)
-            
-            # Copy HTML file
-            src_html = src_dir / "index.html"
-            if src_html.exists():
-                dst_html = dst_dir / "index.html"
-                dst_html.write_text(src_html.read_text(encoding="utf-8"), encoding="utf-8")
-                print(f"  📄 Copied {slug}/index.html")
+    """Blog posts are already in place - no copying needed."""
+    print("  📄 Blog posts are already in place in posts/ directory")
 
 
 def copy_pdf_files(posts: List[Dict[str, Any]]) -> None:
-    """Copy PDF files to build directory."""
-    PDF_OUT.mkdir(exist_ok=True)
-    
-    for post in posts:
-        slug = post["slug"]
-        
-        # Look for PDF files with various naming patterns
-        possible_pdf_names = [
-            f"{post['date']}-{slug}.pdf",
-            f"{slug}.pdf",
-            f"2025-09-06-template.pdf" if slug == "template" else None
-        ]
-        
-        pdf_found = False
-        for pdf_name in possible_pdf_names:
-            if pdf_name and (POSTS_SRC / pdf_name).exists():
-                src_pdf = POSTS_SRC / pdf_name
-                dst_pdf = PDF_OUT / f"{slug}.pdf"
-                dst_pdf.write_bytes(src_pdf.read_bytes())
-                print(f"  📄 Copied {pdf_name} -> {slug}.pdf")
-                pdf_found = True
-                break
-        
-        if not pdf_found:
-            print(f"  ⚠️  No PDF found for {slug} - will skip PDF link")
+    """PDF files are already in place - no copying needed."""
+    print("  📄 PDF files are already in place in posts/ directory")

@@ -40,6 +40,7 @@ main {
         color: black !important;
         padding: 0;
         margin-bottom: 1rem;
+        border: none !important;
     }
     
     .hero h1 {
@@ -66,19 +67,19 @@ main {
     }
 }
 
-/* Dark mode support (future enhancement) */
+/* Dark mode support - Purple theme */
 @media (prefers-color-scheme: dark) {
     :root {
-        --fg: #e9ecef;
-        --bg: #212529;
-        --muted: #6c757d;
-        --accent: #6ea8fe;
-        --primary: #0d6efd;
-        --primary-dark: #0b5ed7;
-        --light: #343a40;
-        --dark: #f8f9fa;
-        --border: #495057;
-        --shadow: rgba(0,0,0,0.3);
-        --shadow-light: rgba(0,0,0,0.2);
+        --bg: #f1f0ff;
+        --fg: #1a0b2e;
+        --muted: #a78bfa;
+        --accent: #c084fc;
+        --primary: #a855f7;
+        --primary-dark: #9333ea;
+        --dark: #2d1b69;
+        --light: #f8f5ff;
+        --border: #4c1d95;
+        --shadow: rgba(168, 85, 247, 0.2);
+        --shadow-light: rgba(168, 85, 247, 0.1);
     }
 }

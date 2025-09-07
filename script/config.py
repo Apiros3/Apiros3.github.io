@@ -5,9 +5,6 @@ from pathlib import Path
 
 # Directory paths
 POSTS_SRC = Path("posts")
-BUILD = Path("build")
-POSTS_OUT = BUILD / "posts"
-PDF_OUT = BUILD / "pdf"
 TEMPLATES = Path("templates")
 CSS_DIR = Path("css")
 ASSETS_DIR = Path("asset")

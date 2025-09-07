@@ -69,11 +69,11 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
         if post.get("abstract"):
             abstract_html = f'<div class="post-abstract">{post["abstract"]}</div>'
         
-        pdf_link = f'<a href="posts/{post["slug"]}/{post["slug"]}.pdf" class="post-download" target="_blank">PDF</a>' if post.get("has_pdf", False) else ''
+        pdf_link = f'<a href="{post["slug"]}/{post["slug"]}.pdf" class="post-download" target="_blank">PDF</a>' if post.get("has_pdf", False) else ''
         all_items.append(f"""
         <li class="post-item" data-tags="{','.join(post["tags"])}">
           <div class="post-header">
-            <a href="posts/{post["slug"]}/index.html" class="post-title">{post["title"]}</a>
+            <a href="{post["slug"]}/index.html" class="post-title">{post["title"]}</a>
             {pdf_link}
           </div>
           <div class="post-meta">
@@ -85,7 +85,7 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
     
     return f"""{generate_html_head(f"Blog - {SITE_TITLE}", base_path="../")}
 <body>
-{generate_navigation("blog")}
+{generate_navigation("blog", "../")}
 
 {generate_hero("Blog", "Complete list of blog posts and research notes")}
 
@@ -113,7 +113,7 @@ def generate_publications_page(publications: List[Dict[str, Any]]) -> str:
     
     return f"""{generate_html_head(f"Publications - {SITE_TITLE}", base_path="../")}
 <body>
-{generate_navigation("publications")}
+{generate_navigation("publications", "../")}
 
 {generate_hero("Publications", "Research papers and academic publications")}
 
