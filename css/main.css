@@ -1,0 +1,94 @@
+/* Main CSS file - imports all other CSS files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('base.css');
+@import url('layout.css');
+@import url('components.css');
+@import url('markdown.css');
+@import url('pages.css');
+
+/* Additional global styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Print styles */
+@media print {
+    .site-header,
+    .site-footer,
+    .nav-toggle,
+    .btn,
+    .post-download,
+    .publication-links {
+        display: none !important;
+    }
+    
+    .container {
+        max-width: none;
+        padding: 0;
+    }
+    
+    .hero {
+        background: none !important;
+        color: black !important;
+        padding: 0;
+        margin-bottom: 1rem;
+        border: none !important;
+    }
+    
+    .hero h1 {
+        color: black !important;
+    }
+    
+    .card,
+    .post-item,
+    .publication-item {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+    }
+    
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+}
+
+/* Dark mode support - Purple theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #f1f0ff;
+        --fg: #1a0b2e;
+        --muted: #a78bfa;
+        --accent: #c084fc;
+        --primary: #a855f7;
+        --primary-dark: #9333ea;
+        --dark: #2d1b69;
+        --light: #f8f5ff;
+        --border: #4c1d95;
+        --shadow: rgba(168, 85, 247, 0.2);
+        --shadow-light: rgba(168, 85, 247, 0.1);
+    }
+}
+
+/* FORCE BLOG POST WIDTH CONSISTENCY - HIGHEST PRIORITY - ONLY FOR MAIN CONTENT */
+body.post-page main.container.blog-post-container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+    width: 800px !important;
+}

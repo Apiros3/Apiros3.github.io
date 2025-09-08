@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Publications - Apiros3</title>
+  <link rel="stylesheet" href="../css/main.css">
+
+</head>
+<body class="publications-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">Apiros3</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="../notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../reading-list/index.html" class="nav-link">Reading List</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title">Publications</h2>
+    <ul class="publication-list">
+      
+        <li class="publication-item">
+          <div class="publication-header">
+            <h3 class="publication-title">Formalising Subject Reduction and Progress for Multiparty Session Processes</h3>
+            <div class="publication-links">
+              <a href="https://github.com/Apiros3/smpst-sr-smer" class="pub-link code-link" target="_blank">Code</a><a href="../Notes/publication/itp25.pdf" class="pub-link pdf-link" target="_blank">PDF</a>
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-authors">Burak Ekici, Tadayoshi Kamegai, Nobuko Yoshida</div>
+            <div class="publication-venue">International Conference on Interactive Theorem Proving (ITP), 2025</div>
+            
+          </div>
+          <div class="publication-abstract">Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck. We present a fully mechanised proof of the theorem, where recursive type unfoldings are modelled as infinite trees, leveraging coinductive reasoning. This marks the first formal proof to incorporate precise subtyping, aiming to extend the typability of processes thus precision of the type system. The proof is grounded in fundamental properties such as subject reduction and progress. ...</div>
+        </li>
+    </ul>
+    
+    <h2 class="section-title">Talks & Presentations</h2>
+    <ul class="publication-list">
+      
+        <li class="publication-item talk-item">
+          <div class="publication-header">
+            <h3 class="publication-title">Introduction to the Rocq Programming Language</h3>
+            <div class="publication-links">
+              <a href="https://apiros3.github.io/Notes/coq/intro_slides_noskip.pdf" class="pub-link slides-link" target="_blank">Slides</a>
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-venue">Oxford CompSoc, Oxford, UK, 2025-03-08</div>
+            <div class="talk-type">Invited Talk</div>
+            
+          </div>
+          <div class="publication-abstract">An introduction to the Rocq programming language, as part of a lecture series on programming languages.</div>
+        </li>
+        <li class="publication-item talk-item">
+          <div class="publication-header">
+            <h3 class="publication-title">Subject Reduction for Synchronous MPST in Coq</h3>
+            <div class="publication-links">
+              <a href="https://apiros3.github.io/Notes/dptp/2024-slides.pdf" class="pub-link slides-link" target="_blank">Slides</a>
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-venue">Department of Computer Science, University of Oxford, Oxford, UK, 2024-11-20</div>
+            <div class="talk-type">Invited Talk</div>
+            
+          </div>
+          <div class="publication-abstract">This was the final Lecture of Master's Course in Distributed Processes, Types and Programming at the University of Oxford, presenting my work on mechanising subject reduction for synchronous MPST in Coq. This corresponds to the ITP'25 paper.</div>
+        </li>
+    </ul>
+  </main>
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>

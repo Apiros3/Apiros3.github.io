@@ -1,0 +1,84 @@
+{
+  "reading_list": [
+    {
+      "title": "Introduction to Algebraic Number Theory",
+      "author": "Ian Stewart and David Tall",
+      "year": "2020",
+      "type": "book",
+      "status": "completed",
+      "description": "Comprehensive introduction to algebraic number theory with clear explanations of fundamental concepts"
+    },
+    {
+      "title": "Formal Methods in Software Engineering",
+      "author": "Michael Jackson",
+      "year": "2019",
+      "type": "book",
+      "status": "in-progress",
+      "description": "Essential reading on applying formal methods to software development"
+    },
+    {
+      "title": "Category Theory for Programmers",
+      "author": "Bartosz Milewski",
+      "year": "2019",
+      "type": "book",
+      "status": "planned",
+      "description": "Category theory explained for programmers with practical examples"
+    },
+    {
+      "title": "The Art of Computer Programming",
+      "author": "Donald Knuth",
+      "year": "1997",
+      "type": "book",
+      "status": "reference",
+      "description": "Classic comprehensive reference on computer programming algorithms"
+    },
+    {
+      "title": "Type Theory and Formal Proof",
+      "author": "Rob Nederpelt and Herman Geuvers",
+      "year": "2014",
+      "type": "book",
+      "status": "planned",
+      "description": "Introduction to type theory and its applications in formal verification"
+    },
+    {
+      "title": "Homotopy Type Theory: Univalent Foundations of Mathematics",
+      "author": "The Univalent Foundations Program",
+      "year": "2013",
+      "type": "book",
+      "status": "planned",
+      "description": "Foundational work on homotopy type theory and univalent foundations"
+    },
+    {
+      "title": "Elements of Algebraic Geometry",
+      "author": "Robin Hartshorne",
+      "year": "1977",
+      "type": "book",
+      "status": "reference",
+      "description": "Classic graduate-level textbook on algebraic geometry"
+    },
+    {
+      "title": "Programming Language Foundations in Agda",
+      "author": "Philip Wadler and Wen Kokke",
+      "year": "2020",
+      "type": "online",
+      "status": "in-progress",
+      "description": "Interactive textbook on programming language theory using Agda"
+    },
+    {
+      "title": "Software Foundations",
+      "author": "Benjamin Pierce et al.",
+      "year": "2021",
+      "type": "online",
+      "status": "completed",
+      "description": "Interactive textbook on formal verification using Coq"
+    },
+    {
+      "title": "Real Analysis: Modern Techniques and Their Applications",
+      "author": "Gerald Folland",
+      "year": "1999",
+      "type": "book",
+      "status": "reference",
+      "description": "Comprehensive treatment of real analysis with applications"
+    }
+  ]
+}

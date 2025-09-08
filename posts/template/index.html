@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Template</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script>
+  <script type="application/json" data-tags>["Miscellaneous"]</script>
+  <script>
+    window.addEventListener("load", function() {
+      // Render math elements that already have the math class
+      const mathElements = document.querySelectorAll(".math");
+      mathElements.forEach(function(element) {
+        const isDisplay = element.classList.contains("display");
+        try {
+          katex.render(element.textContent, element, {
+            displayMode: isDisplay,
+            throwOnError: false
+          });
+        } catch (e) {
+          console.error("KaTeX rendering error:", e);
+        }
+      });
+    });
+  </script>
+</head>
+<body class="post-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../../index.html">Apiros3</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../../posts/index.html" class="nav-link current">Blog</a></li><li class="nav-item"><a href="../../notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../../reading-list/index.html" class="nav-link">Reading List</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+  <script>
+    // Parse and display tags from JSON
+    function parseTags() {
+      const tagsContainer = document.getElementById('tags-container');
+      if (tagsContainer) {
+        // Get the tags JSON from a script tag
+        const tagsScript = document.querySelector('script[type="application/json"][data-tags]');
+        if (tagsScript) {
+          try {
+            const tags = JSON.parse(tagsScript.textContent);
+            tags.forEach(tag => {
+              const tagElement = document.createElement('span');
+              tagElement.className = 'post-tag';
+              tagElement.textContent = '#' + tag;
+              tagsContainer.appendChild(tagElement);
+            });
+          } catch (e) {
+            console.error('Error parsing tags:', e);
+          }
+        }
+      }
+    }
+    
+    // Run when page loads
+    document.addEventListener('DOMContentLoaded', parseTags);
+    
+    // Navigation toggle function
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+
+  <main class="container blog-post-container">
+    <article class="post">
+      <header>
+        <h1>Template</h1>
+        <p class="meta">2025-09-06</p>
+        
+        <div class="post-tags" id="tags-container"></div>
+        <div class="post-actions">
+          <a href="template.pdf" class="post-download">PDF</a>
+        </div>
+      </header>
+      <div class="post-body markdown-content">
+        <h1 id="introduction">Introduction</h1>
+        <p>Inline math like <span class="math inline">a^2+b^2=c^2</span> and display math: <span class="math display">\int_0^1 x^2\,dx = \frac{1}{3}.</span></p>
+        <p>A set <span class="math inline">S</span> is <em>countable</em> if it is finite or in bijection with <span class="math inline">\mathbb{N}</span>.</p>
+        <p>There is no bijection between <span class="math inline">\mathbb{N}</span> and <span class="math inline">(0,1)</span>.</p>
+        <p>Sketch the diagonalization and you’re done.</p>
+        <h1 id="a-figure-and-a-table">A figure and a table</h1>
+        <p>See .</p>
+        <table>
+        <caption>A neat table.</caption>
+        <thead>
+        <tr class="header">
+        <th style="text-align: left;">Col 1</th>
+        <th style="text-align: left;">Col 2</th>
+        <th style="text-align: left;">Col 3</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="odd">
+        <td style="text-align: left;">a</td>
+        <td style="text-align: left;">b</td>
+        <td style="text-align: left;">c</td>
+        </tr>
+        </tbody>
+        </table>
+        <h1 id="code">Code</h1>
+        <div class="sourceCode" id="cb1" data-language="Haskell" data-caption="Reverse a list"><pre class="sourceCode haskell"><code class="sourceCode haskell"><a class="sourceLine" id="cb1-1" title="1"><span class="ot">rev ::</span> [a] <span class="ot">-&gt;</span> [a]</a>
+        <a class="sourceLine" id="cb1-2" title="2">rev <span class="ot">=</span> <span class="fu">foldl</span> (<span class="fu">flip</span> (<span class="op">:</span>)) []</a></code></pre></div>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

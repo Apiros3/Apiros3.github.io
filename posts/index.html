@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Blog - Apiros3</title>
+  <link rel="stylesheet" href="../css/main.css">
+
+</head>
+<body class="blog-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">Apiros3</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link current">Blog</a></li><li class="nav-item"><a href="../notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../reading-list/index.html" class="nav-link">Reading List</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="../index.html" class="back-link">← Back to Mainpage</a>
+    
+    <div class="filter-section">
+      <h3>Filter by Tag</h3>
+      <div class="tag-filters">
+        <button class="tag-filter active" data-tag="all">All</button><button class="tag-filter" data-tag="Miscellaneous">Miscellaneous</button>
+      </div>
+    </div>
+    
+    <ul class="post-list">
+      
+        <li data-tags="Miscellaneous">
+          <a href="website/index.html" class="post-item">
+            <div class="post-header">
+              <div class="post-title">Guide to Apiros3's Website Template</div>
+              
+            </div>
+            <div class="post-abstract">This comprehensive guide covers the complete architecture, build pipeline, and maintenance procedures for my academic portfolio website.</div>
+            <div class="post-meta">
+              <span class="post-date">2025-09-08</span>
+              
+            <div class="post-tags">
+              <span class="post-tag">#Miscellaneous</span>
+            </div>
+            </div>
+          </a>
+        </li>
+        <li data-tags="Miscellaneous">
+          <a href="template/index.html" class="post-item">
+            <div class="post-header">
+              <div class="post-title">Template</div>
+              
+            </div>
+            <div class="post-abstract">This is a template article demonstrating the structure and formatting of blog posts on this site.</div>
+            <div class="post-meta">
+              <span class="post-date">2025-09-06</span>
+              
+            <div class="post-tags">
+              <span class="post-tag">#Miscellaneous</span>
+            </div>
+            </div>
+          </a>
+        </li>
+    </ul>
+  </main>
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+  <script>
+    // Tag filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.tag-filter');
+      const postItems = document.querySelectorAll('.post-list li');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const selectedTag = this.getAttribute('data-tag');
+          
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Filter posts
+          postItems.forEach(item => {
+            const itemTags = item.getAttribute('data-tags');
+            if (selectedTag === 'all' || (itemTags && itemTags.trim() !== '' && itemTags.includes(selectedTag))) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

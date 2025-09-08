@@ -1,0 +1,28 @@
+{
+  "talks": [
+    {
+      "title": "Introduction to the Rocq Programming Language",
+      "type": "Invited Talk",
+      "venue": "Oxford CompSoc",
+      "location": "Oxford, UK",
+      "date": "2025-03-08",
+      "year": "2025",
+      "slides": "https://apiros3.github.io/Notes/coq/intro_slides_noskip.pdf",
+      "video": "",
+      "abstract": "An introduction to the Rocq programming language, as part of a lecture series on programming languages.",
+      "coauthors": []
+    },
+    {
+      "title": "Subject Reduction for Synchronous MPST in Coq",
+      "type": "Invited Talk",
+      "venue": "Department of Computer Science, University of Oxford",
+      "location": "Oxford, UK",
+      "date": "2024-11-20",
+      "year": "2024",
+      "slides": "https://apiros3.github.io/Notes/dptp/2024-slides.pdf",
+      "video": "",
+      "abstract": "This was the final Lecture of Master's Course in Distributed Processes, Types and Programming at the University of Oxford, presenting my work on mechanising subject reduction for synchronous MPST in Coq. This corresponds to the ITP'25 paper.",
+      "coauthors": []
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+/* Base styles and CSS variables - Very Light Purple Theme */
+:root {
+    /* Core theme colors */
+    --fg: #5b4b8a;
+    --bg: #fefcff;
+    --muted: #a8a0c7;
+    --accent: #c4b5fd;
+    --primary: #c4b5fd;
+    --primary-dark: #a78bfa;
+    --secondary: #a8a0c7;
+    --success: #6ee7b7;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --info: #67e8f9;
+    --light: #faf7ff;
+    --dark: #7c6fa8;
+    --warning-hover: #f59e0b;
+    --success-hover: #34d399;
+    --danger-hover: #f87171;
+    --code-purple: #a78bfa;
+    --code-purple-hover: #8b5cf6;
+    --border: #e9e5ff;
+    --border-light: #f3f0ff;
+    --shadow: rgba(196, 181, 253, 0.08);
+    --shadow-light: rgba(196, 181, 253, 0.04);
+    
+    /* Text colors - centralized management */
+    --text-primary: #333333;
+    --text-secondary: #555555;
+    --text-muted: #666666;
+    
+    /* Publication link colors */
+    --arxiv-color: #ff6b35;
+    --arxiv-hover: #e55a2b;
+    --doi-color: #007cba;
+    --doi-hover: #005a87;
+    --pdf-color: #28a745;
+    --pdf-hover: #218838;
+    --code-color: #6f42c1;
+    --code-hover: #5a32a3;
+    --slides-color: #17a2b8;
+    --slides-hover: #138496;
+    --video-color: #dc3545;
+    --video-hover: #c82333;
+    
+    /* Talk-specific colors */
+    --talks-color: #17a2b8;
+    --talks-bg: #e3f2fd;
+    
+    /* Layout variables */
+    --radius: 8px;
+    --radius-sm: 4px;
+    --radius-lg: 12px;
+    --transition: all 0.2s ease;
+    --font-family: 'Inter', 'Source Sans Pro', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Monaco', 'Consolas', 'Courier New', monospace;
+    --font-size-base: 16px;
+    --line-height-base: 1.7;
+    --container-max-width: 900px;
+    --header-height: 32px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--fg);
+    background: var(--bg);
+    font: var(--font-size-base)/var(--line-height-base) var(--font-family);
+    line-height: var(--line-height-base);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: var(--container-max-width);
+    padding: 1.5rem;
+    margin: 0 auto;
+}
+
+/* Individual blog posts get significantly more width - only for actual blog post pages */
+main.container .post {
+    max-width: none;
+    width: 100%;
+}
+
+/* Target the main container when it contains a post article */
+main.container:has(.post) {
+    max-width: 800px !important;
+    min-width: 800px !important;
+}
+
+/* Fallback for browsers that don't support :has() */
+body.post-page {
+    --container-max-width: 800px;
+}
+
+/* Override the container max-width variable for post pages - only for main content */
+body.post-page main.container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+}
+
+/* Even more specific rule to override any other rules - only for main content */
+html body.post-page main.container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+}
+
+/* Create a specific class for blog post containers */
+.blog-post-container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+    padding: 1.5rem;
+    margin: 0 auto;
+}
+
+/* Main listing pages (blog index, publications) get more reasonable width */
+.post-list,
+.publication-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Filter sections also get reasonable width */
+.filter-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Back links and other main page elements get reasonable width */
+.back-link {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    display: block;
+}
+
+/* Ensure blog post content uses full width */
+.post {
+    max-width: none;
+    width: 100%;
+}
+
+.post-body {
+    max-width: none;
+    width: 100%;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin: 1.8rem 0 0.8rem;
+    color: var(--dark);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+h1 { 
+    font-size: 2.75em; 
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    margin-top: 0;
+}
+h2 { 
+    font-size: 2.25em; 
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+h3 { 
+    font-size: 1.75em; 
+    font-weight: 600;
+}
+h4 { 
+    font-size: 1.4em; 
+    font-weight: 600;
+}
+h5 { 
+    font-size: 1.2em; 
+    font-weight: 600;
+}
+h6 { 
+    font-size: 1.1em; 
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+    margin-bottom: 1em;
+    padding-left: 2em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+/* Code */
+code {
+    background: var(--light);
+    padding: 0.2em 0.4em;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+pre {
+    background: var(--light);
+    padding: 1em;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1em 0;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 0.5em;
+    text-align: left;
+}
+
+th {
+    background: var(--light);
+    font-weight: bold;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid var(--border);
+    margin: 1em 0;
+    padding-left: 1em;
+    color: var(--muted);
+    font-style: italic;
+}
+
+/* Math-friendly theorem blocks */
+.theorem, .lemma, .definition, .proof {
+    margin: 1.2rem 0;
+    padding: 0.85rem 1rem;
+    background: #f8f5ff;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.proof::before {
+    content: "Proof.";
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-muted { color: var(--muted); }
+.text-primary { color: var(--primary); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-danger { color: var(--danger); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-inline-block { display: inline-block; }
+
+.flex-1 { flex: 1; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-center { justify-content: center; }
+.align-items-center { align-items: center; }
+.align-items-start { align-items: flex-start; }
+.align-items-end { align-items: flex-end; }
+
+/* Spacing utilities */
+.p-0 { padding: 0; }
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-1 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-2 { padding-left: 1rem; padding-right: 1rem; }
+.px-3 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-4 { padding-left: 2rem; padding-right: 2rem; }
+
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-1 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-2 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-3 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py-4 { padding-top: 2rem; padding-bottom: 2rem; }
+
+/* Width utilities */
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.w-fit { width: fit-content; }
+
+/* Height utilities */
+.h-full { height: 100%; }
+.h-auto { height: auto; }
+.h-fit { height: fit-content; }

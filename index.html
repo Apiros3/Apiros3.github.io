@@ -1,86 +1,65 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Apiros3's Mainpage</title>
-    <meta charset="utf-8">
-    <link rel="icon" type="image/x-icon" href="blog/logos/favicon.jpeg">
-    <script src="https://unpkg.com/viz.js@2.1.2/viz.js"></script>
-    <script src="https://unpkg.com/viz.js@2.1.2/full.render.js"></script>
-    <script src="script.js"></script>
-    <link rel = "stylesheet", href="style.css">
-    
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Apiros3 - Academic Portfolio</title>
+  <link rel="stylesheet" href="css/main.css">
+
 </head>
 <body>
-    <div class="main_background">
-    <h1>
-        Hello! I'm Apiros3, and welcome! 
-        <!-- You can find me on <a href="https://twitter.com/Apiros3">Twitter</a>. -->
-    </h1>
-    <div>
-        <!-- About: -->
-        <p>
-            I am currently in my 3rd year of undergraduate studies in Mathematics and Computer Science at Merton College, University of Oxford. <br>
-            My current interests are:
-            <ul>
-                <li>Dependent Types</li>
-                <li>Higher Inductive Types / Infinity Categories</li>
-                <li>General Denotational Semantics</li>
-                <li>Homotopy Type Theory</li>
-            </ul>
-            My studies are mostly focused on areas tied to Programming Languages, Algebra, and Topology.
-        </p>
-        <p>
-            Ongoing Research:
-            <ul>
-                <li>
-
-                </li>
-            </ul>
-            Past Research:
-            <ul>
-                <li>
-                    Oxford Artificial Intelligence Society, works on Stable Diffusion
-                </li>
-            </ul>
-            I'm currently working under Professor <a href="https://www.cs.ox.ac.uk/people/nobuko.yoshida/">Nobuko Yoshida</a> as research assistant in the <a href="https://mrg.cs.ox.ac.uk/">Mobility Reading Group</a>, at the University of Oxford since June 2024. 
-            This summer, I hope to make self-contained notes that explain datatypes of functional programs from a higher-inductive / infinite category perspective. 
-            My Thesis next year will be on Linear Logic and Dependent Types, supervised by <a href="https://www.cs.ox.ac.uk/people/maximilian.dore/">Maximilian Doré</a>.
-        </p>
-        <p>
-            In the past I've attended MGS2024, MGS2025, so you might have seen me there!
-        </p>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="./index.html">Apiros3</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="./index.html" class="nav-link current">About</a></li><li class="nav-item"><a href="publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="reading-list/index.html" class="nav-link">Reading List</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
     </div>
+  </header>
 
-    <div>
-        <p>
-            You can usually find my CV <a href="CV/cv_comp.pdf">here</a>. <br>
-            To see what I've studied / what I plan to study, look <a href="graph/index.html">here</a>!
-        </p>
+  <main class="container">
+    <div class="main-layout">
+      <div class="main-content">
+        <section class="content-section" id="about">
+          <div class="about-header">
+            <h2>About Me</h2>
+            <img src="images/profile.jpg" alt="Tadayoshi Kamegai - Academic Profile Picture" class="profile-picture">
+          </div>
+          <p>Welcome! I am Tadayoshi Kamegai, a 4th year undergraduate student at Merton College, University of Oxford studying mathematics and computer science. My general interests lie in Type Theory and surrounding fields.</p>
+          <p>I'm currently looking for PhD positions related to Type Theory. If you have any recommendations, please feel free to reach out to me at tadayoshi [dot] kamegai [at] merton [dot] ox [dot] ac [dot] uk.</p>
+          <p>This summer I am working as an intern at ELTE under Ambrus Kaposi on works related to GATs. I'm also working as a Research Assistant under Nobuko Yoshida (officially employed in summer 2024 and spring 2025) in the Mobility Reading Group at Oxford, mechanising the metatheory of session types in Coq. I'm also reading works related to modal logic with Daniel Gratzer right now. My Master's thesis will be on linear logic in dependent type theory with Maximilian Doré. You can usually see what kind of work I've been reading by visiting my notes page.</p>
+          <p>Outside studyies, I enjoy travelling and taking photos. I grew up in Osaka, Japan before moving to the UK in 2022 for university. I usually visit at least twice a year.</p>
+          <p>I originally created this web template in September 2025, to make a clean portfolio for myself. This site itself was launched July 2022. For details on how this site functions, you can see the first blog on this site.</p>
+        </section>
+      </div>
+    </div>
+  </main>
 
+  <footer class="contact-footer">
+    <div class="container">
+      <h3>Contact</h3>
+      <div class="contact-info-footer">
+        <div class="contact-item">
+          <strong>Email:</strong><br>tadayoshi [dot] kamegai [at] merton [dot] ox [dot] ac [dot] uk
+        </div>
+        <div class="contact-item">
+          <strong>Institution:</strong><br>University of Oxford
+        </div>
+        
+        <div class="contact-item">
+          <strong>Location:</strong><br>Term Time: Oxford, UK | Off Term: Osaka, Japan
+        </div>
+      </div>
     </div>
-
-    <!-- <div class = "notes">
-        <p class = "notes-title">Notes with Ongoing Edits:</p>
-        <table id = "notesupd" class="notes"></table>
-    </div> -->
-    <div class = "publications">
-        <p class ="publications-title">Publications:</p>
-        <table id = "publication_list" class = "publication_list"></table>
-    </div>
-    <button type="button" class="collapsible grants-title">Grants & Scholarships [+]</button>
-    <div class = "grants coll_content">
-        <table id = "grants_and_scholarships" class="grants_and_scholarships"></table> 
-    </div>
-    <button type="button" class="collapsible event-title">Recent News [+]</button>
-    <div class = "events coll_content">
-        <table id = "recent_events" class="recent_events"></table>
-    </div>
-
-    </div>
-    
-
-    <script>
-        initialize();
-    </script>
+  </footer>
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>

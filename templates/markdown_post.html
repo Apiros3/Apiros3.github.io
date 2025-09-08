@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>$title$</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js"></script>
+  $if(tags_json)$<script type="application/json" data-tags>$tags_json$</script>$endif$
+</head>
+<body class="post-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../../index.html">Apiros3</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../../posts/index.html" class="nav-link current">Blog</a></li><li class="nav-item"><a href="../../notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../../reading-list/index.html" class="nav-link">Reading List</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+  <script>
+    // Parse and display tags from JSON
+    function parseTags() {
+      const tagsContainer = document.getElementById('tags-container');
+      if (tagsContainer) {
+        // Get the tags JSON from a script tag
+        const tagsScript = document.querySelector('script[type="application/json"][data-tags]');
+        if (tagsScript) {
+          try {
+            const tags = JSON.parse(tagsScript.textContent);
+            tags.forEach(tag => {
+              const tagElement = document.createElement('span');
+              tagElement.className = 'post-tag';
+              tagElement.textContent = '#' + tag;
+              tagsContainer.appendChild(tagElement);
+            });
+          } catch (e) {
+            console.error('Error parsing tags:', e);
+          }
+        }
+      }
+    }
+    
+    // Run when page loads
+    document.addEventListener('DOMContentLoaded', parseTags);
+    
+    // Navigation toggle function
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+
+  <main class="container blog-post-container">
+    <article class="post">
+      <header>
+        <h1>$title$</h1>
+        $if(date)$<p class="meta">$date$</p>$endif$
+        $if(abstract)$<div class="post-abstract">$abstract$</div>$endif$
+        $if(tags_json)$<div class="post-tags" id="tags-container"></div>$endif$
+        <div class="post-actions">
+          $if(pdf_url)$<a href="$pdf_url$" class="post-download">PDF</a>$endif$
+        </div>
+      </header>
+      <div class="post-body markdown-content">
+        $body$
+      </div>
+    </article>
+  </main>
+</body>
+</html>

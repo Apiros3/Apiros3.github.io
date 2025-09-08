@@ -1,0 +1,9 @@
+{
+  "title": "Formalising Subject Reduction and Progress for Multiparty Session Processes",
+  "authors": ["Burak Ekici", "Tadayoshi Kamegai", "Nobuko Yoshida"],
+  "conference": "International Conference on Interactive Theorem Proving",
+  "year": "2025",
+  "abstract": "Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck. We present a fully mechanised proof of the theorem, where recursive type unfoldings are modelled as infinite trees, leveraging coinductive reasoning. This marks the first formal proof to incorporate precise subtyping, aiming to extend the typability of processes thus precision of the type system. The proof is grounded in fundamental properties such as subject reduction and progress. ...",
+  "venue": "ITP",
+  "code": "https://github.com/Apiros3/smpst-sr-smer"
+}
