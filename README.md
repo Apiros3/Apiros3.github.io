@@ -1,6 +1,6 @@
-# Academic Portfolio Build System
+# Apiros3 Homepage + Web Template
 
-A comprehensive build system for generating an academic portfolio website from TeX files and metadata, with a flexible metafile configuration system.
+A build system for generating an academic portfolio website from TeX files and metadata, with a flexible metafile configuration system.
 
 ### Linux/macOS (Make)
 ```bash
