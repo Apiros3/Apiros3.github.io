@@ -85,13 +85,6 @@
       "category": "mathematics"
     },
     {
-      "title": "Ideas",
-      "slug": "ideas",
-      "description": "Collection of research ideas and notes",
-      "pdf_file": "notes.pdf",
-      "category": "research"
-    },
-    {
       "title": "Linear Algebra",
       "slug": "linalg",
       "description": "Notes on linear algebra and vector spaces",
@@ -125,13 +118,6 @@
       "description": "Notes on Principles of Programming Languages",
       "pdf_file": "notes.pdf",
       "category": "computer-science"
-    },
-    {
-      "title": "Publication",
-      "slug": "publication",
-      "description": "Publication-related materials",
-      "pdf_file": "itp25.pdf",
-      "category": "publication"
     },
     {
       "title": "Quantum Information",

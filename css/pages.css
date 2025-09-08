@@ -1,5 +1,30 @@
 /* Page-specific styles for blog and publications pages */
 
+/* Blog post page width consistency - only for main content */
+body.post-page main.container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+}
+
+.blog-post-container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+}
+
+/* Force width for blog post containers - only for main content */
+main.container.blog-post-container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+    width: 800px !important;
+}
+
+/* Additional specificity to ensure the rule applies - only for main content */
+html body.post-page main.container.blog-post-container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+    width: 800px !important;
+}
+
 /* Notes page styles */
 .notes-page main.container {
     max-width: 800px !important;
@@ -253,6 +278,30 @@
 
 .blog-page .nav-link:hover::after {
     width: 0 !important;
+}
+
+/* Ensure blog page navigation has proper spacing */
+body.post-page .nav-list {
+    gap: 2rem !important;
+}
+
+/* Ensure header uses full width on blog pages */
+body.post-page .site-header .container {
+    max-width: 900px !important;
+    min-width: auto !important;
+    width: auto !important;
+}
+
+/* Even more specific rule to ensure header width */
+html body.post-page .site-header .container {
+    max-width: 900px !important;
+    min-width: auto !important;
+    width: auto !important;
+}
+
+/* Override CSS variable for header container */
+body.post-page .site-header {
+    --container-max-width: 900px;
 }
 
 /* Publications page styles */

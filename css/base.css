@@ -82,9 +82,40 @@ body {
 }
 
 /* Individual blog posts get significantly more width - only for actual blog post pages */
-body:has(.post) main.container {
-    max-width: 1200px !important;
+main.container .post {
+    max-width: none;
+    width: 100%;
+}
+
+/* Target the main container when it contains a post article */
+main.container:has(.post) {
+    max-width: 800px !important;
     min-width: 800px !important;
+}
+
+/* Fallback for browsers that don't support :has() */
+body.post-page {
+    --container-max-width: 800px;
+}
+
+/* Override the container max-width variable for post pages - only for main content */
+body.post-page main.container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+}
+
+/* Even more specific rule to override any other rules - only for main content */
+html body.post-page main.container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+}
+
+/* Create a specific class for blog post containers */
+.blog-post-container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+    padding: 1.5rem;
+    margin: 0 auto;
 }
 
 /* Main listing pages (blog index, publications) get more reasonable width */

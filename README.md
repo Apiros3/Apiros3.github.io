@@ -87,7 +87,7 @@ The site uses a flexible metafile system that allows you to configure your homep
 {
   "about": {
     "title": "About Me",
-    "content": "Your about section content here..."
+    "content": "Your about section content here...\n\nYou can write multiple paragraphs by using double line breaks (\\n\\n) in your JSON content. Each paragraph will be automatically wrapped in <p> tags.\n\nThis makes it easy to format longer about sections with proper paragraph breaks."
   }
 }
 ```
@@ -104,44 +104,6 @@ The site uses a flexible metafile system that allows you to configure your homep
 }
 ```
 
-#### Navigation
-```json
-{
-  "navigation": {
-    "brand": "Apiros3",
-    "items": [
-      {
-        "name": "About",
-        "url": "./index.html",
-        "current": true
-      },
-      {
-        "name": "Publications", 
-        "url": "publications/index.html",
-        "current": false
-      },
-      {
-        "name": "Blog",
-        "url": "posts/index.html", 
-        "current": false
-      }
-    ]
-  }
-}
-```
-
-#### Recent Posts Section
-```json
-{
-  "recent_posts": {
-    "title": "Recent Blog Posts",
-    "limit": 5,
-    "show_abstract": false,
-    "show_tags": false
-  }
-}
-```
-
 ### Updating Site Configuration
 
 1. **Edit the metafile**: Modify `site.meta.json` with your desired content
@@ -154,6 +116,21 @@ The site uses a flexible metafile system that allows you to configure your homep
    python script/generate_site_new.py
    ```
 3. **View changes**: The `index.html` file will be automatically updated
+
+### Multiple Paragraphs in About Content
+
+You can write multiple paragraphs in your about section by using double line breaks (`\n\n`) in your JSON content. Each paragraph will be automatically wrapped in `<p>` tags:
+
+```json
+{
+  "about": {
+    "title": "About Me",
+    "content": "First paragraph of your about section.\n\nSecond paragraph with more details.\n\nThird paragraph with additional information."
+  }
+}
+```
+
+This will render as three separate paragraphs in the HTML output.
 
 ## Adding New Content
 
@@ -197,3 +174,20 @@ The site uses a flexible metafile system that allows you to configure your homep
    ```bash
    publications/data/your-paper.pdf
    ```
+
+### Talks Metafile
+
+```json
+    {
+      "title": "Talk Title",
+      "type": "workshop / seminar / conference / invited",
+      "venue": "Venue",
+      "location": "Location",
+      "date": "yyyy-mm-dd",
+      "year": "yyyy",
+      "slides": "link to slides",
+      "video": "link to video",
+      "abstract": "Abstract text...",
+      "coauthors": ["Author one", "Author two"]
+    }
+```

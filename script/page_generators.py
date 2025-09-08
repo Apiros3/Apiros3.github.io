@@ -15,6 +15,23 @@ from .config import (
 )
 
 
+def format_about_content(content: str) -> str:
+    """Format about content to support multiple paragraphs."""
+    if not content:
+        return ""
+    
+    # Split content by double newlines to create paragraphs
+    paragraphs = [p.strip() for p in content.split('\n\n') if p.strip()]
+    
+    if not paragraphs:
+        return ""
+    
+    # Wrap each paragraph in <p> tags
+    formatted_paragraphs = [f"<p>{paragraph}</p>" for paragraph in paragraphs]
+    
+    return '\n          '.join(formatted_paragraphs)
+
+
 def generate_main_index(posts: List[Dict[str, Any]]) -> str:
     """Generate the main index page."""
     return f"""{generate_html_head(f"{SITE_TITLE} - Academic Portfolio")}
@@ -29,7 +46,7 @@ def generate_main_index(posts: List[Dict[str, Any]]) -> str:
             <h2>{ABOUT_TITLE}</h2>
             {f'<img src="{ABOUT_PROFILE_PICTURE}" alt="{ABOUT_PROFILE_ALT}" class="profile-picture">' if ABOUT_PROFILE_PICTURE else ''}
           </div>
-          <p>{ABOUT_CONTENT}</p>
+          {format_about_content(ABOUT_CONTENT)}
         </section>
       </div>
     </div>

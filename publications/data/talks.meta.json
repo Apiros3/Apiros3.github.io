@@ -1,40 +1,28 @@
 {
   "talks": [
     {
-      "title": "Formalising Subject Reduction and Progress for Multiparty Session Processes",
-      "type": "conference",
-      "venue": "International Conference on Interactive Theorem Proving (ITP)",
+      "title": "Introduction to the Rocq Programming Language",
+      "type": "Invited Talk",
+      "venue": "Oxford CompSoc",
       "location": "Oxford, UK",
-      "date": "2025-07-15",
+      "date": "2025-03-08",
       "year": "2025",
-      "slides": "https://github.com/Apiros3/smpst-sr-smer/slides.pdf",
+      "slides": "https://apiros3.github.io/Notes/coq/intro_slides_noskip.pdf",
       "video": "",
-      "abstract": "Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck.",
-      "coauthors": ["Burak Ekici", "Nobuko Yoshida"]
-    },
-    {
-      "title": "Introduction to Algebraic Number Theory",
-      "type": "seminar",
-      "venue": "Oxford Mathematics Graduate Seminar",
-      "location": "Oxford, UK",
-      "date": "2024-11-20",
-      "year": "2024",
-      "slides": "",
-      "video": "",
-      "abstract": "An introduction to the fundamental concepts of algebraic number theory, covering number fields, rings of integers, and the relationship between algebraic and analytic number theory.",
+      "abstract": "An introduction to the Rocq programming language, as part of a lecture series on programming languages.",
       "coauthors": []
     },
     {
-      "title": "Coinductive Reasoning in Type Theory",
-      "type": "workshop",
-      "venue": "Formal Methods Workshop",
-      "location": "Cambridge, UK",
-      "date": "2024-09-10",
+      "title": "Subject Reduction for Synchronous MPST in Coq",
+      "type": "Invited Talk",
+      "venue": "Department of Computer Science, University of Oxford",
+      "location": "Oxford, UK",
+      "date": "2024-11-20",
       "year": "2024",
-      "slides": "https://example.com/slides/coinduction.pdf",
-      "video": "https://youtube.com/watch?v=example",
-      "abstract": "Exploring the use of coinductive reasoning in dependent type theory, with applications to infinite data structures and program verification.",
-      "coauthors": ["Jane Smith"]
+      "slides": "https://apiros3.github.io/Notes/dptp/2024-slides.pdf",
+      "video": "",
+      "abstract": "This was the final Lecture of Master's Course in Distributed Processes, Types and Programming at the University of Oxford, presenting my work on mechanising subject reduction for synchronous MPST in Coq. This corresponds to the ITP'25 paper.",
+      "coauthors": []
     }
   ]
 }

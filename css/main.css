@@ -85,3 +85,10 @@ main {
         --shadow-light: rgba(168, 85, 247, 0.1);
     }
 }
+
+/* FORCE BLOG POST WIDTH CONSISTENCY - HIGHEST PRIORITY - ONLY FOR MAIN CONTENT */
+body.post-page main.container.blog-post-container {
+    max-width: 800px !important;
+    min-width: 800px !important;
+    width: 800px !important;
+}

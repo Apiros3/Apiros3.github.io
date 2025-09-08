@@ -25,6 +25,12 @@ for f in "$@"; do
     # Keep tags as JSON for template processing
     TAG_ARGS="--metadata=tags_json:$TAGS"
     
+    # Get title from meta file
+    TITLE="$(echo $slug | sed 's/-/ /g' | sed 's/\b\w/\U&/g')"  # Default fallback
+    if [ -f "$meta_json" ] && command -v jq >/dev/null 2>&1; then
+        TITLE=$(jq -r '.title // ""' "$meta_json" || echo "$TITLE")
+    fi
+    
     # Get abstract from meta file
     ABSTRACT_FILE="$outdir/abstract.txt"
     ABSTRACT_ARGS=""
@@ -40,7 +46,7 @@ for f in "$@"; do
     
     # Generate Markdown version
     pandoc "posts/$base.tex" -t markdown \
-        --metadata=title:"$(echo $slug | sed 's/-/ /g' | sed 's/\b\w/\U&/g')" \
+        --metadata=title:"$TITLE" \
         --metadata=date:"$date" \
         $TAG_ARGS \
         $ABSTRACT_ARGS \
@@ -59,7 +65,7 @@ for f in "$@"; do
     pandoc "$outdir/content.md" -s -t html5 --katex \
         --template=templates/markdown_post.html \
         --metadata=pdf_url:"$slug.pdf" \
-        --metadata=title:"$(echo $slug | sed 's/-/ /g' | sed 's/\b\w/\U&/g')" \
+        --metadata=title:"$TITLE" \
         --metadata=date:"$date" \
         $TAG_ARGS \
         $ABSTRACT_ARGS \
