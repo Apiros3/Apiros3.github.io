@@ -121,7 +121,7 @@ clean:
 create-files:
 	@echo "Creating/updating files..."
 	@chmod +x create_missing_files.sh
-	@./create_missing_files.sh
+	@bash ./create_missing_files.sh
 
 # Install dependencies (if needed)
 install:
