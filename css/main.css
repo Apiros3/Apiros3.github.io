@@ -3,6 +3,7 @@
 @import url('layout.css');
 @import url('components.css');
 @import url('markdown.css');
+@import url('pages.css');
 
 /* Additional global styles */
 html {

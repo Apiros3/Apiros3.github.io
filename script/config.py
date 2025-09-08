@@ -65,6 +65,8 @@ SITE_LOCATION = SITE_METADATA["contact"]["location"]
 # About section configuration
 ABOUT_TITLE = SITE_METADATA["about"]["title"]
 ABOUT_CONTENT = SITE_METADATA["about"]["content"]
+ABOUT_PROFILE_PICTURE = SITE_METADATA["about"].get("profile_picture", "")
+ABOUT_PROFILE_ALT = SITE_METADATA["about"].get("profile_alt", "Profile Picture")
 
 # Navigation configuration
 NAV_BRAND = SITE_METADATA["navigation"]["brand"]

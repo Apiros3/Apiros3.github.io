@@ -70,6 +70,9 @@ def get_publications() -> List[Dict[str, Any]]:
     
     if pub_dir.exists():
         for meta_file in pub_dir.glob("*.meta.json"):
+            # Skip talks.meta.json as it's handled separately
+            if meta_file.name == "talks.meta.json":
+                continue
             with open(meta_file, "r", encoding="utf-8") as f:
                 pub_data = json.load(f)
                 publications.append(pub_data)
@@ -77,6 +80,21 @@ def get_publications() -> List[Dict[str, Any]]:
     # Sort by year (newest first)
     publications.sort(key=lambda p: int(p.get("year", "0")), reverse=True)
     return publications
+
+
+def get_talks() -> List[Dict[str, Any]]:
+    """Get all talks from talks metadata file."""
+    talks = []
+    talks_file = Path("publications/data/talks.meta.json")
+    
+    if talks_file.exists():
+        with open(talks_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            talks = data.get("talks", [])
+    
+    # Sort by year (newest first)
+    talks.sort(key=lambda t: int(t.get("year", "0")), reverse=True)
+    return talks
 
 
 def copy_blog_posts(posts: List[Dict[str, Any]]) -> None:

@@ -53,8 +53,11 @@ generate:
 # Build blog listing page (alias for generate)
 blog-list: generate
 
-# Build publications page (alias for generate)
-pub: generate
+# Build publications page
+pub:
+	@echo "Building publications and talks page..."
+	@python3 script/generate_site_new.py
+	@echo "✓ Publications and talks page built"
 
 # Verify all required files exist
 verify:

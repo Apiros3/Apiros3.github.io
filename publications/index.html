@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="../css/main.css">
 
 </head>
-<body>
+<body class="publications-page">
   <header class="site-header">
     <div class="container">
       <a class="brand" href="../index.html">Apiros3</a>
       <nav class="main-nav">
         <ul class="nav-list">
-          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link current">Publications</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
@@ -21,8 +21,7 @@
   </header>
 
   <main class="container">
-    <a href="../index.html" class="back-link">← Back to Mainpage</a>
-    
+    <h2 class="section-title">Publications</h2>
     <ul class="publication-list">
       
         <li class="publication-item">
@@ -38,6 +37,53 @@
             <div class="publication-pages">1-15</div>
           </div>
           <div class="publication-abstract">Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck. We present a fully mechanised proof of the theorem, where recursive type unfoldings are modelled as infinite trees, leveraging coinductive reasoning. This marks the first formal proof to incorporate precise subtyping, aiming to extend the typability of processes thus precision of the type system. The proof is grounded in fundamental properties such as subject reduction and progress. ...</div>
+        </li>
+    </ul>
+    
+    <h2 class="section-title">Talks & Presentations</h2>
+    <ul class="publication-list">
+      
+        <li class="publication-item talk-item">
+          <div class="publication-header">
+            <h3 class="publication-title">Formalising Subject Reduction and Progress for Multiparty Session Processes</h3>
+            <div class="publication-links">
+              <a href="https://github.com/Apiros3/smpst-sr-smer/slides.pdf" class="pub-link slides-link" target="_blank">Slides</a>
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-venue">International Conference on Interactive Theorem Proving (ITP), Oxford, UK, 2025-07-15</div>
+            <div class="talk-type">Conference</div>
+            <div class="publication-coauthors">with Burak Ekici, Nobuko Yoshida</div>
+          </div>
+          <div class="publication-abstract">Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck.</div>
+        </li>
+        <li class="publication-item talk-item">
+          <div class="publication-header">
+            <h3 class="publication-title">Introduction to Algebraic Number Theory</h3>
+            <div class="publication-links">
+              
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-venue">Oxford Mathematics Graduate Seminar, Oxford, UK, 2024-11-20</div>
+            <div class="talk-type">Seminar</div>
+            
+          </div>
+          <div class="publication-abstract">An introduction to the fundamental concepts of algebraic number theory, covering number fields, rings of integers, and the relationship between algebraic and analytic number theory.</div>
+        </li>
+        <li class="publication-item talk-item">
+          <div class="publication-header">
+            <h3 class="publication-title">Coinductive Reasoning in Type Theory</h3>
+            <div class="publication-links">
+              <a href="https://example.com/slides/coinduction.pdf" class="pub-link slides-link" target="_blank">Slides</a><a href="https://youtube.com/watch?v=example" class="pub-link video-link" target="_blank">Video</a>
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-venue">Formal Methods Workshop, Cambridge, UK, 2024-09-10</div>
+            <div class="talk-type">Workshop</div>
+            <div class="publication-coauthors">with Jane Smith</div>
+          </div>
+          <div class="publication-abstract">Exploring the use of coinductive reasoning in dependent type theory, with applications to infinite data structures and program verification.</div>
         </li>
     </ul>
   </main>

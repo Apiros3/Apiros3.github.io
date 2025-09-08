@@ -1,0 +1,312 @@
+/* Page-specific styles for blog and publications pages */
+
+/* About page profile picture styles */
+.about-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: 0 4px 8px var(--shadow);
+    flex-shrink: 0;
+}
+
+/* Mobile responsive for profile picture */
+@media (max-width: 768px) {
+    .about-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Blog listing page styles */
+.blog-page .post-item {
+    border-left: 3px solid var(--primary);
+    margin: 0.8em 0;
+    padding: 0.8em 0 0.8em 0.8em;
+    background: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.blog-page .post-item:hover {
+    background: none !important;
+    padding: 0.8em 0 0.8em 0.8em !important;
+    border-radius: 0 !important;
+    margin: 0.8em 0 !important;
+}
+
+.blog-page .post-item:hover .post-title {
+    color: var(--text-primary) !important;
+}
+
+.blog-page .post-title {
+    color: var(--text-primary) !important;
+}
+
+.blog-page .post-item {
+    color: var(--text-primary) !important;
+}
+
+.blog-page .post-abstract {
+    color: var(--text-primary) !important;
+}
+
+.blog-page .post-date {
+    color: var(--text-primary) !important;
+}
+
+.blog-page .post-tag {
+    color: var(--text-primary) !important;
+}
+
+.blog-page .back-link:hover {
+    text-decoration: none !important;
+}
+
+.blog-page .brand:hover {
+    color: var(--text-primary) !important;
+}
+
+.blog-page .nav-link:hover {
+    color: var(--text-primary) !important;
+}
+
+.blog-page .nav-link:hover::after {
+    width: 0 !important;
+}
+
+/* Publications page styles */
+.publications-page .publication-item:hover {
+    background: none !important;
+    padding: 0.8em 0 0.8em 0.8em !important;
+    border-radius: 0 !important;
+    margin: 0.8em 0 !important;
+}
+
+.publications-page .publication-list {
+    list-style: none;
+    padding: 0;
+}
+
+.publications-page .publication-item {
+    border-left: 3px solid var(--primary);
+    margin: 0.8em 0;
+    padding: 0.8em 0 0.8em 0.8em;
+    background: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.publications-page .publication-header {
+    margin-bottom: 0.6em;
+}
+
+.publications-page .publication-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.publications-page .publication-links {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 0.5em;
+}
+
+.publications-page .pub-link {
+    padding: 0.4em 0.8em;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Publication link colors */
+.publications-page .arxiv-link {
+    background: var(--arxiv-color);
+    color: white;
+}
+
+.publications-page .arxiv-link:hover {
+    background: var(--arxiv-hover) !important;
+}
+
+.publications-page .doi-link {
+    background: var(--doi-color);
+    color: white;
+}
+
+.publications-page .doi-link:hover {
+    background: var(--doi-hover) !important;
+}
+
+.publications-page .pdf-link {
+    background: var(--pdf-color);
+    color: white;
+}
+
+.publications-page .pdf-link:hover {
+    background: var(--pdf-hover) !important;
+}
+
+.publications-page .code-link {
+    background: var(--code-color);
+    color: white;
+}
+
+.publications-page .code-link:hover {
+    background: var(--code-hover) !important;
+}
+
+.publications-page .slides-link {
+    background: var(--slides-color);
+    color: white;
+}
+
+.publications-page .slides-link:hover {
+    background: var(--slides-hover) !important;
+}
+
+.publications-page .video-link {
+    background: var(--video-color);
+    color: white;
+}
+
+.publications-page .video-link:hover {
+    background: var(--video-hover) !important;
+}
+
+.publications-page .publication-meta {
+    margin-bottom: 0.6em;
+}
+
+.publications-page .publication-authors {
+    color: var(--text-secondary);
+    font-size: 1em;
+    margin-bottom: 0.2em;
+    font-weight: 500;
+}
+
+.publications-page .publication-venue {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.publications-page .publication-pages {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    margin-top: 0.1em;
+}
+
+.publications-page .publication-abstract {
+    color: var(--text-secondary);
+    font-size: 0.95em;
+    line-height: 1.4;
+    font-style: italic;
+    margin-top: 0.5em;
+}
+
+.publications-page .section-title {
+    font-size: 1.3em;
+    color: var(--text-primary);
+    margin: 1.2em 0 0.6em 0;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid var(--primary);
+    font-weight: 600;
+}
+
+.publications-page .section-title:first-of-type {
+    margin-top: 0;
+}
+
+/* Talk items */
+.publications-page .talk-item {
+    border-left: 3px solid var(--talks-color);
+    margin: 0.8em 0;
+    padding: 0.8em 0 0.8em 0.8em;
+    background: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.publications-page .talk-type {
+    color: var(--talks-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-top: 0.2em;
+    display: inline-block;
+    background: var(--talks-bg);
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+}
+
+.publications-page .publication-coauthors {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    font-style: italic;
+    margin-top: 0.1em;
+}
+
+.publications-page .talk-item .publication-title {
+    font-size: 1.1em;
+    margin-bottom: 0.3em;
+}
+
+.publications-page .talk-item .publication-venue {
+    font-size: 0.9em;
+    margin-bottom: 0.2em;
+}
+
+.publications-page .talk-item .publication-abstract {
+    font-size: 0.9em;
+    margin-top: 0.3em;
+}
+
+.publications-page .back-link:hover {
+    text-decoration: none !important;
+}
+
+.publications-page .brand:hover {
+    color: var(--text-primary) !important;
+}
+
+.publications-page .nav-link:hover {
+    color: var(--text-primary) !important;
+}
+
+.publications-page .nav-link:hover::after {
+    width: 0 !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .publications-page .publication-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .publications-page .publication-links {
+        margin-left: 0;
+        margin-top: 0.5em;
+    }
+}

@@ -12,6 +12,7 @@ def build_publications_page():
 
     # Read publication metadata from the publications submodule
     publications = []
+    talks = []
     pub_dir = Path("publications/data")
     print(f"Looking for publications in: {pub_dir}")
     
@@ -22,15 +23,24 @@ def build_publications_page():
         for meta_file in meta_files:
             print(f"Reading {meta_file}")
             with open(meta_file, "r", encoding="utf-8") as f:
-                pub_data = json.load(f)
-                publications.append(pub_data)
-                print(f"Loaded publication: {pub_data.get('title', 'Untitled')}")
+                data = json.load(f)
+                
+                # Check if this is a talks file
+                if "talks" in data:
+                    talks.extend(data["talks"])
+                    print(f"Loaded {len(data['talks'])} talks from {meta_file}")
+                else:
+                    # Regular publication - store with meta_file for PDF lookup
+                    data["_meta_file"] = meta_file
+                    publications.append(data)
+                    print(f"Loaded publication: {data.get('title', 'Untitled')}")
     else:
         print(f"Publication directory does not exist: {pub_dir}")
         return None
     
     # Sort by year (newest first)
     publications.sort(key=lambda p: int(p.get("year", "0")), reverse=True)
+    talks.sort(key=lambda t: t.get("date", ""), reverse=True)
     
     # Generate publication items
     pub_items = []
@@ -69,10 +79,12 @@ def build_publications_page():
             links_html += f'<a href="{code}" class="pub-link code-link" target="_blank">Code</a>'
         
         # Check if PDF exists
-        pdf_filename = meta_file.stem.replace(".meta", "") + ".pdf"
-        pdf_path = pub_dir / pdf_filename
-        if pdf_path.exists():
-            links_html += f'<a href="publications/data/{pdf_filename}" class="pub-link pdf-link" target="_blank">PDF</a>'
+        meta_file = pub.get("_meta_file")
+        if meta_file:
+            pdf_filename = meta_file.stem.replace(".meta", "") + ".pdf"
+            pdf_path = Path("Notes/publication") / pdf_filename
+            if pdf_path.exists():
+                links_html += f'<a href="../Notes/publication/{pdf_filename}" class="pub-link pdf-link" target="_blank">PDF</a>'
         
         pub_items.append(f"""
         <li class="publication-item">
@@ -90,6 +102,68 @@ def build_publications_page():
           {f'<div class="publication-abstract">{abstract}</div>' if abstract else ''}
         </li>""")
     
+    # Generate talk items
+    talk_items = []
+    for talk in talks:
+        title = talk.get("title", "Untitled")
+        talk_type = talk.get("type", "talk")
+        venue = talk.get("venue", "Unknown")
+        location = talk.get("location", "")
+        date = talk.get("date", "Unknown")
+        year = talk.get("year", "Unknown")
+        abstract = talk.get("abstract", "")
+        slides = talk.get("slides", "")
+        video = talk.get("video", "")
+        coauthors = talk.get("coauthors", [])
+        
+        # Format coauthors
+        if isinstance(coauthors, list) and coauthors:
+            coauthors_str = ", ".join(coauthors)
+        else:
+            coauthors_str = ""
+        
+        # Format venue info
+        venue_info = f"{venue}"
+        if location:
+            venue_info += f", {location}"
+        if date:
+            # Format date nicely
+            try:
+                from datetime import datetime
+                date_obj = datetime.strptime(date, "%Y-%m-%d")
+                formatted_date = date_obj.strftime("%B %d, %Y")
+                venue_info += f", {formatted_date}"
+            except:
+                venue_info += f", {date}"
+        
+        # Generate links
+        links_html = ""
+        if slides:
+            links_html += f'<a href="{slides}" class="pub-link slides-link" target="_blank">Slides</a>'
+        if video:
+            links_html += f'<a href="{video}" class="pub-link video-link" target="_blank">Video</a>'
+        
+        # Format coauthors display
+        coauthors_display = ""
+        if coauthors_str:
+            coauthors_display = f'<div class="publication-coauthors">with {coauthors_str}</div>'
+        
+        talk_items.append(f"""
+        <li class="publication-item talk-item">
+          <div class="publication-header">
+            <h3 class="publication-title">{title}</h3>
+            <div class="publication-links">
+              {links_html}
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-venue">{venue_info}</div>
+            <div class="talk-type">{talk_type.title()}</div>
+            {coauthors_display}
+          </div>
+          {f'<div class="publication-abstract">{abstract}</div>' if abstract else ''}
+        </li>""")
+    
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -98,6 +172,44 @@ def build_publications_page():
   <title>Publications - Apiros3</title>
   <link rel="stylesheet" href="../css/main.css">
   <style>
+    /* Override all hover effects from main CSS */
+    .publication-item:hover {{
+      background: none !important;
+      padding: 0.8em 0 0.8em 0.8em !important;
+      border-radius: 0 !important;
+      margin: 0.8em 0 !important;
+    }}
+    .arxiv-link:hover {{
+      background: #ff6b35 !important;
+    }}
+    .doi-link:hover {{
+      background: #007cba !important;
+    }}
+    .pdf-link:hover {{
+      background: #28a745 !important;
+    }}
+    .code-link:hover {{
+      background: #6f42c1 !important;
+    }}
+    .slides-link:hover {{
+      background: #17a2b8 !important;
+    }}
+    .video-link:hover {{
+      background: #dc3545 !important;
+    }}
+    .back-link:hover {{
+      text-decoration: none !important;
+    }}
+    .brand:hover {{
+      color: #333 !important;
+    }}
+    .nav-link:hover {{
+      color: #333 !important;
+    }}
+    .nav-link:hover::after {{
+      width: 0 !important;
+    }}
+    
     .hero {{
       background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
       color: white;
@@ -122,44 +234,32 @@ def build_publications_page():
       text-decoration: none;
       font-weight: 500;
     }}
-    .back-link:hover {{
-      text-decoration: underline;
-    }}
     .publication-list {{
       list-style: none;
       padding: 0;
     }}
     .publication-item {{
-      margin: 2em 0;
-      padding: 2em;
-      border: 1px solid #eee;
-      border-radius: 8px;
-      background: #fafafa;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.2s;
-    }}
-    .publication-item:hover {{
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-left: 3px solid #007cba;
+      margin: 0.8em 0;
+      padding: 0.8em 0 0.8em 0.8em;
+      background: none;
+      box-sizing: border-box;
+      width: 100%;
     }}
     .publication-header {{
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1em;
+      margin-bottom: 0.6em;
     }}
     .publication-title {{
-      font-size: 1.3em;
+      font-size: 1.2em;
       font-weight: bold;
       color: #333;
       margin: 0;
-      flex: 1;
       line-height: 1.3;
     }}
     .publication-links {{
       display: flex;
       gap: 0.5em;
-      margin-left: 1em;
+      margin-top: 0.5em;
     }}
     .pub-link {{
       padding: 0.4em 0.8em;
@@ -173,58 +273,100 @@ def build_publications_page():
       background: #ff6b35;
       color: white;
     }}
-    .arxiv-link:hover {{
-      background: #e55a2b;
-    }}
     .doi-link {{
       background: #007cba;
       color: white;
-    }}
-    .doi-link:hover {{
-      background: #005a87;
     }}
     .pdf-link {{
       background: #28a745;
       color: white;
     }}
-    .pdf-link:hover {{
-      background: #218838;
-    }}
     .code-link {{
       background: #6f42c1;
       color: white;
     }}
-    .code-link:hover {{
-      background: #5a32a3;
+    .slides-link {{
+      background: #17a2b8;
+      color: white;
+    }}
+    .video-link {{
+      background: #dc3545;
+      color: white;
     }}
     .publication-meta {{
-      margin-bottom: 1em;
+      margin-bottom: 0.6em;
     }}
     .publication-authors {{
       color: #555;
       font-size: 1em;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.2em;
       font-weight: 500;
     }}
     .publication-venue {{
       color: #666;
-      font-size: 0.95em;
+      font-size: 0.9em;
       font-style: italic;
     }}
     .publication-pages {{
       color: #666;
-      font-size: 0.9em;
-      margin-top: 0.2em;
+      font-size: 0.85em;
+      margin-top: 0.1em;
     }}
     .publication-abstract {{
       color: #555;
-      font-size: 1em;
-      line-height: 1.6;
+      font-size: 0.95em;
+      line-height: 1.4;
       font-style: italic;
-      background: #f8f9fa;
-      padding: 1em;
-      border-left: 4px solid #007cba;
-      border-radius: 0 4px 4px 0;
+      margin-top: 0.5em;
+    }}
+    .section-title {{
+      font-size: 1.3em;
+      color: #333;
+      margin: 1.2em 0 0.6em 0;
+      padding-bottom: 0.2em;
+      border-bottom: 1px solid #007cba;
+      font-weight: 600;
+    }}
+    .section-title:first-of-type {{
+      margin-top: 0;
+    }}
+    .talk-item {{
+      border-left: 3px solid #17a2b8;
+      margin: 0.8em 0;
+      padding: 0.8em 0 0.8em 0.8em;
+      background: none;
+      box-sizing: border-box;
+      width: 100%;
+    }}
+    .talk-type {{
+      color: #17a2b8;
+      font-size: 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-top: 0.2em;
+      display: inline-block;
+      background: #e3f2fd;
+      padding: 0.2em 0.5em;
+      border-radius: 3px;
+    }}
+    .publication-coauthors {{
+      color: #666;
+      font-size: 0.85em;
+      font-style: italic;
+      margin-top: 0.1em;
+    }}
+    .talk-item .publication-title {{
+      font-size: 1.1em;
+      margin-bottom: 0.3em;
+    }}
+    .talk-item .publication-venue {{
+      font-size: 0.9em;
+      margin-bottom: 0.2em;
+    }}
+    .talk-item .publication-abstract {{
+      font-size: 0.9em;
+      margin-top: 0.3em;
     }}
     .site-header {{
       background: #fff;
@@ -248,9 +390,6 @@ def build_publications_page():
       font-weight: 700;
       letter-spacing: -0.5px;
     }}
-    .brand:hover {{
-      color: #007cba;
-    }}
     .main-nav {{
       display: flex;
       align-items: center;
@@ -271,24 +410,10 @@ def build_publications_page():
       font-weight: 500;
       font-size: 0.95em;
       padding: 0.5rem 0;
-      transition: color 0.2s ease;
       position: relative;
     }}
-    .nav-link:hover, .nav-link.current {{
+    .nav-link.current {{
       color: #007cba;
-    }}
-    .nav-link::after {{
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #007cba;
-      transition: width 0.3s ease;
-    }}
-    .nav-link:hover::after, .nav-link.current::after {{
-      width: 100%;
     }}
     .nav-toggle {{
       display: none;
@@ -359,8 +484,8 @@ def build_publications_page():
       <nav class="main-nav">
         <ul class="nav-list">
           <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="publications.html" class="nav-link current">Publications</a></li>
-          <li class="nav-item"><a href="index.html" class="nav-link">Blog</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link current">Publications / Talks</a></li>
+          <li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" onclick="toggleNav()">☰</button>
@@ -369,17 +494,16 @@ def build_publications_page():
 
   <div class="hero">
     <div class="container">
-      <h1>Publications</h1>
-      <p>Research papers and academic publications</p>
+      <h1>Publications & Talks</h1>
+      <p>Research papers, academic publications, and conference presentations</p>
     </div>
   </div>
 
   <main class="container">
     <a href="../index.html" class="back-link">← Back to Mainpage</a>
     
-    <ul class="publication-list">
-      {''.join(pub_items)}
-    </ul>
+    {f'<h2 class="section-title">Publications</h2><ul class="publication-list">{chr(10).join(pub_items)}</ul>' if pub_items else ''}
+    {f'<h2 class="section-title">Talks & Presentations</h2><ul class="publication-list">{chr(10).join(talk_items)}</ul>' if talk_items else ''}
   </main>
 </body>
 </html>"""

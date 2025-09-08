@@ -6,7 +6,9 @@
   },
   "about": {
     "title": "About Me",
-    "content": "Welcome to my academic portfolio! I am a passionate researcher exploring the fascinating intersection of mathematics and computer science. My work focuses on algebraic structures, formal methods, and theoretical computer science, with a particular emphasis on the beautiful connections between algebra and logic in computational systems. I believe that understanding these fundamental relationships is key to advancing both fields."
+    "content": "Welcome to my academic portfolio! I am a passionate researcher exploring the fascinating intersection of mathematics and computer science. My work focuses on algebraic structures, formal methods, and theoretical computer science, with a particular emphasis on the beautiful connections between algebra and logic in computational systems. I believe that understanding these fundamental relationships is key to advancing both fields.",
+    "profile_picture": "images/profile.jpg",
+    "profile_alt": "Tadayoshi Kamegai - Academic Profile Picture"
   },
   "contact": {
     "email": "tadayoshi [dot] kamegai [at] merton [dot] ox [dot] ac [dot] uk",
@@ -22,7 +24,7 @@
         "current": true
       },
       {
-        "name": "Publications", 
+        "name": "Publications / Talks", 
         "url": "publications/index.html",
         "current": false
       },

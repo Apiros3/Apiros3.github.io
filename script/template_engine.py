@@ -219,6 +219,55 @@ def generate_publication_item(pub: Dict[str, Any], base_path: str = "") -> str:
         </li>"""
 
 
+def generate_talk_item(talk: Dict[str, Any], base_path: str = "") -> str:
+    """Generate a single talk item."""
+    title = talk.get("title", "Untitled")
+    venue = talk.get("venue", "Unknown")
+    location = talk.get("location", "")
+    date = talk.get("date", "")
+    year = talk.get("year", "")
+    abstract = talk.get("abstract", "")
+    slides = talk.get("slides", "")
+    video = talk.get("video", "")
+    coauthors = talk.get("coauthors", [])
+    talk_type = talk.get("type", "talk")
+    
+    # Format venue info
+    venue_info = venue
+    if location:
+        venue_info += f", {location}"
+    if date:
+        venue_info += f", {date}"
+    
+    # Format coauthors
+    coauthors_str = ""
+    if coauthors and isinstance(coauthors, list) and len(coauthors) > 0:
+        coauthors_str = f"with {', '.join(coauthors)}"
+    
+    # Generate links
+    links_html = ""
+    if slides:
+        links_html += f'<a href="{slides}" class="pub-link slides-link" target="_blank">Slides</a>'
+    if video:
+        links_html += f'<a href="{video}" class="pub-link video-link" target="_blank">Video</a>'
+    
+    return f"""
+        <li class="publication-item talk-item">
+          <div class="publication-header">
+            <h3 class="publication-title">{title}</h3>
+            <div class="publication-links">
+              {links_html}
+            </div>
+          </div>
+          <div class="publication-meta">
+            <div class="publication-venue">{venue_info}</div>
+            <div class="talk-type">{talk_type.title()}</div>
+            {f'<div class="publication-coauthors">{coauthors_str}</div>' if coauthors_str else ''}
+          </div>
+          {f'<div class="publication-abstract">{abstract}</div>' if abstract else ''}
+        </li>"""
+
+
 def generate_tag_filters(posts: List[Dict[str, Any]]) -> str:
     """Generate tag filter buttons."""
     all_tags = set()

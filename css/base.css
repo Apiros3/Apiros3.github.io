@@ -1,5 +1,6 @@
 /* Base styles and CSS variables - Very Light Purple Theme */
 :root {
+    /* Core theme colors */
     --fg: #5b4b8a;
     --bg: #fefcff;
     --muted: #a8a0c7;
@@ -22,6 +23,32 @@
     --border-light: #f3f0ff;
     --shadow: rgba(196, 181, 253, 0.08);
     --shadow-light: rgba(196, 181, 253, 0.04);
+    
+    /* Text colors - centralized management */
+    --text-primary: #333333;
+    --text-secondary: #555555;
+    --text-muted: #666666;
+    --text-light: #999999;
+    
+    /* Publication link colors */
+    --arxiv-color: #ff6b35;
+    --arxiv-hover: #e55a2b;
+    --doi-color: #007cba;
+    --doi-hover: #005a87;
+    --pdf-color: #28a745;
+    --pdf-hover: #218838;
+    --code-color: #6f42c1;
+    --code-hover: #5a32a3;
+    --slides-color: #17a2b8;
+    --slides-hover: #138496;
+    --video-color: #dc3545;
+    --video-hover: #c82333;
+    
+    /* Talk-specific colors */
+    --talks-color: #17a2b8;
+    --talks-bg: #e3f2fd;
+    
+    /* Layout variables */
     --radius: 8px;
     --radius-sm: 4px;
     --radius-lg: 12px;
@@ -30,7 +57,7 @@
     --font-size-base: 16px;
     --line-height-base: 1.65;
     --container-max-width: 900px;
-    --header-height: 40px;
+    --header-height: 32px;
 }
 
 * {

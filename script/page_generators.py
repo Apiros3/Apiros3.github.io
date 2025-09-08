@@ -5,23 +5,17 @@ from pathlib import Path
 from typing import List, Dict, Any
 from .template_engine import (
     generate_html_head, generate_navigation, generate_hero, 
-    generate_contact_sidebar, generate_contact_footer, generate_nav_script, generate_post_item,
-    generate_publication_item, generate_tag_filters, generate_tag_filter_script
+    generate_contact_sidebar, generate_contact_footer, generate_nav_script,
+    generate_publication_item, generate_talk_item, generate_tag_filters, generate_tag_filter_script
 )
 from .config import (
     SITE_TITLE, SITE_DESCRIPTION, ABOUT_TITLE, ABOUT_CONTENT, 
-    NAV_BRAND, NAV_ITEMS, RECENT_POSTS_TITLE, RECENT_POSTS_LIMIT,
-    RECENT_POSTS_SHOW_ABSTRACT, RECENT_POSTS_SHOW_TAGS
+    ABOUT_PROFILE_PICTURE, ABOUT_PROFILE_ALT, NAV_BRAND, NAV_ITEMS
 )
 
 
 def generate_main_index(posts: List[Dict[str, Any]]) -> str:
     """Generate the main index page."""
-    # Generate recent posts (limited by config)
-    recent_items = []
-    for post in posts[:RECENT_POSTS_LIMIT]:
-        recent_items.append(generate_post_item(post, ""))
-    
     return f"""{generate_html_head(f"{SITE_TITLE} - Academic Portfolio")}
 <body>
 {generate_navigation("about")}
@@ -30,20 +24,11 @@ def generate_main_index(posts: List[Dict[str, Any]]) -> str:
     <div class="main-layout">
       <div class="main-content">
         <section class="content-section" id="about">
-          <h2>{ABOUT_TITLE}</h2>
-          <p>{ABOUT_CONTENT}</p>
-        </section>
-
-        <section class="content-section" id="articles">
-          <h2>{RECENT_POSTS_TITLE}</h2>
-          <div class="articles-container">
-            <ul class="post-list">
-              {''.join(recent_items)}
-            </ul>
-            <div class="load-more-container">
-              <a href="posts/index.html" class="load-more-btn">View All Articles</a>
-            </div>
+          <div class="about-header">
+            <h2>{ABOUT_TITLE}</h2>
+            {f'<img src="{ABOUT_PROFILE_PICTURE}" alt="{ABOUT_PROFILE_ALT}" class="profile-picture">' if ABOUT_PROFILE_PICTURE else ''}
           </div>
+          <p>{ABOUT_CONTENT}</p>
         </section>
       </div>
     </div>
@@ -88,7 +73,7 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
         </li>""")
     
     return f"""{generate_html_head(f"Blog - {SITE_TITLE}", base_path="../")}
-<body>
+<body class="blog-page">
 {generate_navigation("blog", "../")}
 
   <main class="container">
@@ -106,22 +91,31 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
 </html>"""
 
 
-def generate_publications_page(publications: List[Dict[str, Any]]) -> str:
+def generate_publications_page(publications: List[Dict[str, Any]], talks: List[Dict[str, Any]]) -> str:
     """Generate the publications page."""
     # Generate publication items
     pub_items = []
     for pub in publications:
         pub_items.append(generate_publication_item(pub, "../"))
     
+    # Generate talk items
+    talk_items = []
+    for talk in talks:
+        talk_items.append(generate_talk_item(talk, "../"))
+    
     return f"""{generate_html_head(f"Publications - {SITE_TITLE}", base_path="../")}
-<body>
+<body class="publications-page">
 {generate_navigation("publications", "../")}
 
   <main class="container">
-    <a href="../index.html" class="back-link">← Back to Mainpage</a>
-    
+    <h2 class="section-title">Publications</h2>
     <ul class="publication-list">
       {''.join(pub_items)}
+    </ul>
+    
+    <h2 class="section-title">Talks & Presentations</h2>
+    <ul class="publication-list">
+      {''.join(talk_items)}
     </ul>
   </main>
 {generate_nav_script()}
