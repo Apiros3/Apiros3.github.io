@@ -1,0 +1,165 @@
+{
+  "notes": [
+    {
+      "title": "Algebraic Number Theory",
+      "slug": "algebraic-number-theory",
+      "description": "Notes on algebraic number theory covering fundamental concepts and theorems",
+      "pdf_file": "notes.pdf",
+      "category": "mathematics"
+    },
+    {
+      "title": "All Algebra",
+      "slug": "all-algebra", 
+      "description": "Comprehensive notes on algebraic structures and their properties",
+      "pdf_files": ["notes.pdf", "zatsu.pdf"],
+      "category": "mathematics"
+    },
+    {
+      "title": "CAFV",
+      "slug": "cafv",
+      "description": "Notes on CAFV (Computer-Aided Formal Verification)",
+      "pdf_file": "notes.pdf",
+      "category": "computer-science"
+    },
+    {
+      "title": "Chocolate",
+      "slug": "chocolate",
+      "description": "Notes on chocolate-related topics",
+      "pdf_file": "notes.pdf",
+      "category": "miscellaneous"
+    },
+    {
+      "title": "Coinduction",
+      "slug": "coinduction",
+      "description": "Notes on coinductive reasoning and structures",
+      "pdf_file": "notes.pdf",
+      "category": "computer-science"
+    },
+    {
+      "title": "Commutative Algebra",
+      "slug": "commutative_algebra",
+      "description": "Notes on commutative algebra and ring theory",
+      "pdf_file": "notes.pdf",
+      "category": "mathematics"
+    },
+    {
+      "title": "Computational Algebra",
+      "slug": "comp",
+      "description": "Notes on computational algebra and programming language theory",
+      "pdf_files": ["algebra.pdf", "pl-gen.pdf"],
+      "category": "computer-science"
+    },
+    {
+      "title": "Coq",
+      "slug": "coq",
+      "description": "Introduction to Coq proof assistant and formal verification",
+      "pdf_files": ["intro_slides_noskip.pdf", "intro_slides.pdf"],
+      "category": "computer-science"
+    },
+    {
+      "title": "Domain Theory",
+      "slug": "domain",
+      "description": "Notes on domain theory and chain-complete partial orders",
+      "pdf_file": "chain-com.pdf",
+      "category": "mathematics"
+    },
+    {
+      "title": "Galois Theory",
+      "slug": "galois_theory",
+      "description": "Notes on Galois theory and field extensions",
+      "pdf_file": "notes.pdf",
+      "category": "mathematics"
+    },
+    {
+      "title": "Genericity Lemma",
+      "slug": "genericity-lem",
+      "description": "Notes on genericity lemmas in formal methods",
+      "pdf_file": "notes.pdf",
+      "category": "computer-science"
+    },
+    {
+      "title": "Group Theory",
+      "slug": "group-theory",
+      "description": "Notes on group theory and group actions",
+      "pdf_file": "notes.pdf",
+      "category": "mathematics"
+    },
+    {
+      "title": "Ideas",
+      "slug": "ideas",
+      "description": "Collection of research ideas and notes",
+      "pdf_file": "notes.pdf",
+      "category": "research"
+    },
+    {
+      "title": "Linear Algebra",
+      "slug": "linalg",
+      "description": "Notes on linear algebra and vector spaces",
+      "pdf_file": "notes.pdf",
+      "category": "mathematics"
+    },
+    {
+      "title": "Linear Algebra 2",
+      "slug": "linalg2",
+      "description": "Advanced linear algebra notes and lectures",
+      "pdf_files": ["lec1.pdf", "lec2.pdf", "notes.pdf", "prereq.pdf"],
+      "category": "mathematics"
+    },
+    {
+      "title": "Natural Deduction",
+      "slug": "natural",
+      "description": "Notes on natural deduction systems",
+      "pdf_file": "notes.pdf",
+      "category": "logic"
+    },
+    {
+      "title": "Programming Language General",
+      "slug": "pl-general",
+      "description": "General notes on programming language theory",
+      "pdf_file": "notes.pdf",
+      "category": "computer-science"
+    },
+    {
+      "title": "POPL",
+      "slug": "popl",
+      "description": "Notes on Principles of Programming Languages",
+      "pdf_file": "notes.pdf",
+      "category": "computer-science"
+    },
+    {
+      "title": "Publication",
+      "slug": "publication",
+      "description": "Publication-related materials",
+      "pdf_file": "itp25.pdf",
+      "category": "publication"
+    },
+    {
+      "title": "Quantum Information",
+      "slug": "quantum-info",
+      "description": "Notes on quantum information theory",
+      "pdf_file": "notes.pdf",
+      "category": "physics"
+    },
+    {
+      "title": "Representation Theory",
+      "slug": "Rep_thm",
+      "description": "Notes on representation theory",
+      "pdf_files": ["notex.pdf", "rand.pdf"],
+      "category": "mathematics"
+    },
+    {
+      "title": "Rings",
+      "slug": "rings",
+      "description": "Notes on ring theory and commutative rings",
+      "pdf_file": "notes.pdf",
+      "category": "mathematics"
+    },
+    {
+      "title": "Topology Groups",
+      "slug": "Topology-groups",
+      "description": "Notes on topological groups and their properties",
+      "pdf_file": "notes.pdf",
+      "category": "mathematics"
+    }
+  ]
+}

@@ -14,7 +14,7 @@ Sketch the diagonalization and you're done.
 A figure and a table
 ====================
 
-See .
+See Figure 1 for an example.
 
   Col 1   Col 2   Col 3
   ------- ------- -------

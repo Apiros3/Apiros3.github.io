@@ -102,6 +102,37 @@ def copy_blog_posts(posts: List[Dict[str, Any]]) -> None:
     print("  📄 Blog posts are already in place in posts/ directory")
 
 
+def get_notes() -> List[Dict[str, Any]]:
+    """Get all notes from notes metadata file."""
+    notes = []
+    notes_file = Path("notes.meta.json")
+    
+    if notes_file.exists():
+        with open(notes_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            notes = data.get("notes", [])
+    
+    # Sort by title alphabetically
+    notes.sort(key=lambda n: n.get("title", ""))
+    return notes
+
+
+def get_reading_list() -> List[Dict[str, Any]]:
+    """Get all reading list items from reading list metadata file."""
+    reading_list = []
+    reading_list_file = Path("reading-list.meta.json")
+    
+    if reading_list_file.exists():
+        with open(reading_list_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            reading_list = data.get("reading_list", [])
+    
+    # Sort by status and then by title
+    status_order = {"completed": 0, "in-progress": 1, "planned": 2, "reference": 3}
+    reading_list.sort(key=lambda r: (status_order.get(r.get("status", ""), 4), r.get("title", "")))
+    return reading_list
+
+
 def copy_pdf_files(posts: List[Dict[str, Any]]) -> None:
     """PDF files are already in place - no copying needed."""
     print("  📄 PDF files are already in place in posts/ directory")

@@ -78,6 +78,14 @@ RECENT_POSTS_LIMIT = SITE_METADATA["recent_posts"]["limit"]
 RECENT_POSTS_SHOW_ABSTRACT = SITE_METADATA["recent_posts"]["show_abstract"]
 RECENT_POSTS_SHOW_TAGS = SITE_METADATA["recent_posts"]["show_tags"]
 
+# Notes configuration
+NOTES_TITLE = SITE_METADATA["notes"]["title"]
+NOTES_DESCRIPTION = SITE_METADATA["notes"]["description"]
+
+# Reading list configuration
+READING_LIST_TITLE = SITE_METADATA["reading_list"]["title"]
+READING_LIST_DESCRIPTION = SITE_METADATA["reading_list"]["description"]
+
 # CSS files
 CSS_FILES = [
     "css/main.css"

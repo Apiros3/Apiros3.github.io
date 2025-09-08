@@ -4,16 +4,6 @@ A comprehensive build system for generating an academic portfolio website from T
 
 ## 🚀 Quick Start
 
-### Windows (PowerShell/CMD)
-```bash
-.\build.bat
-```
-
-### Windows (PowerShell)
-```powershell
-.\build.ps1
-```
-
 ### Linux/macOS (Make)
 ```bash
 make all

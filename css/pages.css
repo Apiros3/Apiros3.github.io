@@ -1,5 +1,175 @@
 /* Page-specific styles for blog and publications pages */
 
+/* Notes page styles */
+.notes-page main.container {
+    max-width: 800px !important;
+}
+
+.note-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.note-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.note-item:last-child {
+    border-bottom: none;
+}
+
+.note-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+}
+
+.note-description {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    margin: 0.25rem 0 0 0;
+    font-style: italic;
+}
+
+.note-downloads {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.note-download {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--primary);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.note-download:hover {
+    background-color: var(--primary);
+    color: var(--bg);
+}
+
+/* Mobile responsive for notes page */
+@media (max-width: 768px) {
+    .notes-page main.container {
+        max-width: 100% !important;
+        padding: 1rem;
+    }
+    
+    .note-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .note-downloads {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+}
+
+/* Reading list page styles */
+.reading-list-page main.container {
+    max-width: 800px !important;
+}
+
+.reading-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reading-item {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.reading-item:last-child {
+    border-bottom: none;
+}
+
+.reading-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.reading-meta {
+    display: flex;
+    gap: 1rem;
+    margin: 0.25rem 0;
+    font-size: 0.9em;
+}
+
+.reading-author {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.reading-type {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.reading-status {
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.status_completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status_in_progress {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status_planned {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.status_reference {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.reading-description {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    margin: 0.25rem 0 0 0;
+    font-style: italic;
+}
+
+/* Mobile responsive for reading list page */
+@media (max-width: 768px) {
+    .reading-list-page main.container {
+        max-width: 100% !important;
+        padding: 1rem;
+    }
+    
+    .reading-meta {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
 /* About page profile picture styles */
 .about-header {
     display: flex;
@@ -75,10 +245,6 @@
 
 .blog-page .back-link:hover {
     text-decoration: none !important;
-}
-
-.blog-page .brand:hover {
-    color: var(--text-primary) !important;
 }
 
 .blog-page .nav-link:hover {
@@ -284,10 +450,6 @@
 
 .publications-page .back-link:hover {
     text-decoration: none !important;
-}
-
-.publications-page .brand:hover {
-    color: var(--text-primary) !important;
 }
 
 .publications-page .nav-link:hover {

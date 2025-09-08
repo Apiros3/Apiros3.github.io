@@ -59,11 +59,23 @@ pub:
 	@python3 script/generate_site_new.py
 	@echo "✓ Publications and talks page built"
 
+# Build notes page
+notes:
+	@echo "Building notes page..."
+	@python3 script/generate_site_new.py
+	@echo "✓ Notes page built"
+
+# Build reading list page
+reading-list:
+	@echo "Building reading list page..."
+	@python3 script/generate_site_new.py
+	@echo "✓ Reading list page built"
+
 # Verify all required files exist
 verify:
 	@echo "Verifying generated files..."
 	@echo "Checking required files:"
-	@for file in index.html posts/index.html publications/index.html; do \
+	@for file in index.html posts/index.html publications/index.html notes-page/index.html reading-list/index.html; do \
 		if [ -f "$$file" ]; then \
 			echo "✓ $$file"; \
 		else \
@@ -92,6 +104,8 @@ clean:
 	@rm -f index.html
 	@rm -f posts/index.html
 	@rm -f publications/index.html
+	@rm -f notes-page/index.html
+	@rm -f reading-list/index.html
 	@echo "Removing blog post directories..."
 	@if [ -d "posts" ]; then \
 		for dir in posts/*/; do \
@@ -140,6 +154,8 @@ help:
 	@echo "  generate   - Generate all HTML pages"
 	@echo "  main       - Generate main index page"
 	@echo "  pub        - Generate publications page"
+	@echo "  notes      - Generate notes page"
+	@echo "  reading-list - Generate reading list page"
 	@echo "  blog-list  - Generate blog listing page"
 	@echo "  verify     - Verify all files exist"
 	@echo "  install    - Check dependencies"

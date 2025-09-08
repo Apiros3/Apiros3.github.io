@@ -107,14 +107,14 @@
 .brand {
     color: var(--dark);
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 700;
-    letter-spacing: -0.5px;
-    transition: var(--transition);
+    letter-spacing: -0.02em;
+    font-family: var(--font-family);
 }
 
 .brand:hover {
-    color: var(--primary);
+    text-decoration: none;
 }
 
 /* Navigation */
@@ -143,6 +143,7 @@
     padding: 0.5rem 0;
     transition: var(--transition);
     position: relative;
+    letter-spacing: 0.01em;
 }
 
 .nav-link:hover,
@@ -188,10 +189,11 @@
 }
 
 .hero h1 {
-    font-size: 2.5em;
+    font-size: 2.75em;
     margin: 0 0 0.5em 0;
-    font-weight: 300;
+    font-weight: 600;
     color: var(--dark);
+    letter-spacing: -0.02em;
 }
 
 .hero p {
@@ -214,8 +216,10 @@
 .content-section h2 {
     color: var(--dark);
     border-bottom: 1px solid var(--border);
-    padding-bottom: 0.2rem;
-    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 /* Sidebar */
@@ -277,7 +281,6 @@
     .nav-link::after {
         display: none;
     }
-    
     
     .hero h1 {
         font-size: 2em;

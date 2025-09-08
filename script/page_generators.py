@@ -10,7 +10,8 @@ from .template_engine import (
 )
 from .config import (
     SITE_TITLE, SITE_DESCRIPTION, ABOUT_TITLE, ABOUT_CONTENT, 
-    ABOUT_PROFILE_PICTURE, ABOUT_PROFILE_ALT, NAV_BRAND, NAV_ITEMS
+    ABOUT_PROFILE_PICTURE, ABOUT_PROFILE_ALT, NAV_BRAND, NAV_ITEMS,
+    NOTES_TITLE, NOTES_DESCRIPTION, READING_LIST_TITLE, READING_LIST_DESCRIPTION
 )
 
 
@@ -116,6 +117,96 @@ def generate_publications_page(publications: List[Dict[str, Any]], talks: List[D
     <h2 class="section-title">Talks & Presentations</h2>
     <ul class="publication-list">
       {''.join(talk_items)}
+    </ul>
+  </main>
+{generate_nav_script()}
+</body>
+</html>"""
+
+
+def generate_notes_page(notes: List[Dict[str, Any]]) -> str:
+    """Generate the notes page."""
+    # Generate compact note items
+    note_items = []
+    for note in notes:
+        # Handle both single PDF and multiple PDFs
+        pdf_links = []
+        if "pdf_file" in note:
+            pdf_links.append(f'<a href="../Notes/{note["slug"]}/{note["pdf_file"]}" class="note-download" target="_blank">PDF</a>')
+        elif "pdf_files" in note:
+            for pdf_file in note["pdf_files"]:
+                pdf_links.append(f'<a href="../Notes/{note["slug"]}/{pdf_file}" class="note-download" target="_blank">{pdf_file}</a>')
+        
+        pdf_links_html = " | ".join(pdf_links) if pdf_links else ""
+        
+        note_items.append(f"""
+      <li class="note-item">
+        <div>
+          <div class="note-title">{note["title"]}</div>
+          <div class="note-description">{note["description"]}</div>
+        </div>
+        <div class="note-downloads">{pdf_links_html}</div>
+      </li>""")
+    
+    return f"""{generate_html_head(f"{NOTES_TITLE} - {SITE_TITLE}", base_path="../")}
+<body class="notes-page">
+{generate_navigation("notes-page", "../")}
+
+  <main class="container">
+    <a href="../index.html" class="back-link">← Back to Mainpage</a>
+    
+    <h1 class="page-title">{NOTES_TITLE}</h1>
+    <p class="page-description">{NOTES_DESCRIPTION}</p>
+    
+    <ul class="note-list">
+      {''.join(note_items)}
+    </ul>
+  </main>
+{generate_nav_script()}
+</body>
+</html>"""
+
+
+def generate_reading_list_page(reading_list: List[Dict[str, Any]]) -> str:
+    """Generate the reading list page."""
+    # Generate reading list items
+    reading_items = []
+    for item in reading_list:
+        # Format author and year
+        author_year = f"{item['author']} ({item['year']})"
+        
+        # Format status with appropriate styling
+        status_class = f"status-{item['status'].replace('-', '_')}"
+        status_text = item['status'].replace('-', ' ').title()
+        
+        # Format type
+        type_text = item['type'].title()
+        
+        reading_items.append(f"""
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">{item['title']}</div>
+          <div class="reading-meta">
+            <span class="reading-author">{author_year}</span>
+            <span class="reading-type">{type_text}</span>
+            <span class="reading-status {status_class}">{status_text}</span>
+          </div>
+          <div class="reading-description">{item['description']}</div>
+        </div>
+      </li>""")
+    
+    return f"""{generate_html_head(f"{READING_LIST_TITLE} - {SITE_TITLE}", base_path="../")}
+<body class="reading-list-page">
+{generate_navigation("reading-list", "../")}
+
+  <main class="container">
+    <a href="../index.html" class="back-link">← Back to Mainpage</a>
+    
+    <h1 class="page-title">{READING_LIST_TITLE}</h1>
+    <p class="page-description">{READING_LIST_DESCRIPTION}</p>
+    
+    <ul class="reading-list">
+      {''.join(reading_items)}
     </ul>
   </main>
 {generate_nav_script()}

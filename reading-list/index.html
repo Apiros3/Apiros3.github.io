@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Reading List - Apiros3</title>
+  <link rel="stylesheet" href="../css/main.css">
+
+</head>
+<body class="reading-list-page">
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html">Apiros3</a>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="../notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../reading-list/index.html" class="nav-link">Reading List</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="../index.html" class="back-link">← Back to Mainpage</a>
+    
+    <h1 class="page-title">Reading List</h1>
+    <p class="page-description">A collection of books, papers, and resources that I'm currently reading, have completed, or plan to read. This list reflects my academic interests in mathematics, computer science, and formal methods, and serves as a reference for ongoing learning and research.</p>
+    
+    <ul class="reading-list">
+      
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Introduction to Algebraic Number Theory</div>
+          <div class="reading-meta">
+            <span class="reading-author">Ian Stewart and David Tall (2020)</span>
+            <span class="reading-type">Book</span>
+            <span class="reading-status status-completed">Completed</span>
+          </div>
+          <div class="reading-description">Comprehensive introduction to algebraic number theory with clear explanations of fundamental concepts</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Software Foundations</div>
+          <div class="reading-meta">
+            <span class="reading-author">Benjamin Pierce et al. (2021)</span>
+            <span class="reading-type">Online</span>
+            <span class="reading-status status-completed">Completed</span>
+          </div>
+          <div class="reading-description">Interactive textbook on formal verification using Coq</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Formal Methods in Software Engineering</div>
+          <div class="reading-meta">
+            <span class="reading-author">Michael Jackson (2019)</span>
+            <span class="reading-type">Book</span>
+            <span class="reading-status status-in_progress">In Progress</span>
+          </div>
+          <div class="reading-description">Essential reading on applying formal methods to software development</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Programming Language Foundations in Agda</div>
+          <div class="reading-meta">
+            <span class="reading-author">Philip Wadler and Wen Kokke (2020)</span>
+            <span class="reading-type">Online</span>
+            <span class="reading-status status-in_progress">In Progress</span>
+          </div>
+          <div class="reading-description">Interactive textbook on programming language theory using Agda</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Category Theory for Programmers</div>
+          <div class="reading-meta">
+            <span class="reading-author">Bartosz Milewski (2019)</span>
+            <span class="reading-type">Book</span>
+            <span class="reading-status status-planned">Planned</span>
+          </div>
+          <div class="reading-description">Category theory explained for programmers with practical examples</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Homotopy Type Theory: Univalent Foundations of Mathematics</div>
+          <div class="reading-meta">
+            <span class="reading-author">The Univalent Foundations Program (2013)</span>
+            <span class="reading-type">Book</span>
+            <span class="reading-status status-planned">Planned</span>
+          </div>
+          <div class="reading-description">Foundational work on homotopy type theory and univalent foundations</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Type Theory and Formal Proof</div>
+          <div class="reading-meta">
+            <span class="reading-author">Rob Nederpelt and Herman Geuvers (2014)</span>
+            <span class="reading-type">Book</span>
+            <span class="reading-status status-planned">Planned</span>
+          </div>
+          <div class="reading-description">Introduction to type theory and its applications in formal verification</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Elements of Algebraic Geometry</div>
+          <div class="reading-meta">
+            <span class="reading-author">Robin Hartshorne (1977)</span>
+            <span class="reading-type">Book</span>
+            <span class="reading-status status-reference">Reference</span>
+          </div>
+          <div class="reading-description">Classic graduate-level textbook on algebraic geometry</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">Real Analysis: Modern Techniques and Their Applications</div>
+          <div class="reading-meta">
+            <span class="reading-author">Gerald Folland (1999)</span>
+            <span class="reading-type">Book</span>
+            <span class="reading-status status-reference">Reference</span>
+          </div>
+          <div class="reading-description">Comprehensive treatment of real analysis with applications</div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <div>
+          <div class="reading-title">The Art of Computer Programming</div>
+          <div class="reading-meta">
+            <span class="reading-author">Donald Knuth (1997)</span>
+            <span class="reading-type">Book</span>
+            <span class="reading-status status-reference">Reference</span>
+          </div>
+          <div class="reading-description">Classic comprehensive reference on computer programming algorithms</div>
+        </div>
+      </li>
+    </ul>
+  </main>
+  <script>
+    function toggleNav() {
+      const nav = document.querySelector('.main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
