@@ -1,21 +1,18 @@
 # Academic Portfolio Build System
 
-A comprehensive build system for generating an academic portfolio website from TeX files and metadata.
-
-## 🚀 Quick Start
+A comprehensive build system for generating an academic portfolio website from TeX files and metadata, with a flexible metafile configuration system.
 
 ### Linux/macOS (Make)
 ```bash
 make all
 ```
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── index.html                 # Main homepage (GitHub Pages entry point)
+├── site.meta.json            # Site configuration metafile
 ├── posts/                     # Blog posts and generated files
 │   ├── index.html            # Blog listing page
-│   ├── publications.html     # Publications page
 │   ├── posts/                # Individual blog posts
 │   │   ├── calculus/
 │   │   ├── linear-algebra/
@@ -25,10 +22,22 @@ make all
 │   ├── 2025-01-15-quantum-mechanics.tex
 │   ├── 2025-03-10-calculus.tex
 │   └── ...
-├── Notes/publication/        # Publication metadata
-│   └── itp25.meta.json
+├── publications/              # Publications and talks
+│   ├── index.html
+│   ├── data/                 # Publication metadata
+│   │   ├── itp25.meta.json
+│   │   └── talks.meta.json
+│   └── scripts/              # Publication generation scripts
+├── Notes/                    # Academic notes and papers
+│   ├── publication/          # Publication metadata
+│   └── [various subjects]/   # Subject-specific notes
 ├── templates/                # HTML templates
 ├── script/                   # Python generation scripts
+│   ├── config.py            # Metafile configuration loader
+│   ├── page_generators.py   # Page generation logic
+│   └── generate_site_new.py # Main site generation script
+├── css/                      # Stylesheets
+├── images/                   # Images and assets
 ├── build_html.sh            # TeX to HTML conversion
 ├── build.bat                # Windows build script
 ├── build.ps1                # PowerShell build script
@@ -36,7 +45,7 @@ make all
 └── README.md                # This file
 ```
 
-## 🔧 Build System Components
+## Build System Components
 
 ### 1. TeX to HTML Conversion
 - **Script**: `build_html.sh` (TeX to HTML conversion)
@@ -51,15 +60,106 @@ make all
 
 ### 3. Publications Page
 - **File**: `publications/index.html`
-- **Data Source**: `Notes/publication/*.meta.json` files
+- **Data Source**: `publications/data/*.meta.json` files
 - **Features**: Rich metadata display, multiple link types
 
 ### 4. Main Homepage
 - **File**: `index.html`
 - **Purpose**: GitHub Pages entry point
 - **Features**: Recent articles, contact info, navigation
+- **Configuration**: Controlled by `site.meta.json`
 
-## 📝 Adding New Content
+## Site Configuration System
+
+The site uses a flexible metafile system that allows you to configure your homepage without editing Python code directly.
+
+### Configuration File: `site.meta.json`
+
+#### Site Information
+```json
+{
+  "site": {
+    "title": "Apiros3",
+    "description": "Academic Portfolio", 
+    "author": "Apiros3"
+  }
+}
+```
+
+#### About Section
+```json
+{
+  "about": {
+    "title": "About Me",
+    "content": "Your about section content here..."
+  }
+}
+```
+
+#### Contact Information
+```json
+{
+  "contact": {
+    "email": "your.email@institution.edu",
+    "institution": "[Your Institution]",
+    "department": "Mathematics & Computer Science",
+    "location": "[Your Location]"
+  }
+}
+```
+
+#### Navigation
+```json
+{
+  "navigation": {
+    "brand": "Apiros3",
+    "items": [
+      {
+        "name": "About",
+        "url": "./index.html",
+        "current": true
+      },
+      {
+        "name": "Publications", 
+        "url": "publications/index.html",
+        "current": false
+      },
+      {
+        "name": "Blog",
+        "url": "posts/index.html", 
+        "current": false
+      }
+    ]
+  }
+}
+```
+
+#### Recent Posts Section
+```json
+{
+  "recent_posts": {
+    "title": "Recent Blog Posts",
+    "limit": 5,
+    "show_abstract": false,
+    "show_tags": false
+  }
+}
+```
+
+### Updating Site Configuration
+
+1. **Edit the metafile**: Modify `site.meta.json` with your desired content
+2. **Regenerate the site**: Run the site generation script
+   ```bash
+   # In WSL (recommended)
+   wsl python3 script/generate_site_new.py
+   
+   # Or in PowerShell
+   python script/generate_site_new.py
+   ```
+3. **View changes**: The `index.html` file will be automatically updated
+
+## Adding New Content
 
 ### Adding a New Blog Post
 
@@ -69,7 +169,7 @@ make all
    posts/2025-12-01-new-topic.tex
    ```
 
-2. **Create metadata file** (optional):
+2. **Create metadata file**:
    ```json
    {
      "title": "Your Article Title",
@@ -79,15 +179,9 @@ make all
    }
    ```
 
-3. **Run build system**:
-   ```bash
-   .\build.bat  # Windows
-   make all     # Linux/macOS
-   ```
-
 ### Adding a New Publication
 
-1. **Create metadata file** in `Notes/publication/`:
+1. **Create metadata file** in `publications/data/`:
    ```json
    {
      "title": "Your Paper Title",
@@ -103,113 +197,7 @@ make all
    }
    ```
 
-2. **Add PDF file** (optional):
+2. **Add PDF file**:
    ```bash
-   Notes/publication/your-paper.pdf
+   publications/data/your-paper.pdf
    ```
-
-3. **Run build system** to update publications page
-
-## 🛠️ Build System Details
-
-### Windows Build Script (`build.bat`)
-- Cleans generated files and directories
-- Converts TeX files to HTML using pandoc
-- Verifies all required files exist
-- Provides detailed status output
-
-### PowerShell Build Script (`build.ps1`)
-- Same functionality as batch script
-- Better error handling and colored output
-- Cross-platform PowerShell support
-
-### Makefile
-- Traditional Unix build system
-- Multiple targets: `all`, `clean`, `blog`, `main`, `pub`
-- Dependency tracking
-- Help system
-
-### Python Build System (`build_system.py`)
-- Comprehensive build orchestration
-- Error handling and verification
-- Cross-platform compatibility
-
-## 🔍 Verification
-
-The build system verifies:
-- ✅ Main index page exists
-- ✅ Blog listing page exists  
-- ✅ Publications page exists
-- ✅ All blog post pages generated
-- ✅ PDF files available
-
-## 🚀 Deployment
-
-### GitHub Pages
-1. Push to GitHub repository
-2. Enable GitHub Pages in repository settings
-3. Set source to "Deploy from a branch"
-4. Select main branch and `/ (root)` folder
-5. The `index.html` file serves as the entry point
-
-### Local Development
-```bash
-# View main page
-start index.html
-
-# View blog
-start posts/index.html
-
-# View publications
-start publications/index.html
-```
-
-## 📋 Dependencies
-
-- **Pandoc**: TeX to HTML conversion
-- **Python**: Build system scripts (optional)
-- **Bash**: TeX conversion script (Windows: Git Bash or WSL)
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **"pandoc not found"**
-   - Install pandoc: https://pandoc.org/installing.html
-   - Ensure it's in your PATH
-
-2. **"Python not found"**
-   - Install Python: https://python.org/downloads/
-   - Ensure it's in your PATH
-
-3. **Generated files missing after clean**
-   - The build system cleans all generated files
-   - If files are missing, they'll be recreated automatically
-
-4. **TeX conversion errors**
-   - Check TeX file syntax
-   - Ensure all required packages are available
-   - Check pandoc version compatibility
-
-### Getting Help
-
-- Check the build output for specific error messages
-- Verify all dependencies are installed
-- Ensure you're running from the project root directory
-- Check file permissions and paths
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test the build system
-5. Submit a pull request
-
----
-
-**Happy building! 🎉**
