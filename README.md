@@ -14,18 +14,16 @@ make all
 ├── posts/                     # Blog posts and generated files
 │   ├── index.html            # Blog listing page
 │   ├── posts/                # Individual blog posts
-│   │   ├── calculus/
-│   │   ├── linear-algebra/
+│   │   ├── [blog-title]/
 │   │   └── ...
 │   └── pdf/                  # PDF files
 ├── posts/                    # TeX source files
-│   ├── 2025-01-15-quantum-mechanics.tex
-│   ├── 2025-03-10-calculus.tex
+│   ├── [yyyy]-[mm]-[dd]-[blog-title].tex
 │   └── ...
 ├── publications/              # Publications and talks
 │   ├── index.html
 │   ├── data/                 # Publication metadata
-│   │   ├── itp25.meta.json
+│   │   ├── [publication].meta.json
 │   │   └── talks.meta.json
 │   └── scripts/              # Publication generation scripts
 ├── Notes/                    # Academic notes and papers
@@ -39,8 +37,6 @@ make all
 ├── css/                      # Stylesheets
 ├── images/                   # Images and assets
 ├── build_html.sh            # TeX to HTML conversion
-├── build.bat                # Windows build script
-├── build.ps1                # PowerShell build script
 ├── Makefile                 # Make-based build system
 └── README.md                # This file
 ```
