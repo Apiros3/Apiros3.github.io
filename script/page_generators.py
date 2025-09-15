@@ -34,7 +34,7 @@ def format_about_content(content: str) -> str:
 
 def generate_main_index(posts: List[Dict[str, Any]]) -> str:
     """Generate the main index page."""
-    return f"""{generate_html_head(f"{SITE_TITLE} - Academic Portfolio")}
+    return f"""{generate_html_head(f"{SITE_TITLE} - Homepage")}
 <body>
 {generate_navigation("about")}
 
