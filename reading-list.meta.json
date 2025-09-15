@@ -1,84 +1,68 @@
 {
   "reading_list": [
     {
-      "title": "Introduction to Algebraic Number Theory",
-      "author": "Ian Stewart and David Tall",
-      "year": "2020",
-      "type": "book",
-      "status": "completed",
-      "description": "Comprehensive introduction to algebraic number theory with clear explanations of fundamental concepts"
-    },
-    {
-      "title": "Formal Methods in Software Engineering",
-      "author": "Michael Jackson",
+      "title": "Constructing Quotient Inductive-Inductive Types",
+      "author": "Ambrus Kaposi, Andras Kovacs and Thorsten Altenkirch",
       "year": "2019",
-      "type": "book",
+      "type" : "Paper",
       "status": "in-progress",
-      "description": "Essential reading on applying formal methods to software development"
+      "description": "This is the first paper I read during my internship with Ambrus Kaposi. There was a lot of prerequities I was missing at the time, so the notes accompanying this is quite all over the place, but hopefully comprehensive nontheless"
     },
     {
-      "title": "Category Theory for Programmers",
-      "author": "Bartosz Milewski",
-      "year": "2019",
-      "type": "book",
-      "status": "planned",
-      "description": "Category theory explained for programmers with practical examples"
-    },
-    {
-      "title": "The Art of Computer Programming",
-      "author": "Donald Knuth",
-      "year": "1997",
-      "type": "book",
-      "status": "reference",
-      "description": "Classic comprehensive reference on computer programming algorithms"
-    },
-    {
-      "title": "Type Theory and Formal Proof",
-      "author": "Rob Nederpelt and Herman Geuvers",
-      "year": "2014",
-      "type": "book",
-      "status": "planned",
-      "description": "Introduction to type theory and its applications in formal verification"
+      "title": "A Modal Analysis of Staged Computation",
+      "author": "Rowan Davies and Frank Pfenning",
+      "year": "2001",
+      "type" : "Paper",
+      "status": "in-progress",
+      "description": "I've read between Sections 1 through 4. It's about how intuitionistic S4 gives a nice framework for analyzing computation stages. Our main focus was trying to understand the translation between the explicit and implicit system. I (should) have corresponding notes about this paper on this page."
     },
     {
       "title": "Homotopy Type Theory: Univalent Foundations of Mathematics",
       "author": "The Univalent Foundations Program",
       "year": "2013",
-      "type": "book",
-      "status": "planned",
-      "description": "Foundational work on homotopy type theory and univalent foundations"
-    },
-    {
-      "title": "Elements of Algebraic Geometry",
-      "author": "Robin Hartshorne",
-      "year": "1977",
-      "type": "book",
-      "status": "reference",
-      "description": "Classic graduate-level textbook on algebraic geometry"
-    },
-    {
-      "title": "Programming Language Foundations in Agda",
-      "author": "Philip Wadler and Wen Kokke",
-      "year": "2020",
-      "type": "online",
+      "type" : "Book",
       "status": "in-progress",
-      "description": "Interactive textbook on programming language theory using Agda"
+      "description": "Slowly progressing through the book. We have an unofficial reading group at Oxford with individual students where we sometimes get along and talk about the contents. I (should) have corresponding notes on this page if you want to see what I've read through."
     },
     {
-      "title": "Software Foundations",
-      "author": "Benjamin Pierce et al.",
-      "year": "2021",
-      "type": "online",
-      "status": "completed",
-      "description": "Interactive textbook on formal verification using Coq"
+      "title": "Truncation Levels in Homotopy Type Theory",
+      "author": "Nicolai Kraus",
+      "year": "2015",
+      "type" : "Thesis",
+      "status": "planned",
+      "description": "Has a bunch of interesting results on propositional truncation."
     },
     {
-      "title": "Real Analysis: Modern Techniques and Their Applications",
-      "author": "Gerald Folland",
-      "year": "1999",
-      "type": "book",
+      "title": "Cellular Cohomology in Homotopy Type Theory",
+      "author": "Ulrik Buchholtz and Kuen-Bang Hou",
+      "year": "2020",
+      "type" : "Paper",
+      "status": "planned",
+      "description": "Hard paper, there's still a few things I'm missing but it is a paper that looks extremely interesting and I do want to get back to this sometime soon."
+    },
+    {
+      "title": "Introduction to Categories and Categorical Logic",
+      "author": "Samson Abramsky and Nikos Tzevelekos",
+      "year": "2011",
+      "type" : "Book",
+      "status": "in-progress",
+      "description": "Clean lecture notes for the Categories, Proofs and Processes course at Oxford. I like to learn pure categorical concepts from a mathematical perspective, but I am interested in the CS applications. I'm reading between Chapters 1.6 to 1.8 right now."
+    },
+    {
+      "title": "Categorical Semantics of Linear Logic",
+      "author": "Paul-Andre Mellies",
+      "type" : "Book",
+      "year": "2009",
       "status": "reference",
-      "description": "Comprehensive treatment of real analysis with applications"
+      "description": "Part of the reading list for my Master's Thesis."
+    },
+    {
+      "title": "Linear Logic (in the Stanford Encyclopedia of Philosophy)",
+      "author": "Stanford",
+      "year": "2006",
+      "type" : "Online",
+      "status": "planned",
+      "description": "Part of the reading list for my Master's Thesis. Looks like a good first read on what Linear Logic is."
     }
   ]
 }

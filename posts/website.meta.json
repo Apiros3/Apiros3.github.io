@@ -1,5 +1,5 @@
 { 
-  "title": "Guide to Apiros3's Website Template", 
+  "title": "User Manual for Apiros3's Website Template", 
   "tags": ["Miscellaneous"],
-  "abstract": "This comprehensive guide covers the complete architecture, build pipeline, and maintenance procedures for my academic portfolio website."
+  "abstract": "This guide records the current/previous pipeline of the website template, how the layers are separated between user to webpage, alongside documentation on how new items are to be added to the site."
 }
