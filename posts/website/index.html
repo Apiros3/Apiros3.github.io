@@ -85,87 +85,68 @@
       </header>
       <div class="post-body markdown-content">
         <h1 id="introduction">Introduction</h1>
-        <p>This website represents a sophisticated academic portfolio system built around a flexible, metadata-driven architecture. The system combines TeX document processing, Python-based site generation, and modern web technologies to create a maintainable, professional academic presence.</p>
-        <p>The core philosophy is <em>separation of concerns</em>: content (TeX files), configuration (JSON metafiles), and presentation (HTML/CSS) are kept distinct, allowing for easy maintenance and updates without touching the underlying codebase.</p>
-        <h1 id="system-architecture-overview">System Architecture Overview</h1>
-        <h2 id="high-level-architecture">High-Level Architecture</h2>
+        <p>I originally wanted to make a website where I can directly place TeX files and have them automatically converted to HTML and PDF, so that I can write blog posts in TeX. To make the frontpage, I decided to reference some other websites that had blog posts and take their format, splitting the website respectively.</p>
+        <h1 id="system-overview">System Overview</h1>
+        <h2 id="architecture">Architecture</h2>
         <p>The website follows a three-tier architecture:</p>
         <ol type="1">
         <li><p><strong>Content Layer</strong>: TeX source files, JSON metadata files, and static assets</p></li>
         <li><p><strong>Processing Layer</strong>: Python scripts, build tools, and conversion pipelines</p></li>
-        <li><p><strong>Presentation Layer</strong>: Generated HTML, CSS, and JavaScript</p></li>
+        <li><p><strong>Presentation Layer</strong>: Generated HTML</p></li>
         </ol>
-        <h2 id="core-components">Core Components</h2>
+        <p>I tried to separate the functionality as far away from HTML as possible so that the contents can be updated via JSON metadata files, blog posts by TeX source files, and website color scheme by a single CSS file. Blog posts follow the template html, and then everything is created automatically by running the Makefile.</p>
         <p>The system consists of several key components:</p>
         <ul>
-        <li><p><strong>TeX Processing Pipeline</strong>: Converts academic papers and blog posts from TeX to HTML</p></li>
-        <li><p><strong>Metafile Configuration System</strong>: Manages site-wide settings and content metadata</p></li>
-        <li><p><strong>Page Generation Engine</strong>: Creates HTML pages from templates and data</p></li>
-        <li><p><strong>Publication Management</strong>: Handles academic publications and talks</p></li>
-        <li><p><strong>Notes Organization</strong>: Manages academic notes and paper summaries</p></li>
-        <li><p><strong>Reading List System</strong>: Tracks books, papers, and resources</p></li>
+        <li><p>TeX Processing Pipeline: converts TeX files into md and pdf format. Each md file is then converted to html format, which is exactly the blog post shown on the top.</p></li>
+        <li><p>JSON Processing Pipeline: takes the metadata and uses it to generate the rest of the page. Almost every text shown on the website can be manipulated through the JSON files placed throughout the directory.</p></li>
         </ul>
-        <h1 id="directory-structure-and-file-organization">Directory Structure and File Organization</h1>
-        <h2 id="root-directory-structure">Root Directory Structure</h2>
+        <h2 id="directory-structure-metafiles">Directory Structure / Metafiles</h2>
         <pre><code>Apiros3.github.io/
         |-- index.html                 # Main homepage (GitHub Pages entry)
-        |-- site.meta.json            # Site configuration metafile
+        |-- site.meta.json             # Site configuration metafile
         |-- posts/                     # Blog posts and TeX sources
-        |   |-- index.html            # Blog listing page
+        |   |-- index.html             # Blog listing page
         |   |-- [yyyy]-[mm]-[dd]-[title].tex  # TeX source files
-        |   `-- [title]/              # Generated blog post directories
+        |   `-- [title]/               # Generated blog post directories
         |-- publications/              # Publications and talks
         |   |-- index.html
-        |   |-- data/                 # Publication metadata
-        |   `-- scripts/              # Generation scripts
-        |-- Notes/                    # Academic notes
-        |-- templates/                # HTML templates
-        |-- script/                   # Python generation system
-        |-- css/                      # Stylesheets
-        |-- images/                   # Static assets
-        |-- build_html.sh            # TeX conversion script
-        |-- Makefile                 # Build system
-        `-- README.md                # Documentation</code></pre>
-        <h2 id="key-configuration-files">Key Configuration Files</h2>
-        <p>A metafile is a JSON configuration file that contains structured data about content, settings, or metadata. The system uses multiple metafiles to manage different aspects of the website.</p>
+        |   |-- data/                  # Publication metadata
+        |   `-- scripts/               # Generation scripts
+        |-- Notes/                     # Notes
+        |-- templates/                 # HTML templates
+        |-- script/                    # Python generation system
+        |-- css/                       # Stylesheets
+        |-- images/                    # Static assets
+        |-- build_html.sh              # TeX conversion script
+        |-- Makefile                   # Build system
+        `-- README.md                  # Documentation</code></pre>
         <p>The system uses several metafiles:</p>
         <ul>
-        <li><p><code>site.meta.json</code>: Main site configuration</p></li>
-        <li><p><code>notes.meta.json</code>: Academic notes metadata</p></li>
-        <li><p><code>reading-list.meta.json</code>: Reading list data</p></li>
+        <li><p><code>site.meta.json</code>: Main site configuration (essentially most information that does not fall into the rest of the items)</p></li>
+        <li><p><code>notes.meta.json</code>: Notes metadata, choosing which notes to show from the Notes submodule.</p></li>
+        <li><p><code>reading-list.meta.json</code>: Reading list metadata</p></li>
         <li><p><code>publications/data/*.meta.json</code>: Publication metadata</p></li>
         <li><p><code>posts/*.meta.json</code>: Blog post metadata</p></li>
         </ul>
-        <h1 id="the-tex-processing-pipeline">The TeX Processing Pipeline</h1>
-        <h2 id="tex-to-html-conversion">TeX to HTML Conversion</h2>
-        <p>The TeX processing pipeline converts academic documents to web-friendly HTML:</p>
-        <div class="sourceCode" id="cb2" data-language="bash" data-caption="TeX conversion process"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># TeX file naming convention</span></a>
-        <a class="sourceLine" id="cb2-2" title="2"><span class="ex">posts/YYYY-MM-DD-title.tex</span></a>
-        <a class="sourceLine" id="cb2-3" title="3"></a>
-        <a class="sourceLine" id="cb2-4" title="4"><span class="co"># Conversion command (simplified)</span></a>
-        <a class="sourceLine" id="cb2-5" title="5"><span class="ex">pandoc</span> input.tex -o output.html --mathjax --standalone</a></code></pre></div>
-        <h2 id="build-script-architecture">Build Script Architecture</h2>
-        <p>The <code>build_html.sh</code> script handles the conversion process:</p>
-        <ol type="1">
-        <li><p>Scans the <code>posts/</code> directory for TeX files</p></li>
-        <li><p>Extracts metadata from TeX headers</p></li>
-        <li><p>Converts each file using Pandoc with appropriate settings</p></li>
-        <li><p>Generates corresponding metadata files</p></li>
-        <li><p>Creates individual blog post directories</p></li>
-        <li><p>Updates the blog listing page</p></li>
-        </ol>
-        <h2 id="pandoc-configuration">Pandoc Configuration</h2>
-        <p>The system uses Pandoc with specific settings optimized for academic content:</p>
+        <p>The Python system consists of several modules:</p>
         <ul>
-        <li><p>Math rendering via MathJax</p></li>
-        <li><p>Syntax highlighting for code blocks</p></li>
-        <li><p>Cross-reference support</p></li>
-        <li><p>Table of contents generation</p></li>
-        <li><p>Custom CSS integration</p></li>
+        <li><p><code>config.py</code>: Configuration loading and management</p></li>
+        <li><p><code>page_generators.py</code>: HTML page generation logic</p></li>
+        <li><p><code>template_engine.py</code>: Template rendering functions</p></li>
+        <li><p><code>data_loader.py</code>: Data loading and processing</p></li>
+        <li><p><code>generate_site_new.py</code>: Main orchestration script</p></li>
         </ul>
-        <h1 id="the-metafile-configuration-system">The Metafile Configuration System</h1>
-        <h2 id="site-configuration-site.meta.json">Site Configuration (<code>site.meta.json</code>)</h2>
-        <p>The main site configuration controls the homepage and global settings:</p>
+        <p>The page generation then follows this workflow:</p>
+        <ol type="1">
+        <li><p>Load configuration from metafiles</p></li>
+        <li><p>Process TeX files and extract metadata</p></li>
+        <li><p>Load publication and talk data</p></li>
+        <li><p>Generate HTML pages using templates</p></li>
+        <li><p>Apply styling and JavaScript</p></li>
+        <li><p>Output final HTML files</p></li>
+        </ol>
+        <h3 id="site-configuration-site.meta.json">Site Configuration (<code>site.meta.json</code>)</h3>
+        <p>This metadata conssits of information regarding the general site. It also lets me decide what to show on the navigation panel, and what each description of those sections looks like.</p>
         <pre><code>{
           &quot;site&quot;: {
             &quot;title&quot;: &quot;Apiros3&quot;,
@@ -175,7 +156,8 @@
           &quot;about&quot;: {
             &quot;title&quot;: &quot;About Me&quot;,
             &quot;content&quot;: &quot;Multi-paragraph content...&quot;,
-            &quot;profile_picture&quot;: &quot;images/profile.jpg&quot;
+            &quot;profile_picture&quot;: &quot;images/profile.jpg&quot;,
+            &quot;profile_alt&quot;: &quot;Some profile pic alt&quot;
           },
           &quot;contact&quot;: {
             &quot;email&quot;: &quot;email@institution.edu&quot;,
@@ -184,52 +166,44 @@
           },
           &quot;navigation&quot;: {
             &quot;brand&quot;: &quot;Apiros3&quot;,
-            &quot;items&quot;: [...]
+            &quot;items&quot;: [
+              {
+                &quot;name&quot; : &quot;Section Title&quot;
+                &quot;url&quot;: &quot;corresponding-page/index.html&quot;
+                &quot;current&quot; : false 
+              }
+            ]
+          },
+          &quot;notes&quot;: {
+            &quot;title&quot;: &quot;Notes / Paper Summaries&quot;,
+            &quot;description&quot;: &quot;Paragraph content description...&quot;
+          },
+          &quot;reading_list&quot;: {
+            &quot;title&quot;: &quot;Reading List&quot;,
+            &quot;description&quot;: &quot;Paragraph content description...&quot;
           }
         }</code></pre>
-        <h2 id="multiple-paragraph-support">Multiple Paragraph Support</h2>
-        <p>The system supports multiple paragraphs in the about section using double line breaks:</p>
+        <h3 id="notes-notes.meta.json">Notes (<code>notes.meta.json</code>)</h3>
+        <p>Notes are organized by subject with metadata. The actual notes to be referenced is a separate public repository that I have incorporated into the site as a submodule (this is updated periodically via GitHub Actions CI).</p>
         <pre><code>{
-          &quot;about&quot;: {
-            &quot;content&quot;: &quot;First paragraph.\n\nSecond paragraph.\n\nThird paragraph.&quot;
-          }
+          &quot;title&quot;: &quot;Title of Notes&quot;,
+          &quot;slug&quot;: &quot;folder-name-under-Notes&quot;,
+          &quot;description&quot;: &quot;Short description of notes&quot;,
+          &quot;pdf_file&quot;: &quot;notes.pdf&quot; or [&quot;notes1.pdf&quot;, &quot;notes2.pdf&quot;] if there are multiple,
+          &quot;category&quot;: &quot;!-- deprecated --!&quot;
         }</code></pre>
-        <p>This is processed by the <code>format_about_content()</code> function in <code>script/page_generators.py</code>.</p>
-        <h1 id="the-python-generation-system">The Python Generation System</h1>
-        <h2 id="core-modules">Core Modules</h2>
-        <p>The Python system consists of several modules:</p>
-        <ul>
-        <li><p><code>config.py</code>: Configuration loading and management</p></li>
-        <li><p><code>page_generators.py</code>: HTML page generation logic</p></li>
-        <li><p><code>template_engine.py</code>: Template rendering functions</p></li>
-        <li><p><code>data_loader.py</code>: Data loading and processing</p></li>
-        <li><p><code>generate_site_new.py</code>: Main orchestration script</p></li>
-        </ul>
-        <h2 id="page-generation-process">Page Generation Process</h2>
-        <p>The page generation follows this workflow:</p>
-        <ol type="1">
-        <li><p>Load configuration from metafiles</p></li>
-        <li><p>Process TeX files and extract metadata</p></li>
-        <li><p>Load publication and talk data</p></li>
-        <li><p>Generate HTML pages using templates</p></li>
-        <li><p>Apply styling and JavaScript</p></li>
-        <li><p>Output final HTML files</p></li>
-        </ol>
-        <h2 id="template-system">Template System</h2>
-        <p>The template system uses Python string formatting with custom functions:</p>
-        <pre data-language="python" data-caption="Template function example"><code>def generate_html_head(title: str, base_path: str = &quot;&quot;) -&gt; str:
-            &quot;&quot;&quot;Generate HTML head section with CSS and metadata.&quot;&quot;&quot;
-            return f&quot;&quot;&quot;&lt;!doctype html&gt;
-        &lt;html lang=&quot;en&quot;&gt;
-        &lt;head&gt;
-          &lt;meta charset=&quot;utf-8&quot;/&gt;
-          &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;/&gt;
-          &lt;title&gt;{title}&lt;/title&gt;
-          &lt;link rel=&quot;stylesheet&quot; href=&quot;{base_path}css/main.css&quot;&gt;
-        &lt;/head&gt;&quot;&quot;&quot;</code></pre>
-        <h1 id="publication-management-system">Publication Management System</h1>
-        <h2 id="publication-data-structure">Publication Data Structure</h2>
-        <p>Publications are managed through JSON metadata files:</p>
+        <h3 id="reading-lists-reading-list.meta.json">Reading Lists (<code>reading-list.meta.json</code>)</h3>
+        <p>The reading list tracks resources I use so that I have access / have a page to revisit when I forget about material I found interesting in the past:</p>
+        <pre><code>{
+          &quot;title&quot;: &quot;Book/Paper Title&quot;,
+          &quot;author&quot;: &quot;Author Name&quot;,
+          &quot;year&quot;: &quot;2025&quot;,
+          &quot;type&quot;: &quot;book / paper / article&quot;,
+          &quot;status&quot;: &quot;reading / completed / planned&quot;,
+          &quot;description&quot;: &quot;Brief description...&quot;
+        }</code></pre>
+        <h3 id="publication-talks-publicationsdata.meta.json">Publication / Talks (<code>publications/data/*.meta.json</code>)</h3>
+        <p>Publications are managed through the JSON metadata files in the following format under <code>title.meta.json</code> (we require a spearate metadata file per paper). When any fields are removed, they will not appear in the page, which lets me place links only if they are available. There will always be a default pdf link based on the title of the metadata, which it will send the user to the pdf placed inside Notes/publication/[title].</p>
         <pre><code>{
           &quot;title&quot;: &quot;Paper Title&quot;,
           &quot;authors&quot;: [&quot;Author One&quot;, &quot;Author Two&quot;],
@@ -242,8 +216,7 @@
           &quot;venue&quot;: &quot;CONF 2025&quot;,
           &quot;pages&quot;: &quot;1-10&quot;
         }</code></pre>
-        <h2 id="talk-management">Talk Management</h2>
-        <p>Talks follow a similar structure with additional fields:</p>
+        <p>Talks follow a similar structure with additional fields. The difference is that talks are placed inside a single <code>talks.meta.json</code> file. This will appear as an independent section on the website as can be seen on this one.</p>
         <pre><code>{
           &quot;title&quot;: &quot;Talk Title&quot;,
           &quot;type&quot;: &quot;workshop / seminar / conference / invited&quot;,
@@ -256,43 +229,25 @@
           &quot;abstract&quot;: &quot;Talk abstract...&quot;,
           &quot;coauthors&quot;: [&quot;Author One&quot;, &quot;Author Two&quot;]
         }</code></pre>
-        <h1 id="notes-and-reading-list-systems">Notes and Reading List Systems</h1>
-        <h2 id="notes-organization">Notes Organization</h2>
-        <p>Academic notes are organized by subject with metadata:</p>
+        <h3 id="blog-posts-posts.meta.json">Blog Posts (<code>posts/*.meta.json</code>)</h3>
+        <p>Blogs are automatically incorporated into the structure of the website by creating a suitable <code>[yyyy]-[mm]-[dd]-[title].tex</code> file under the posts directory. We also need to manually add a <code>[title].meta.json</code> which consists of the following:</p>
         <pre><code>{
-          &quot;title&quot;: &quot;Subject Name&quot;,
-          &quot;description&quot;: &quot;Brief description...&quot;,
-          &quot;pdf_file&quot;: &quot;notes.pdf&quot;,
-          &quot;pdf_files&quot;: [&quot;lec1.pdf&quot;, &quot;lec2.pdf&quot;],
-          &quot;tags&quot;: [&quot;mathematics&quot;, &quot;analysis&quot;]
+          { 
+          &quot;title&quot;: &quot;Title of Blog Page&quot;, 
+          &quot;tags&quot;: [&quot;tag1&quot;, &quot;tag2&quot;],
+          &quot;abstract&quot;: &quot;Short abstract of blog...&quot;
+          }
         }</code></pre>
-        <h2 id="reading-list-management">Reading List Management</h2>
-        <p>The reading list tracks academic resources:</p>
-        <pre><code>{
-          &quot;title&quot;: &quot;Book/Paper Title&quot;,
-          &quot;author&quot;: &quot;Author Name&quot;,
-          &quot;year&quot;: &quot;2025&quot;,
-          &quot;type&quot;: &quot;book / paper / article&quot;,
-          &quot;status&quot;: &quot;reading / completed / planned&quot;,
-          &quot;description&quot;: &quot;Brief description...&quot;
-        }</code></pre>
-        <h1 id="build-system-and-automation">Build System and Automation</h1>
-        <h2 id="makefile-targets">Makefile Targets</h2>
+        <h2 id="build-system-and-automation">Build System and Automation</h2>
         <p>The Makefile provides several build targets:</p>
-        <div class="sourceCode" id="cb10" data-language="make" data-caption="Makefile targets"><pre class="sourceCode makefile"><code class="sourceCode makefile"><a class="sourceLine" id="cb10-1" title="1"><span class="dv">all:</span><span class="dt"> clean blog main pub          </span><span class="co"># Full build</span></a>
-        <a class="sourceLine" id="cb10-2" title="2"><span class="dv">blog:</span><span class="dt">                            </span><span class="co"># Blog posts only</span></a>
-        <a class="sourceLine" id="cb10-3" title="3"><span class="dv">main:</span><span class="dt">                           </span><span class="co"># Main pages only</span></a>
-        <a class="sourceLine" id="cb10-4" title="4"><span class="dv">pub:</span><span class="dt">                            </span><span class="co"># Publications only</span></a>
-        <a class="sourceLine" id="cb10-5" title="5"><span class="dv">clean:</span><span class="dt">                          </span><span class="co"># Clean generated files</span></a>
-        <a class="sourceLine" id="cb10-6" title="6"><span class="dv">help:</span><span class="dt">                           </span><span class="co"># Show help</span></a></code></pre></div>
-        <h2 id="cross-platform-support">Cross-Platform Support</h2>
-        <p>The system supports multiple platforms:</p>
         <ul>
-        <li><p><strong>Linux/macOS</strong>: Native Make support</p></li>
-        <li><p><strong>Windows</strong>: Batch files and PowerShell scripts</p></li>
-        <li><p><strong>WSL</strong>: Full Linux compatibility on Windows</p></li>
+        <li><p><code>all</code>: Full build</p></li>
+        <li><p><code>blog</code>: Blog posts only</p></li>
+        <li><p><code>main</code>: Main pages only</p></li>
+        <li><p><code>pub</code>: Publications only</p></li>
+        <li><p><code>clean</code>: Clean generated files</p></li>
+        <li><p><code>help</code>: Show help</p></li>
         </ul>
-        <h1 id="css-and-styling-system">CSS and Styling System</h1>
         <h2 id="css-architecture">CSS Architecture</h2>
         <p>The styling system uses a modular CSS approach:</p>
         <ul>
@@ -303,149 +258,8 @@
         <li><p><code>markdown.css</code>: Content styling for blog posts</p></li>
         <li><p><code>main.css</code>: Main stylesheet that imports all others</p></li>
         </ul>
-        <h2 id="typography-system">Typography System</h2>
-        <p>The system uses a professional typography stack:</p>
-        <div class="sourceCode" id="cb11" data-language="C" data-caption="Typography configuration"><pre class="sourceCode c"><code class="sourceCode c"><a class="sourceLine" id="cb11-1" title="1">:root {</a>
-        <a class="sourceLine" id="cb11-2" title="2">  --font-family: &#39;Inter&#39;, &#39;Source Sans Pro&#39;, &#39;Segoe UI&#39;, system-ui, sans-serif;</a>
-        <a class="sourceLine" id="cb11-3" title="3">  --font-family-mono: &#39;JetBrains Mono&#39;, &#39;Fira Code&#39;, monospace;</a>
-        <a class="sourceLine" id="cb11-4" title="4">  --font-size-base: <span class="dv">16</span><span class="er">px</span>;</a>
-        <a class="sourceLine" id="cb11-5" title="5">  --line-height-base: <span class="fl">1.7</span>;</a>
-        <a class="sourceLine" id="cb11-6" title="6">}</a></code></pre></div>
-        <h2 id="responsive-design">Responsive Design</h2>
-        <p>The system implements responsive design principles:</p>
-        <ul>
-        <li><p>Mobile-first approach</p></li>
-        <li><p>Flexible grid system</p></li>
-        <li><p>Adaptive typography</p></li>
-        <li><p>Touch-friendly navigation</p></li>
-        </ul>
-        <h1 id="content-management-workflow">Content Management Workflow</h1>
-        <h2 id="adding-new-blog-posts">Adding New Blog Posts</h2>
-        <p>To add a new blog post:</p>
-        <ol type="1">
-        <li><p>Create TeX file: <code>posts/YYYY-MM-DD-title.tex</code></p></li>
-        <li><p>Write content using LaTeX syntax</p></li>
-        <li><p>Optionally create metadata file: <code>posts/title.meta.json</code></p></li>
-        <li><p>Run build system: <code>make all</code></p></li>
-        </ol>
-        <h2 id="updating-site-configuration">Updating Site Configuration</h2>
-        <p>To update site-wide settings:</p>
-        <ol type="1">
-        <li><p>Edit <code>site.meta.json</code></p></li>
-        <li><p>Modify desired configuration sections</p></li>
-        <li><p>Run site generation: <code>python script/generate_site_new.py</code></p></li>
-        <li><p>Verify changes in generated HTML</p></li>
-        </ol>
-        <h2 id="managing-publications">Managing Publications</h2>
-        <p>To add a new publication:</p>
-        <ol type="1">
-        <li><p>Create metadata file: <code>publications/data/paper.meta.json</code></p></li>
-        <li><p>Add PDF file if available</p></li>
-        <li><p>Run build system to update publications page</p></li>
-        </ol>
-        <h1 id="deployment-and-hosting">Deployment and Hosting</h1>
-        <h2 id="github-pages-integration">GitHub Pages Integration</h2>
-        <p>The system is designed for GitHub Pages deployment:</p>
-        <ol type="1">
-        <li><p>Push repository to GitHub</p></li>
-        <li><p>Enable GitHub Pages in repository settings</p></li>
-        <li><p>Set source to "Deploy from a branch"</p></li>
-        <li><p>Select main branch and root folder</p></li>
-        <li><p>The <code>index.html</code> serves as the entry point</p></li>
-        </ol>
-        <h2 id="local-development">Local Development</h2>
-        <p>For local development:</p>
-        <div class="sourceCode" id="cb12" data-language="bash" data-caption="Local development commands"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="co"># View main page</span></a>
-        <a class="sourceLine" id="cb12-2" title="2"><span class="ex">start</span> index.html</a>
-        <a class="sourceLine" id="cb12-3" title="3"></a>
-        <a class="sourceLine" id="cb12-4" title="4"><span class="co"># View blog</span></a>
-        <a class="sourceLine" id="cb12-5" title="5"><span class="ex">start</span> posts/index.html</a>
-        <a class="sourceLine" id="cb12-6" title="6"></a>
-        <a class="sourceLine" id="cb12-7" title="7"><span class="co"># View publications</span></a>
-        <a class="sourceLine" id="cb12-8" title="8"><span class="ex">start</span> publications/index.html</a></code></pre></div>
-        <h1 id="advanced-features">Advanced Features</h1>
-        <h2 id="tag-filtering-system">Tag Filtering System</h2>
-        <p>The blog system includes JavaScript-based tag filtering:</p>
-        <ul>
-        <li><p>Automatic tag extraction from TeX metadata</p></li>
-        <li><p>Interactive filter buttons</p></li>
-        <li><p>Real-time content filtering</p></li>
-        <li><p>URL-based filter state management</p></li>
-        </ul>
-        <h2 id="math-rendering">Math Rendering</h2>
-        <p>Mathematical content is rendered using MathJax:</p>
-        <ul>
-        <li><p>Inline math: <code>$...$</code></p></li>
-        <li><p>Display math: <code>$$...$$</code></p></li>
-        <li><p>LaTeX environments support</p></li>
-        <li><p>Cross-reference compatibility</p></li>
-        </ul>
-        <h2 id="code-highlighting">Code Highlighting</h2>
-        <p>Code blocks are highlighted using Pandoc’s syntax highlighting:</p>
-        <ul>
-        <li><p>Language detection</p></li>
-        <li><p>Theme customization</p></li>
-        <li><p>Copy-to-clipboard functionality</p></li>
-        <li><p>Mobile-friendly display</p></li>
-        </ul>
-        <h1 id="maintenance-and-troubleshooting">Maintenance and Troubleshooting</h1>
-        <h2 id="common-issues">Common Issues</h2>
-        <ol type="1">
-        <li><p><strong>Pandoc not found</strong>: Install Pandoc and ensure it’s in PATH</p></li>
-        <li><p><strong>Python errors</strong>: Check Python installation and dependencies</p></li>
-        <li><p><strong>TeX conversion errors</strong>: Verify LaTeX syntax and packages</p></li>
-        <li><p><strong>Metafile errors</strong>: Validate JSON syntax</p></li>
-        <li><p><strong>Missing files</strong>: Run full build system</p></li>
-        </ol>
-        <h2 id="debugging-workflow">Debugging Workflow</h2>
-        <p>When issues arise:</p>
-        <ol type="1">
-        <li><p>Check build output for error messages</p></li>
-        <li><p>Verify all dependencies are installed</p></li>
-        <li><p>Ensure you’re running from project root</p></li>
-        <li><p>Check file permissions and paths</p></li>
-        <li><p>Validate JSON syntax in metafiles</p></li>
-        </ol>
-        <h1 id="performance-considerations">Performance Considerations</h1>
-        <h2 id="optimization-strategies">Optimization Strategies</h2>
-        <p>The system implements several optimization strategies:</p>
-        <ul>
-        <li><p>Minified CSS and JavaScript</p></li>
-        <li><p>Optimized images and assets</p></li>
-        <li><p>Efficient HTML generation</p></li>
-        <li><p>Lazy loading for large content</p></li>
-        <li><p>CDN integration for external resources</p></li>
-        </ul>
-        <h2 id="loading-performance">Loading Performance</h2>
-        <p>Key performance metrics:</p>
-        <ul>
-        <li><p>Fast initial page load</p></li>
-        <li><p>Efficient navigation</p></li>
-        <li><p>Quick content filtering</p></li>
-        <li><p>Responsive image loading</p></li>
-        </ul>
-        <h1 id="future-enhancements">Future Enhancements</h1>
-        <h2 id="planned-features">Planned Features</h2>
-        <p>Potential future improvements:</p>
-        <ul>
-        <li><p>Dark mode support</p></li>
-        <li><p>Search functionality</p></li>
-        <li><p>RSS feed generation</p></li>
-        <li><p>Comment system integration</p></li>
-        <li><p>Advanced analytics</p></li>
-        </ul>
-        <h2 id="extensibility">Extensibility</h2>
-        <p>The system is designed for easy extension:</p>
-        <ul>
-        <li><p>Modular architecture</p></li>
-        <li><p>Plugin system potential</p></li>
-        <li><p>Template customization</p></li>
-        <li><p>Theme system</p></li>
-        </ul>
-        <h1 id="conclusion">Conclusion</h1>
-        <p>This academic portfolio website represents a sophisticated, maintainable system for presenting academic work online. The combination of TeX processing, Python generation, and modern web technologies creates a flexible platform that can adapt to changing needs while maintaining professional presentation standards.</p>
-        <p>The key to the system’s success is its <em>separation of concerns</em>: content, configuration, and presentation are kept distinct, allowing for easy maintenance and updates. The metafile system provides a user-friendly interface for content management, while the Python generation system ensures consistency and reliability.</p>
-        <p>For anyone wishing to understand, modify, or extend this system, this document provides the comprehensive technical foundation necessary for effective development and maintenance.</p>
+        <h1 id="other-notes-changes">Other Notes / Changes</h1>
+        <p>This is my first attempt at creating a website with this many automated features, and there are some parts of the current management that feels suboptimal. Whenever there is substantial change to the format, this guide will hopefully be updated accordingly to incorporate these features. I will keep this section to record any previous features of the page if there ever is. I probably won’t write much if there is change to the HTML/CSS format, but rather when there is change to the main pipeline which transforms the metadata files.</p>
       </div>
     </article>
   </main>

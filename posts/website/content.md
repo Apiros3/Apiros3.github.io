@@ -1,21 +1,17 @@
 Introduction
 ============
 
-This website represents a sophisticated academic portfolio system built
-around a flexible, metadata-driven architecture. The system combines TeX
-document processing, Python-based site generation, and modern web
-technologies to create a maintainable, professional academic presence.
+I originally wanted to make a website where I can directly place TeX
+files and have them automatically converted to HTML and PDF, so that I
+can write blog posts in TeX. To make the frontpage, I decided to
+reference some other websites that had blog posts and take their format,
+splitting the website respectively.
 
-The core philosophy is *separation of concerns*: content (TeX files),
-configuration (JSON metafiles), and presentation (HTML/CSS) are kept
-distinct, allowing for easy maintenance and updates without touching the
-underlying codebase.
+System Overview
+===============
 
-System Architecture Overview
-============================
-
-High-Level Architecture
------------------------
+Architecture
+------------
 
 The website follows a three-tier architecture:
 
@@ -25,173 +21,60 @@ The website follows a three-tier architecture:
 2.  **Processing Layer**: Python scripts, build tools, and conversion
     pipelines
 
-3.  **Presentation Layer**: Generated HTML, CSS, and JavaScript
+3.  **Presentation Layer**: Generated HTML
 
-Core Components
----------------
+I tried to separate the functionality as far away from HTML as possible
+so that the contents can be updated via JSON metadata files, blog posts
+by TeX source files, and website color scheme by a single CSS file. Blog
+posts follow the template html, and then everything is created
+automatically by running the Makefile.
 
 The system consists of several key components:
 
--   **TeX Processing Pipeline**: Converts academic papers and blog posts
-    from TeX to HTML
+-   TeX Processing Pipeline: converts TeX files into md and pdf format.
+    Each md file is then converted to html format, which is exactly the
+    blog post shown on the top.
 
--   **Metafile Configuration System**: Manages site-wide settings and
-    content metadata
+-   JSON Processing Pipeline: takes the metadata and uses it to generate
+    the rest of the page. Almost every text shown on the website can be
+    manipulated through the JSON files placed throughout the directory.
 
--   **Page Generation Engine**: Creates HTML pages from templates and
-    data
-
--   **Publication Management**: Handles academic publications and talks
-
--   **Notes Organization**: Manages academic notes and paper summaries
-
--   **Reading List System**: Tracks books, papers, and resources
-
-Directory Structure and File Organization
-=========================================
-
-Root Directory Structure
-------------------------
+Directory Structure / Metafiles
+-------------------------------
 
     Apiros3.github.io/
     |-- index.html                 # Main homepage (GitHub Pages entry)
-    |-- site.meta.json            # Site configuration metafile
+    |-- site.meta.json             # Site configuration metafile
     |-- posts/                     # Blog posts and TeX sources
-    |   |-- index.html            # Blog listing page
+    |   |-- index.html             # Blog listing page
     |   |-- [yyyy]-[mm]-[dd]-[title].tex  # TeX source files
-    |   `-- [title]/              # Generated blog post directories
+    |   `-- [title]/               # Generated blog post directories
     |-- publications/              # Publications and talks
     |   |-- index.html
-    |   |-- data/                 # Publication metadata
-    |   `-- scripts/              # Generation scripts
-    |-- Notes/                    # Academic notes
-    |-- templates/                # HTML templates
-    |-- script/                   # Python generation system
-    |-- css/                      # Stylesheets
-    |-- images/                   # Static assets
-    |-- build_html.sh            # TeX conversion script
-    |-- Makefile                 # Build system
-    `-- README.md                # Documentation
-
-Key Configuration Files
------------------------
-
-A metafile is a JSON configuration file that contains structured data
-about content, settings, or metadata. The system uses multiple metafiles
-to manage different aspects of the website.
+    |   |-- data/                  # Publication metadata
+    |   `-- scripts/               # Generation scripts
+    |-- Notes/                     # Notes
+    |-- templates/                 # HTML templates
+    |-- script/                    # Python generation system
+    |-- css/                       # Stylesheets
+    |-- images/                    # Static assets
+    |-- build_html.sh              # TeX conversion script
+    |-- Makefile                   # Build system
+    `-- README.md                  # Documentation
 
 The system uses several metafiles:
 
--   `site.meta.json`: Main site configuration
+-   `site.meta.json`: Main site configuration (essentially most
+    information that does not fall into the rest of the items)
 
--   `notes.meta.json`: Academic notes metadata
+-   `notes.meta.json`: Notes metadata, choosing which notes to show from
+    the Notes submodule.
 
--   `reading-list.meta.json`: Reading list data
+-   `reading-list.meta.json`: Reading list metadata
 
 -   `publications/data/*.meta.json`: Publication metadata
 
 -   `posts/*.meta.json`: Blog post metadata
-
-The TeX Processing Pipeline
-===========================
-
-TeX to HTML Conversion
-----------------------
-
-The TeX processing pipeline converts academic documents to web-friendly
-HTML:
-
-``` {.bash language="bash" caption="TeX conversion process"}
-# TeX file naming convention
-posts/YYYY-MM-DD-title.tex
-
-# Conversion command (simplified)
-pandoc input.tex -o output.html --mathjax --standalone
-```
-
-Build Script Architecture
--------------------------
-
-The `build_html.sh` script handles the conversion process:
-
-1.  Scans the `posts/` directory for TeX files
-
-2.  Extracts metadata from TeX headers
-
-3.  Converts each file using Pandoc with appropriate settings
-
-4.  Generates corresponding metadata files
-
-5.  Creates individual blog post directories
-
-6.  Updates the blog listing page
-
-Pandoc Configuration
---------------------
-
-The system uses Pandoc with specific settings optimized for academic
-content:
-
--   Math rendering via MathJax
-
--   Syntax highlighting for code blocks
-
--   Cross-reference support
-
--   Table of contents generation
-
--   Custom CSS integration
-
-The Metafile Configuration System
-=================================
-
-Site Configuration (`site.meta.json`)
--------------------------------------
-
-The main site configuration controls the homepage and global settings:
-
-    {
-      "site": {
-        "title": "Apiros3",
-        "description": "Academic Portfolio",
-        "author": "Apiros3"
-      },
-      "about": {
-        "title": "About Me",
-        "content": "Multi-paragraph content...",
-        "profile_picture": "images/profile.jpg"
-      },
-      "contact": {
-        "email": "email@institution.edu",
-        "institution": "University Name",
-        "location": "City, Country"
-      },
-      "navigation": {
-        "brand": "Apiros3",
-        "items": [...]
-      }
-    }
-
-Multiple Paragraph Support
---------------------------
-
-The system supports multiple paragraphs in the about section using
-double line breaks:
-
-    {
-      "about": {
-        "content": "First paragraph.\n\nSecond paragraph.\n\nThird paragraph."
-      }
-    }
-
-This is processed by the `format_about_content()` function in
-`script/page_generators.py`.
-
-The Python Generation System
-============================
-
-Core Modules
-------------
 
 The Python system consists of several modules:
 
@@ -205,10 +88,7 @@ The Python system consists of several modules:
 
 -   `generate_site_new.py`: Main orchestration script
 
-Page Generation Process
------------------------
-
-The page generation follows this workflow:
+The page generation then follows this workflow:
 
 1.  Load configuration from metafiles
 
@@ -222,31 +102,88 @@ The page generation follows this workflow:
 
 6.  Output final HTML files
 
-Template System
----------------
+### Site Configuration (`site.meta.json`)
 
-The template system uses Python string formatting with custom functions:
+This metadata conssits of information regarding the general site. It
+also lets me decide what to show on the navigation panel, and what each
+description of those sections looks like.
 
-``` {language="python" caption="Template function example"}
-def generate_html_head(title: str, base_path: str = "") -> str:
-    """Generate HTML head section with CSS and metadata."""
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>{title}</title>
-  <link rel="stylesheet" href="{base_path}css/main.css">
-</head>"""
-```
+    {
+      "site": {
+        "title": "Apiros3",
+        "description": "Academic Portfolio",
+        "author": "Apiros3"
+      },
+      "about": {
+        "title": "About Me",
+        "content": "Multi-paragraph content...",
+        "profile_picture": "images/profile.jpg",
+        "profile_alt": "Some profile pic alt"
+      },
+      "contact": {
+        "email": "email@institution.edu",
+        "institution": "University Name",
+        "location": "City, Country"
+      },
+      "navigation": {
+        "brand": "Apiros3",
+        "items": [
+          {
+            "name" : "Section Title"
+            "url": "corresponding-page/index.html"
+            "current" : false 
+          }
+        ]
+      },
+      "notes": {
+        "title": "Notes / Paper Summaries",
+        "description": "Paragraph content description..."
+      },
+      "reading_list": {
+        "title": "Reading List",
+        "description": "Paragraph content description..."
+      }
+    }
 
-Publication Management System
-=============================
+### Notes (`notes.meta.json`)
 
-Publication Data Structure
---------------------------
+Notes are organized by subject with metadata. The actual notes to be
+referenced is a separate public repository that I have incorporated into
+the site as a submodule (this is updated periodically via GitHub Actions
+CI).
 
-Publications are managed through JSON metadata files:
+    {
+      "title": "Title of Notes",
+      "slug": "folder-name-under-Notes",
+      "description": "Short description of notes",
+      "pdf_file": "notes.pdf" or ["notes1.pdf", "notes2.pdf"] if there are multiple,
+      "category": "!-- deprecated --!"
+    }
+
+### Reading Lists (`reading-list.meta.json`)
+
+The reading list tracks resources I use so that I have access / have a
+page to revisit when I forget about material I found interesting in the
+past:
+
+    {
+      "title": "Book/Paper Title",
+      "author": "Author Name",
+      "year": "2025",
+      "type": "book / paper / article",
+      "status": "reading / completed / planned",
+      "description": "Brief description..."
+    }
+
+### Publication / Talks (`publications/data/*.meta.json`)
+
+Publications are managed through the JSON metadata files in the
+following format under `title.meta.json` (we require a spearate metadata
+file per paper). When any fields are removed, they will not appear in
+the page, which lets me place links only if they are available. There
+will always be a default pdf link based on the title of the metadata,
+which it will send the user to the pdf placed inside
+Notes/publication/\[title\].
 
     {
       "title": "Paper Title",
@@ -261,10 +198,10 @@ Publications are managed through JSON metadata files:
       "pages": "1-10"
     }
 
-Talk Management
----------------
-
-Talks follow a similar structure with additional fields:
+Talks follow a similar structure with additional fields. The difference
+is that talks are placed inside a single `talks.meta.json` file. This
+will appear as an independent section on the website as can be seen on
+this one.
 
     {
       "title": "Talk Title",
@@ -279,66 +216,37 @@ Talks follow a similar structure with additional fields:
       "coauthors": ["Author One", "Author Two"]
     }
 
-Notes and Reading List Systems
-==============================
+### Blog Posts (`posts/*.meta.json`)
 
-Notes Organization
-------------------
-
-Academic notes are organized by subject with metadata:
-
-    {
-      "title": "Subject Name",
-      "description": "Brief description...",
-      "pdf_file": "notes.pdf",
-      "pdf_files": ["lec1.pdf", "lec2.pdf"],
-      "tags": ["mathematics", "analysis"]
-    }
-
-Reading List Management
------------------------
-
-The reading list tracks academic resources:
+Blogs are automatically incorporated into the structure of the website
+by creating a suitable `[yyyy]-[mm]-[dd]-[title].tex` file under the
+posts directory. We also need to manually add a `[title].meta.json`
+which consists of the following:
 
     {
-      "title": "Book/Paper Title",
-      "author": "Author Name",
-      "year": "2025",
-      "type": "book / paper / article",
-      "status": "reading / completed / planned",
-      "description": "Brief description..."
+      { 
+      "title": "Title of Blog Page", 
+      "tags": ["tag1", "tag2"],
+      "abstract": "Short abstract of blog..."
+      }
     }
 
 Build System and Automation
-===========================
-
-Makefile Targets
-----------------
+---------------------------
 
 The Makefile provides several build targets:
 
-``` {.makefile language="make" caption="Makefile targets"}
-all: clean blog main pub          # Full build
-blog:                            # Blog posts only
-main:                           # Main pages only
-pub:                            # Publications only
-clean:                          # Clean generated files
-help:                           # Show help
-```
+-   `all`: Full build
 
-Cross-Platform Support
-----------------------
+-   `blog`: Blog posts only
 
-The system supports multiple platforms:
+-   `main`: Main pages only
 
--   **Linux/macOS**: Native Make support
+-   `pub`: Publications only
 
--   **Windows**: Batch files and PowerShell scripts
+-   `clean`: Clean generated files
 
--   **WSL**: Full Linux compatibility on Windows
-
-CSS and Styling System
-======================
+-   `help`: Show help
 
 CSS Architecture
 ----------------
@@ -357,257 +265,14 @@ The styling system uses a modular CSS approach:
 
 -   `main.css`: Main stylesheet that imports all others
 
-Typography System
------------------
-
-The system uses a professional typography stack:
-
-``` {.c language="C" caption="Typography configuration"}
-:root {
-  --font-family: 'Inter', 'Source Sans Pro', 'Segoe UI', system-ui, sans-serif;
-  --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --font-size-base: 16px;
-  --line-height-base: 1.7;
-}
-```
-
-Responsive Design
------------------
-
-The system implements responsive design principles:
-
--   Mobile-first approach
-
--   Flexible grid system
-
--   Adaptive typography
-
--   Touch-friendly navigation
-
-Content Management Workflow
-===========================
-
-Adding New Blog Posts
----------------------
-
-To add a new blog post:
-
-1.  Create TeX file: `posts/YYYY-MM-DD-title.tex`
-
-2.  Write content using LaTeX syntax
-
-3.  Optionally create metadata file: `posts/title.meta.json`
-
-4.  Run build system: `make all`
-
-Updating Site Configuration
----------------------------
-
-To update site-wide settings:
-
-1.  Edit `site.meta.json`
-
-2.  Modify desired configuration sections
-
-3.  Run site generation: `python script/generate_site_new.py`
-
-4.  Verify changes in generated HTML
-
-Managing Publications
----------------------
-
-To add a new publication:
-
-1.  Create metadata file: `publications/data/paper.meta.json`
-
-2.  Add PDF file if available
-
-3.  Run build system to update publications page
-
-Deployment and Hosting
-======================
-
-GitHub Pages Integration
-------------------------
-
-The system is designed for GitHub Pages deployment:
-
-1.  Push repository to GitHub
-
-2.  Enable GitHub Pages in repository settings
-
-3.  Set source to \"Deploy from a branch\"
-
-4.  Select main branch and root folder
-
-5.  The `index.html` serves as the entry point
-
-Local Development
------------------
-
-For local development:
-
-``` {.bash language="bash" caption="Local development commands"}
-# View main page
-start index.html
-
-# View blog
-start posts/index.html
-
-# View publications
-start publications/index.html
-```
-
-Advanced Features
-=================
-
-Tag Filtering System
---------------------
-
-The blog system includes JavaScript-based tag filtering:
-
--   Automatic tag extraction from TeX metadata
-
--   Interactive filter buttons
-
--   Real-time content filtering
-
--   URL-based filter state management
-
-Math Rendering
---------------
-
-Mathematical content is rendered using MathJax:
-
--   Inline math: `$...$`
-
--   Display math: `$$...$$`
-
--   LaTeX environments support
-
--   Cross-reference compatibility
-
-Code Highlighting
------------------
-
-Code blocks are highlighted using Pandoc's syntax highlighting:
-
--   Language detection
-
--   Theme customization
-
--   Copy-to-clipboard functionality
-
--   Mobile-friendly display
-
-Maintenance and Troubleshooting
-===============================
-
-Common Issues
--------------
-
-1.  **Pandoc not found**: Install Pandoc and ensure it's in PATH
-
-2.  **Python errors**: Check Python installation and dependencies
-
-3.  **TeX conversion errors**: Verify LaTeX syntax and packages
-
-4.  **Metafile errors**: Validate JSON syntax
-
-5.  **Missing files**: Run full build system
-
-Debugging Workflow
-------------------
-
-When issues arise:
-
-1.  Check build output for error messages
-
-2.  Verify all dependencies are installed
-
-3.  Ensure you're running from project root
-
-4.  Check file permissions and paths
-
-5.  Validate JSON syntax in metafiles
-
-Performance Considerations
-==========================
-
-Optimization Strategies
------------------------
-
-The system implements several optimization strategies:
-
--   Minified CSS and JavaScript
-
--   Optimized images and assets
-
--   Efficient HTML generation
-
--   Lazy loading for large content
-
--   CDN integration for external resources
-
-Loading Performance
--------------------
-
-Key performance metrics:
-
--   Fast initial page load
-
--   Efficient navigation
-
--   Quick content filtering
-
--   Responsive image loading
-
-Future Enhancements
-===================
-
-Planned Features
-----------------
-
-Potential future improvements:
-
--   Dark mode support
-
--   Search functionality
-
--   RSS feed generation
-
--   Comment system integration
-
--   Advanced analytics
-
-Extensibility
--------------
-
-The system is designed for easy extension:
-
--   Modular architecture
-
--   Plugin system potential
-
--   Template customization
-
--   Theme system
-
-Conclusion
-==========
-
-This academic portfolio website represents a sophisticated, maintainable
-system for presenting academic work online. The combination of TeX
-processing, Python generation, and modern web technologies creates a
-flexible platform that can adapt to changing needs while maintaining
-professional presentation standards.
-
-The key to the system's success is its *separation of concerns*:
-content, configuration, and presentation are kept distinct, allowing for
-easy maintenance and updates. The metafile system provides a
-user-friendly interface for content management, while the Python
-generation system ensures consistency and reliability.
-
-For anyone wishing to understand, modify, or extend this system, this
-document provides the comprehensive technical foundation necessary for
-effective development and maintenance.
+Other Notes / Changes
+=====================
+
+This is my first attempt at creating a website with this many automated
+features, and there are some parts of the current management that feels
+suboptimal. Whenever there is substantial change to the format, this
+guide will hopefully be updated accordingly to incorporate these
+features. I will keep this section to record any previous features of
+the page if there ever is. I probably won't write much if there is
+change to the HTML/CSS format, but rather when there is change to the
+main pipeline which transforms the metadata files.
