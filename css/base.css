@@ -191,7 +191,7 @@ p {
 }
 
 a {
-    color: var(--accent);
+    color: var(--primary-dark);
     text-decoration: none;
     transition: var(--transition);
 }

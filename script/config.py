@@ -53,6 +53,21 @@ def load_site_metadata():
 # Load metadata
 SITE_METADATA = load_site_metadata()
 
+# Load about content from markdown file
+def load_about_content():
+    """Load about content from about.md file."""
+    try:
+        with open("about.md", "r", encoding="utf-8") as f:
+            content = f.read()
+            # Remove the markdown header if present
+            if content.startswith("# "):
+                lines = content.split('\n')
+                content = '\n'.join(lines[1:]).strip()
+            return content
+    except FileNotFoundError:
+        # Fallback to content from site.meta.json if about.md doesn't exist
+        return SITE_METADATA["about"].get("content", "About content not found.")
+
 # Site configuration (from metafile)
 SITE_TITLE = SITE_METADATA["site"]["title"]
 SITE_DESCRIPTION = SITE_METADATA["site"]["description"]
@@ -64,7 +79,7 @@ SITE_LOCATION = SITE_METADATA["contact"]["location"]
 
 # About section configuration
 ABOUT_TITLE = SITE_METADATA["about"]["title"]
-ABOUT_CONTENT = SITE_METADATA["about"]["content"]
+ABOUT_CONTENT = load_about_content()
 ABOUT_PROFILE_PICTURE = SITE_METADATA["about"].get("profile_picture", "")
 ABOUT_PROFILE_ALT = SITE_METADATA["about"].get("profile_alt", "Profile Picture")
 

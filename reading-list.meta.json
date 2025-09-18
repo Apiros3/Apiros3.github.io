@@ -1,6 +1,22 @@
 {
   "reading_list": [
     {
+      "title": "The Blind Spot - Lectures on Logic",
+      "author": "Jean-Yves Girard",
+      "year": "2011",
+      "type" : "Book",
+      "status": "planned",
+      "description": "Has all the good logic stuff, I plan to read by section, currently quite interested in the Part III Linear Logic bit"
+    },
+    {
+      "title": "Sheaves in Geometry in Logic - A First Introduction to Topos Theory",
+      "author": "Saunders Mac Lane and Leke Moerdijk",
+      "year": "2015",
+      "type" : "Book",
+      "status": "planned",
+      "description": "As the title mentions. Not too sure when I can start reading this, but was recommended quite a while ago, so should probably get started."
+    },
+    {
       "title": "Constructing Quotient Inductive-Inductive Types",
       "author": "Ambrus Kaposi, Andras Kovacs and Thorsten Altenkirch",
       "year": "2019",
@@ -66,4 +82,5 @@
     }
   ]
 }
+
 

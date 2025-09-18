@@ -16,7 +16,7 @@ from .config import (
 
 
 def format_about_content(content: str) -> str:
-    """Format about content to support multiple paragraphs."""
+    """Format about content to support multiple paragraphs and convert markdown links."""
     if not content:
         return ""
     
@@ -26,8 +26,21 @@ def format_about_content(content: str) -> str:
     if not paragraphs:
         return ""
     
-    # Wrap each paragraph in <p> tags
-    formatted_paragraphs = [f"<p>{paragraph}</p>" for paragraph in paragraphs]
+    # Convert markdown links to HTML and wrap each paragraph in <p> tags
+    import re
+    
+    def convert_markdown_links(text):
+        """Convert markdown links [text](url) to HTML <a> tags."""
+        # Pattern to match markdown links: [text](url)
+        link_pattern = r'\[([^\]]+)\]\(([^)]+)\)'
+        return re.sub(link_pattern, r'<a href="\2">\1</a>', text)
+    
+    formatted_paragraphs = []
+    for paragraph in paragraphs:
+        # Convert markdown links to HTML
+        paragraph = convert_markdown_links(paragraph)
+        # Wrap in <p> tags
+        formatted_paragraphs.append(f"<p>{paragraph}</p>")
     
     return '\n          '.join(formatted_paragraphs)
 
