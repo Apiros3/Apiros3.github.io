@@ -1,6 +1,18 @@
 {
   "talks": [
     {
+      "title": "Formalising Subject Reduction and Progress for Multiparty Session Processes",
+      "type": "Paper Presentation",
+      "venue": "ITP 2025",
+      "location": "Reikyavik, Iceland",
+      "date": "2025-09-28",
+      "year": "2025",
+      "slides": "https://apiros3.github.io/Notes/dptp/itp2025-slides.pdf",
+      "video": "",
+      "abstract": "As part of the Interactive Theorem Proving 2025 conference. Copresented, where I talked about the technical mechanization aspects and design choices.",
+      "coauthors": ["Nobuko Yoshida"]
+    },
+    {
       "title": "Introduction to the Rocq Programming Language",
       "type": "Invited Talk",
       "venue": "Oxford CompSoc",
