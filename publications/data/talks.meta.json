@@ -1,6 +1,18 @@
 {
   "talks": [
     {
+      "title": "\"By Chain Completeness\" ...? Proofs on Infinite Lists",
+      "type": "Invited Talk",
+      "venue": "Oxford CompSoc",
+      "location": "Oxford, UK",
+      "date": "2025-11-23",
+      "year": "2025",
+      "slides": "https://apiros3.github.io/Notes/fp/intro_slides_noskip.pdf",
+      "video": "",
+      "abstract": "On a proof scheme as to how we can prove predicates on infinite lists. The scheme itself is introduced to students in Year 1, but this talk covers why the scheme actually works",
+      "coauthors": []
+    },
+    {
       "title": "Formalising Subject Reduction and Progress for Multiparty Session Processes",
       "type": "Paper Presentation",
       "venue": "ITP 2025",
