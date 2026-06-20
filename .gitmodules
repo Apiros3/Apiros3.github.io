@@ -1,3 +1,6 @@
 [submodule "Notes"]
 	path = Notes
 	url = https://github.com/Apiros3/Notes
+[submodule "onkan"]
+	path = onkan
+	url = https://github.com/Apiros3/onkan.git
