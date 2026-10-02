@@ -1,10 +1,10 @@
 # About 
 
-Welcome! I am Tadayoshi Kamegai, a 4th year undergraduate student at Merton College, University of Oxford studying mathematics and computer science. My general interests lie in Type Theory and surrounding fields.
+Welcome! I am Tadayoshi Kamegai, a 1st year DPhil student at St Anne's College, University of Oxford studying computer science under the supervision of [Sam Staton](https://www.cs.ox.ac.uk/people/sam.staton/) and [Maximilian Doré](https://www.cs.ox.ac.uk/people/maximilian.dore/). My general interests lie in Type Theory and surrounding fields.
 
-I'm currently looking for PhD positions related to Type Theory. If you have any recommendations, please feel free to reach out to me at [firstname].[lastname]@merton.ox.ac.uk.
+I'm currently wandering around various concepts in Type Theory, if you read/wrote a fun paper recently please feel free to reach out to me at [firstname].[lastname]@st-annes.ox.ac.uk.
 
-This summer I worked as an intern at ELTE under [Ambrus Kaposi](https://akaposi.web.elte.hu/) on works related to GATs. I'm also working as a Research Assistant under [Nobuko Yoshida](https://www.cs.ox.ac.uk/people/nobuko.yoshida/) (officially employed in summer 2024 and spring 2025) in the Mobility Reading Group at Oxford, mechanising the metatheory of session types in Coq. My Master's thesis will be on linear logic in dependent type theory with [Maximilian Doré](https://www.cs.ox.ac.uk/people/maximilian.dore/). You can usually see what kind of work I've been reading by visiting my [notes page](notes-page/index.html).
+In summer of 2025 I worked as an intern at ELTE under [Ambrus Kaposi](https://akaposi.github.io/) on works related to GATs. I'm also working as a Research Assistant under [Nobuko Yoshida](https://www.cs.ox.ac.uk/people/nobuko.yoshida/) (officially employed in summer 2024 and spring 2025) in the Mobility Reading Group at Oxford, mechanising the metatheory of session types in Coq. My Master's thesis will be on linear logic in dependent type theory with [Maximilian Doré](https://www.cs.ox.ac.uk/people/maximilian.dore/). You can usually see what kind of work I've been reading by visiting my [notes page](notes-page/index.html).
 
 Outside studies, I enjoy travelling and taking photos. I grew up in Osaka, Japan before moving to the UK in 2022 for university, where my off-term address is currently.
 
