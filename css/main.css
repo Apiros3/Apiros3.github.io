@@ -74,7 +74,7 @@ main {
     :root {
         --bg: #f1f0ff;
         --fg: #1a0b2e;
-        --muted: #a78bfa;
+        --muted: #70618c;
         --accent: #c084fc;
         --primary: #a855f7;
         --primary-dark: #9333ea;
@@ -84,11 +84,4 @@ main {
         --shadow: rgba(168, 85, 247, 0.2);
         --shadow-light: rgba(168, 85, 247, 0.1);
     }
-}
-
-/* FORCE BLOG POST WIDTH CONSISTENCY - HIGHEST PRIORITY - ONLY FOR MAIN CONTENT */
-body.post-page main.container.blog-post-container {
-    max-width: 800px !important;
-    min-width: 800px !important;
-    width: 800px !important;
 }

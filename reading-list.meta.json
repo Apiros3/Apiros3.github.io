@@ -1,88 +1,60 @@
 {
   "reading_list": [
     {
-      "title": "The Blind Spot - Lectures on Logic",
-      "author": "Jean-Yves Girard",
-      "year": "2011",
-      "type" : "Book",
-      "status": "planned",
-      "description": "Has all the good logic stuff, I plan to read by section, currently quite interested in the Part III Linear Logic bit"
+      "title": "Top-Down or Bottom-Up? Complexity Analyses of Synchronous Multiparty Session Types",
+      "author": "Thien Udomsrirungruang and Nobuko Yoshida",
+      "year": "2025",
+      "type": "Paper",
+      "venue": "POPL"
     },
     {
-      "title": "Sheaves in Geometry in Logic - A First Introduction to Topos Theory",
-      "author": "Saunders Mac Lane and Leke Moerdijk",
-      "year": "2015",
-      "type" : "Book",
-      "status": "planned",
-      "description": "As the title mentions. Not too sure when I can start reading this, but was recommended quite a while ago, so should probably get started."
+      "title": "Top-down = Bottom-up: Sound and Complete Characterisations of Liveness by Multiparty Global Protocols",
+      "author": "Kai Pischke and Nobuko Yoshida",
+      "year": "2026",
+      "type": "Paper",
+      "venue": "OOPSLA"
     },
     {
-      "title": "Constructing Quotient Inductive-Inductive Types",
-      "author": "Ambrus Kaposi, Andras Kovacs and Thorsten Altenkirch",
-      "year": "2019",
-      "type" : "Paper",
-      "status": "in-progress",
-      "description": "This is the first paper I read during my internship with Ambrus Kaposi. There was a lot of prerequities I was missing at the time, so the notes accompanying this is quite all over the place, but hopefully comprehensive nontheless"
+      "title": "A Sound and Complete Projection for Global Types",
+      "author": "Dawit Tirore, Jesper Bengtson, and Marco Carbone",
+      "year": "2023",
+      "type": "Paper",
+      "venue": "ITP"
     },
     {
-      "title": "A Modal Analysis of Staged Computation",
-      "author": "Rowan Davies and Frank Pfenning",
-      "year": "2001",
-      "type" : "Paper",
-      "status": "in-progress",
-      "description": "I've read between Sections 1 through 4. It's about how intuitionistic S4 gives a nice framework for analyzing computation stages. Our main focus was trying to understand the translation between the explicit and implicit system. I (should) have corresponding notes about this paper on this page."
+      "title": "Precise subtyping for synchronous multiparty sessions",
+      "author": "Mariangiola Dezani-Ciancaglini, Silvia Ghilezan, Svetlana Jakšić, Jovanka Pantović, and Nobuko Yoshida",
+      "year": "2016",
+      "type": "Paper",
+      "venue": "EPTCS 203"
+    },
+    {
+      "title": "Type theory in a type theory with quotient inductive types",
+      "author": "Ambrus Kaposi",
+      "year": "2017",
+      "type": "PhD thesis",
+      "venue": "University of Nottingham"
+    },
+    {
+      "title": "Linear Types with Dynamic Multiplicities in Dependent Type Theory (Functional Pearl)",
+      "author": "Maximilian Doré",
+      "year": "2025",
+      "type": "Paper",
+      "venue": "ICFP"
+    },
+    {
+      "title": "Substructural Parametricity",
+      "author": "C. B. Aberlé, Karl Crary, Chris Martens, and Frank Pfenning",
+      "year": "2025",
+      "type": "Paper",
+      "venue": "FSCD"
     },
     {
       "title": "Homotopy Type Theory: Univalent Foundations of Mathematics",
       "author": "The Univalent Foundations Program",
       "year": "2013",
-      "type" : "Book",
-      "status": "in-progress",
-      "description": "Slowly progressing through the book. We have an unofficial reading group at Oxford with individual students where we sometimes get along and talk about the contents. I (should) have corresponding notes on this page if you want to see what I've read through."
-    },
-    {
-      "title": "Truncation Levels in Homotopy Type Theory",
-      "author": "Nicolai Kraus",
-      "year": "2015",
-      "type" : "Thesis",
-      "status": "planned",
-      "description": "Has a bunch of interesting results on propositional truncation."
-    },
-    {
-      "title": "Cellular Cohomology in Homotopy Type Theory",
-      "author": "Ulrik Buchholtz and Kuen-Bang Hou",
-      "year": "2020",
-      "type" : "Paper",
-      "status": "planned",
-      "description": "Hard paper, there's still a few things I'm missing but it is a paper that looks extremely interesting and I do want to get back to this sometime soon."
-    },
-    {
-      "title": "Introduction to Categories and Categorical Logic",
-      "author": "Samson Abramsky and Nikos Tzevelekos",
-      "year": "2011",
-      "type" : "Book",
-      "status": "in-progress",
-      "description": "Clean lecture notes for the Categories, Proofs and Processes course at Oxford. I like to learn pure categorical concepts from a mathematical perspective, but I am interested in the CS applications. I'm reading between Chapters 1.6 to 1.8 right now."
-    },
-    {
-      "title": "Categorical Semantics of Linear Logic",
-      "author": "Paul-Andre Mellies",
-      "type" : "Book",
-      "year": "2009",
-      "status": "reference",
-      "description": "Part of the reading list for my Master's Thesis."
-    },
-    {
-      "title": "Linear Logic (in the Stanford Encyclopedia of Philosophy)",
-      "author": "Stanford",
-      "year": "2006",
-      "type" : "Online",
-      "status": "planned",
-      "description": "Part of the reading list for my Master's Thesis. Looks like a good first read on what Linear Logic is."
+      "type": "Book",
+      "venue": "Institute for Advanced Study"
     }
   ]
 }
-
-
-
-

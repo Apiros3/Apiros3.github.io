@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from script.data_loader import get_all_posts, get_publications, get_talks, get_notes, get_reading_list, copy_blog_posts, copy_pdf_files
 from script.page_generators import generate_main_index, generate_blog_listing, generate_publications_page, generate_notes_page, generate_reading_list_page
+from script.preprint_pages import build_preprint_pages, generate_sitemap
 
 
 def main():
@@ -33,6 +34,9 @@ def main():
     print(f"Found {len(talks)} talks")
     print(f"Found {len(notes)} notes")
     print(f"Found {len(reading_list)} reading list items")
+
+    print("Generating preprint landing pages in Notes/publication...")
+    build_preprint_pages(publications)
     
     # Generate pages
     print("Generating main index...")
@@ -72,6 +76,8 @@ def main():
     # Copy PDF files
     print("Copying PDF files...")
     copy_pdf_files(posts)
+
+    Path("sitemap.xml").write_text(generate_sitemap(publications, posts), encoding="utf-8")
     
     print("✅ Site generation completed!")
     print(f"Generated files:")

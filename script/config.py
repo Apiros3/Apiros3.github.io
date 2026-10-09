@@ -72,6 +72,7 @@ def load_about_content():
 SITE_TITLE = SITE_METADATA["site"]["title"]
 SITE_DESCRIPTION = SITE_METADATA["site"]["description"]
 SITE_AUTHOR = SITE_METADATA["site"]["author"]
+SITE_URL = SITE_METADATA["site"].get("url", "https://apiros3.github.io").rstrip("/")
 SITE_EMAIL = SITE_METADATA["contact"]["email"]
 SITE_INSTITUTION = SITE_METADATA["contact"]["institution"]
 SITE_DEPARTMENT = SITE_METADATA["contact"].get("department", "")
@@ -79,6 +80,8 @@ SITE_LOCATION = SITE_METADATA["contact"]["location"]
 
 # About section configuration
 ABOUT_TITLE = SITE_METADATA["about"]["title"]
+ABOUT_SUBTITLE = SITE_METADATA["about"].get("subtitle", "")
+ABOUT_AFFILIATION = SITE_METADATA["about"].get("affiliation", "")
 ABOUT_CONTENT = load_about_content()
 ABOUT_PROFILE_PICTURE = SITE_METADATA["about"].get("profile_picture", "")
 ABOUT_PROFILE_ALT = SITE_METADATA["about"].get("profile_alt", "Profile Picture")

@@ -166,13 +166,14 @@ This will render as three separate paragraphs in the HTML output.
      "doi": "https://doi.org/...",
      "code": "https://github.com/...",
      "venue": "CONF 2025",
-     "pages": "1-10"
+     "pages": "1-10",
+     "pdf": "Notes/publication/your-paper.pdf"
    }
    ```
 
 2. **Add PDF file**:
    ```bash
-   publications/data/your-paper.pdf
+   Notes/publication/your-paper.pdf
    ```
 
 ### Talks Metafile

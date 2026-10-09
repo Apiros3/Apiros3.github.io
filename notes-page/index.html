@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Notes / Paper Summaries - Apiros3</title>
+  <title>Notes / Paper Summaries - Tadayoshi Kamegai</title>
+  <meta name="description" content="DPhil student in Computer Science at the University of Oxford, interested in type theory and related fields."/>
   <link rel="stylesheet" href="../css/main.css">
 
 </head>
@@ -11,12 +12,12 @@
   <header class="site-header">
     <div class="container">
       <a class="brand" href="../index.html">Apiros3</a>
-      <nav class="main-nav">
+      <nav class="main-nav" id="main-navigation" aria-label="Primary navigation">
         <ul class="nav-list">
-          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="../notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../reading-list/index.html" class="nav-link">Reading List</a></li>
+          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="../notes-page/index.html" class="nav-link current" aria-current="page">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../reading-list/index.html" class="nav-link">Reading List</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="main-navigation" aria-expanded="false" onclick="toggleNav()">☰</button>
     </div>
   </header>
 
@@ -61,8 +62,16 @@
   <script>
     function toggleNav() {
       const nav = document.querySelector('.main-nav');
-      nav.classList.toggle('show');
+      const expanded = nav.classList.toggle('show');
+      document.querySelector('.nav-toggle').setAttribute('aria-expanded', String(expanded));
     }
+    document.addEventListener('keydown', function(event) {
+      const nav = document.querySelector('.main-nav');
+      if (event.key === 'Escape' && nav.classList.contains('show')) {
+        toggleNav();
+        document.querySelector('.nav-toggle').focus();
+      }
+    });
   </script>
 </body>
 </html>

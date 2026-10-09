@@ -108,15 +108,15 @@
 
 /* Link styling within markdown */
 .markdown-content a {
-    color: var(--accent);
+    color: var(--primary-dark);
     text-decoration: underline;
-    text-decoration-color: transparent;
+    text-decoration-color: currentColor;
     transition: var(--transition);
 }
 
 .markdown-content a:hover {
-    text-decoration-color: var(--accent);
-    color: var(--primary);
+    text-decoration-color: currentColor;
+    color: var(--dark);
 }
 
 /* List styling within markdown */

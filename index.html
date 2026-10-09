@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Apiros3 - Homepage</title>
+  <title>Tadayoshi Kamegai - Homepage</title>
+  <meta name="description" content="DPhil student in Computer Science at the University of Oxford, interested in type theory and related fields."/>
+  <link rel="canonical" href="https://apiros3.github.io/">
   <link rel="stylesheet" href="css/main.css">
 
 </head>
@@ -11,28 +13,35 @@
   <header class="site-header">
     <div class="container">
       <a class="brand" href="./index.html">Apiros3</a>
-      <nav class="main-nav">
+      <nav class="main-nav" id="main-navigation" aria-label="Primary navigation">
         <ul class="nav-list">
-          <li class="nav-item"><a href="./index.html" class="nav-link current">About</a></li><li class="nav-item"><a href="publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="reading-list/index.html" class="nav-link">Reading List</a></li>
+          <li class="nav-item"><a href="./index.html" class="nav-link current" aria-current="page">About</a></li><li class="nav-item"><a href="publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="reading-list/index.html" class="nav-link">Reading List</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="main-navigation" aria-expanded="false" onclick="toggleNav()">☰</button>
     </div>
   </header>
 
   <main class="container">
     <div class="main-layout">
       <div class="main-content">
-        <section class="content-section" id="about">
+        <section class="content-section" id="about" aria-labelledby="profile-name">
           <div class="about-header">
-            <h2>About Me</h2>
-            <img src="images/profile.jpg" alt="Tadayoshi Kamegai - Academic Profile Picture" class="profile-picture">
+            <div>
+              <h1 id="profile-name">Tadayoshi Kamegai</h1>
+              <p class="about-subtitle">DPhil student in Computer Science</p>
+              <p class="about-affiliation">St Anne&#x27;s College · University of Oxford</p>
+            </div>
+            <img src="images/profile.jpg" alt="A dolphin plush toy" class="profile-picture">
           </div>
           <p>Welcome! I am Tadayoshi Kamegai, a 1st year DPhil student at St Anne's College, University of Oxford studying computer science under the supervision of <a href="https://www.cs.ox.ac.uk/people/sam.staton/">Sam Staton</a> and <a href="https://www.cs.ox.ac.uk/people/maximilian.dore/">Maximilian Doré</a>. My general interests lie in Type Theory and surrounding fields.</p>
-          <p>I'm currently wandering around various concepts in Type Theory, if you read/wrote a fun paper recently please feel free to reach out to me at [firstname].[lastname]@st-annes.ox.ac.uk.</p>
-          <p>In summer of 2025 I worked as an intern at ELTE under <a href="https://akaposi.github.io/">Ambrus Kaposi</a> on works related to GATs. I'm also working as a Research Assistant under <a href="https://www.cs.ox.ac.uk/people/nobuko.yoshida/">Nobuko Yoshida</a> (officially employed in summer 2024 and spring 2025) in the Mobility Reading Group at Oxford, mechanising the metatheory of session types in Coq. My Master's thesis will be on linear logic in dependent type theory with <a href="https://www.cs.ox.ac.uk/people/maximilian.dore/">Maximilian Doré</a>. You can usually see what kind of work I've been reading by visiting my <a href="notes-page/index.html">notes page</a>.</p>
-          <p>Outside studies, I enjoy travelling and taking photos. I grew up in Osaka, Japan before moving to the UK in 2022 for university, where my off-term address is currently.</p>
-          <p>I originally created this web template in September 2025, to make a clean portfolio for myself. This site itself was launched July 2022. For details on how this site functions, you can see the first blog on this page.</p>
+          <p>I'm currently wandering around various concepts in Type Theory. If you read/wrote a fun paper recently please feel free to reach out to me at [firstname].[lastname]@st-annes.ox.ac.uk.</p>
+          <h2>Research and background</h2>
+          <p>In summer of 2025 I worked as an intern at ELTE under <a href="https://akaposi.github.io/">Ambrus Kaposi</a> on works related to GATs. I have also worked as a research assistant with <a href="https://www.cs.ox.ac.uk/people/nobuko.yoshida/">Nobuko Yoshida</a> in the Mobility Reading Group at Oxford, mechanising the metatheory of session types in Coq.</p>
+          <p>My Master's thesis with <a href="https://www.cs.ox.ac.uk/people/maximilian.dore/">Maximilian Doré</a> was titled “Use It or Lose It. Resource-Indexed Types and Contractible Spaces in Substructural Dependent Type Theory.” You can usually see what kind of work I've been reading by visiting my <a href="reading-list/index.html">reading list</a> and <a href="notes-page/index.html">notes page</a>.</p>
+          <h2>Outside studies</h2>
+          <p>Outside studies, I enjoy travelling and taking photos. I grew up in Osaka, Japan before moving to the UK in 2022 for university. Osaka is my current off-term home.</p>
+          <p>I originally created this web template in September 2025, to make a clean portfolio for myself. This site itself was launched July 2022. For details on how this site functions, you can see the <a href="posts/website/index.html">first blog post</a>.</p>
         </section>
       </div>
     </div>
@@ -43,14 +52,14 @@
       <h3>Contact</h3>
       <div class="contact-info-footer">
         <div class="contact-item">
-          <strong>Email:</strong><br>tadayoshi [dot] kamegai [at] st-annes [dot] ox [dot] ac [dot] uk
+          <strong>Email:</strong><span class="contact-value">tadayoshi [dot] kamegai [at] st-annes [dot] ox [dot] ac [dot] uk</span>
         </div>
         <div class="contact-item">
-          <strong>Institution:</strong><br>University of Oxford
+          <strong>Institution:</strong><span class="contact-value">University of Oxford</span>
         </div>
         
         <div class="contact-item">
-          <strong>Location:</strong><br>Term Time: Oxford, UK | Off Term: Osaka, Japan
+          <strong>Location:</strong><span class="contact-value">Term Time: Oxford, UK | Off Term: Osaka, Japan</span>
         </div>
       </div>
     </div>
@@ -58,8 +67,16 @@
   <script>
     function toggleNav() {
       const nav = document.querySelector('.main-nav');
-      nav.classList.toggle('show');
+      const expanded = nav.classList.toggle('show');
+      document.querySelector('.nav-toggle').setAttribute('aria-expanded', String(expanded));
     }
+    document.addEventListener('keydown', function(event) {
+      const nav = document.querySelector('.main-nav');
+      if (event.key === 'Escape' && nav.classList.contains('show')) {
+        toggleNav();
+        document.querySelector('.nav-toggle').focus();
+      }
+    });
   </script>
 </body>
 </html>

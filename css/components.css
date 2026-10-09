@@ -182,7 +182,7 @@ li.hidden {
 }
 
 .post-download {
-    background: var(--primary);
+    background: var(--primary-dark);
     color: white;
     padding: 0.6em 1.2em;
     border-radius: var(--radius);
@@ -410,7 +410,7 @@ li.hidden {
 .back-link {
     display: inline-block;
     margin-bottom: 1em;
-    color: var(--primary);
+    color: var(--primary-dark);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);

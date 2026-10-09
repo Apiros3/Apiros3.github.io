@@ -1,0 +1,14 @@
+{
+  "title": "Pairwise Coprime Nonrepresentable Integers for Two Coprime Bases",
+  "authors": ["Tadayoshi Kamegai"],
+  "status": "preprint",
+  "venue": "Preprint",
+  "year": "2026",
+  "date": "2026-10-08",
+  "landing_page": "Notes/publication/pairwise-coprime-nonrepresentable-integers.html",
+  "abstract": "Let p > q ≥ 2 be coprime integers. Call a positive integer (p, q)-nonrepresentable if it cannot be written as a sum of terms p^i q^j for which no two distinct terms divide each other. Erdős and Lewin asked for which pairs there is an infinite sequence of pairwise coprime (p, q)-nonrepresentable integers. Yu and Chen answered this question except for the pairs (5, 2), (9, 2), and (5, 3). We prove the remaining cases. The proof works by creating a criterion for generating such sequences, which can then be applied to the three pairs.",
+  "keywords": ["nonrepresentable integers", "pairwise coprime integers", "coprime bases", "d-complete sequences", "Erdős–Lewin question", "Yu–Chen exceptional cases", "Lean 4", "mathlib"],
+  "author_orcids": {"Tadayoshi Kamegai": "0000-0002-2199-592X"},
+  "pdf": "Notes/publication/pairwise-coprime-nonrepresentable-integers.pdf",
+  "code": "https://github.com/Apiros3/erdos1110"
+}

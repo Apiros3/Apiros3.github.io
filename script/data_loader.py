@@ -28,11 +28,16 @@ def read_metadata(slug: str) -> Dict[str, Any]:
 
 
 def get_all_posts() -> List[Dict[str, Any]]:
-    """Get all blog posts with metadata."""
+    """Load published posts, including posts whose TeX source is unavailable."""
     posts = []
-    for tex_file in POSTS_SRC.glob("*.tex"):
-        date_str, slug = parse_tex_filename(tex_file)
+    source_dates = {
+        slug: date_str
+        for date_str, slug in (parse_tex_filename(path) for path in POSTS_SRC.glob("*.tex"))
+    }
+    for html_path in POSTS_SRC.glob("*/index.html"):
+        slug = html_path.parent.name
         meta = read_metadata(slug)
+        date_str = meta.get("date", source_dates.get(slug, ""))
         
         # Only include if HTML output exists
         html_path = POSTS_SRC / slug / "index.html"
@@ -45,7 +50,7 @@ def get_all_posts() -> List[Dict[str, Any]]:
                 f"2025-09-06-template.pdf" if slug == "template" else None
             ]
             for pdf_name in possible_pdf_names:
-                if pdf_name and (POSTS_SRC / pdf_name).exists():
+                if pdf_name and ((POSTS_SRC / pdf_name).exists() or (html_path.parent / pdf_name).exists()):
                     has_pdf = True
                     break
             
@@ -75,6 +80,7 @@ def get_publications() -> List[Dict[str, Any]]:
                 continue
             with open(meta_file, "r", encoding="utf-8") as f:
                 pub_data = json.load(f)
+                pub_data.setdefault("filename", meta_file.name.removesuffix(".meta.json"))
                 publications.append(pub_data)
     
     # Sort by year (newest first)
@@ -127,9 +133,7 @@ def get_reading_list() -> List[Dict[str, Any]]:
             data = json.load(f)
             reading_list = data.get("reading_list", [])
     
-    # Sort by status and then by title
-    status_order = {"completed": 0, "in-progress": 1, "planned": 2, "reference": 3}
-    reading_list.sort(key=lambda r: (status_order.get(r.get("status", ""), 4), r.get("title", "")))
+    # Keep the author's chosen order; reading progress is not tracked here.
     return reading_list
 
 

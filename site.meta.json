@@ -1,14 +1,17 @@
 {
   "site": {
-    "title": "Apiros3",
-    "description": "Main",
-    "author": "Apiros3"
+    "title": "Tadayoshi Kamegai",
+    "url": "https://apiros3.github.io",
+    "description": "DPhil student in Computer Science at the University of Oxford, interested in type theory and related fields.",
+    "author": "Tadayoshi Kamegai"
   },
   "about": {
-    "title": "About Me",
+    "title": "Tadayoshi Kamegai",
+    "subtitle": "DPhil student in Computer Science",
+    "affiliation": "St Anne's College · University of Oxford",
     "content_file": "about.md",
     "profile_picture": "images/profile.jpg",
-    "profile_alt": "Tadayoshi Kamegai - Academic Profile Picture"
+    "profile_alt": "A dolphin plush toy"
   },
   "contact": {
     "email": "tadayoshi [dot] kamegai [at] st-annes [dot] ox [dot] ac [dot] uk",
@@ -57,6 +60,6 @@
   },
   "reading_list": {
     "title": "Reading List",
-    "description": "A collection of books, papers, and resources that I'm currently reading, have completed, or plan to read. This list reflects my current / previous interests (from September 2025), but also acts as a memo for things I can read when I have free time. I have written summaries for certain papers, which should be on the notes page."
+    "description": "A selection of papers and books I've been reading."
   }
 }

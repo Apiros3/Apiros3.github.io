@@ -2,15 +2,17 @@
 Page generators for different types of pages.
 """
 from pathlib import Path
+from html import escape
 from typing import List, Dict, Any
 from .template_engine import (
     generate_html_head, generate_navigation, generate_hero, 
     generate_contact_sidebar, generate_contact_footer, generate_nav_script,
-    generate_publication_item, generate_talk_item, generate_tag_filters, generate_tag_filter_script
+    generate_publication_item, generate_talk_item, generate_tag_filters, generate_tag_filter_script,
+    generate_abstract_script
 )
 from .config import (
-    SITE_TITLE, SITE_DESCRIPTION, ABOUT_TITLE, ABOUT_CONTENT, 
-    ABOUT_PROFILE_PICTURE, ABOUT_PROFILE_ALT, NAV_BRAND, NAV_ITEMS,
+    SITE_TITLE, SITE_DESCRIPTION, SITE_URL, ABOUT_TITLE, ABOUT_CONTENT,
+    ABOUT_PROFILE_PICTURE, ABOUT_PROFILE_ALT, ABOUT_SUBTITLE, ABOUT_AFFILIATION, NAV_BRAND, NAV_ITEMS,
     NOTES_TITLE, NOTES_DESCRIPTION, READING_LIST_TITLE, READING_LIST_DESCRIPTION
 )
 
@@ -37,6 +39,11 @@ def format_about_content(content: str) -> str:
     
     formatted_paragraphs = []
     for paragraph in paragraphs:
+        heading = re.fullmatch(r'(#{2,3})\s+([^\n]+)', paragraph)
+        if heading:
+            level = len(heading.group(1))
+            formatted_paragraphs.append(f"<h{level}>{escape(heading.group(2))}</h{level}>")
+            continue
         # Convert markdown links to HTML
         paragraph = convert_markdown_links(paragraph)
         # Wrap in <p> tags
@@ -47,16 +54,20 @@ def format_about_content(content: str) -> str:
 
 def generate_main_index(posts: List[Dict[str, Any]]) -> str:
     """Generate the main index page."""
-    return f"""{generate_html_head(f"{SITE_TITLE} - Homepage")}
+    return f"""{generate_html_head(f"{SITE_TITLE} - Homepage", canonical_url=SITE_URL + "/")}
 <body>
 {generate_navigation("about")}
 
   <main class="container">
     <div class="main-layout">
       <div class="main-content">
-        <section class="content-section" id="about">
+        <section class="content-section" id="about" aria-labelledby="profile-name">
           <div class="about-header">
-            <h2>{ABOUT_TITLE}</h2>
+            <div>
+              <h1 id="profile-name">{escape(ABOUT_TITLE)}</h1>
+              {f'<p class="about-subtitle">{escape(ABOUT_SUBTITLE)}</p>' if ABOUT_SUBTITLE else ''}
+              {f'<p class="about-affiliation">{escape(ABOUT_AFFILIATION)}</p>' if ABOUT_AFFILIATION else ''}
+            </div>
             {f'<img src="{ABOUT_PROFILE_PICTURE}" alt="{ABOUT_PROFILE_ALT}" class="profile-picture">' if ABOUT_PROFILE_PICTURE else ''}
           </div>
           {format_about_content(ABOUT_CONTENT)}
@@ -90,9 +101,9 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
         pdf_link = f'<a href="{post["slug"]}/{post["slug"]}.pdf" class="post-download" target="_blank">PDF</a>' if post.get("has_pdf", False) else ''
         all_items.append(f"""
         <li data-tags="{','.join(post["tags"])}">
-          <a href="{post["slug"]}/index.html" class="post-item">
+          <div class="post-item">
             <div class="post-header">
-              <div class="post-title">{post["title"]}</div>
+              <a href="{post["slug"]}/index.html" class="post-title">{post["title"]}</a>
               {pdf_link}
             </div>
             {abstract_html}
@@ -100,12 +111,12 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
               <span class="post-date">{post["date"]}</span>
               {tags_html}
             </div>
-          </a>
+          </div>
         </li>""")
     
     return f"""{generate_html_head(f"Blog - {SITE_TITLE}", base_path="../")}
 <body class="blog-page">
-{generate_navigation("blog", "../")}
+{generate_navigation("posts", "../")}
 
   <main class="container">
     <a href="../index.html" class="back-link">← Back to Mainpage</a>
@@ -124,22 +135,33 @@ def generate_blog_listing(posts: List[Dict[str, Any]]) -> str:
 
 def generate_publications_page(publications: List[Dict[str, Any]], talks: List[Dict[str, Any]]) -> str:
     """Generate the publications page."""
-    # Generate publication items
+    # Keep preprints separate from published papers.
+    preprint_items = []
     pub_items = []
-    for pub in publications:
-        pub_items.append(generate_publication_item(pub, "../"))
+    for index, pub in enumerate(publications):
+        if pub.get("status") == "preprint":
+            preprint_items.append(generate_publication_item(pub, "../", f"preprint-abstract-{index}"))
+        else:
+            pub_items.append(generate_publication_item(pub, "../", f"publication-abstract-{index}"))
+
+    preprints_html = ""
+    if preprint_items:
+        preprints_html = f"""<h2 class="section-title">Preprints</h2>
+    <ul class="publication-list">{''.join(preprint_items)}
+    </ul>
+    """
     
     # Generate talk items
     talk_items = []
-    for talk in talks:
-        talk_items.append(generate_talk_item(talk, "../"))
+    for index, talk in enumerate(talks):
+        talk_items.append(generate_talk_item(talk, "../", f"talk-abstract-{index}"))
     
-    return f"""{generate_html_head(f"Publications - {SITE_TITLE}", base_path="../")}
+    return f"""{generate_html_head(f"Publications - {SITE_TITLE}", base_path="../", canonical_url=SITE_URL + "/publications/index.html")}
 <body class="publications-page">
 {generate_navigation("publications", "../")}
 
   <main class="container">
-    <h2 class="section-title">Publications</h2>
+    {preprints_html}<h2 class="section-title">Publications</h2>
     <ul class="publication-list">
       {''.join(pub_items)}
     </ul>
@@ -150,6 +172,7 @@ def generate_publications_page(publications: List[Dict[str, Any]], talks: List[D
     </ul>
   </main>
 {generate_nav_script()}
+{generate_abstract_script()}
 </body>
 </html>"""
 
@@ -202,27 +225,14 @@ def generate_reading_list_page(reading_list: List[Dict[str, Any]]) -> str:
     # Generate reading list items
     reading_items = []
     for item in reading_list:
-        # Format author and year
-        author_year = f"{item['author']} ({item['year']})"
-        
-        # Format status with appropriate styling
-        status_class = f"status-{item['status'].replace('-', '_')}"
-        status_text = item['status'].replace('-', ' ').title()
-        
-        # Format type
-        type_text = item['type'].title()
+        venue_year = f"{item.get('venue', '')} {item['year']}".strip()
+        if item.get('type') in ('Book', 'PhD thesis'):
+            venue_year = f"{item['type']}, {venue_year}"
         
         reading_items.append(f"""
       <li class="reading-item">
-        <div>
-          <div class="reading-title">{item['title']}</div>
-          <div class="reading-meta">
-            <span class="reading-author">{author_year}</span>
-            <span class="reading-type">{type_text}</span>
-            <span class="reading-status {status_class}">{status_text}</span>
-          </div>
-          <div class="reading-description">{item['description']}</div>
-        </div>
+        <h2 class="reading-title">{escape(item['title'])}</h2>
+        <p class="reading-meta"><span class="reading-author">{escape(item['author'])}</span> · <span class="reading-venue">{escape(venue_year)}</span></p>
       </li>""")
     
     return f"""{generate_html_head(f"{READING_LIST_TITLE} - {SITE_TITLE}", base_path="../")}

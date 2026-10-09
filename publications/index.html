@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Publications - Apiros3</title>
+  <title>Publications - Tadayoshi Kamegai</title>
+  <meta name="description" content="DPhil student in Computer Science at the University of Oxford, interested in type theory and related fields."/>
+  <link rel="canonical" href="https://apiros3.github.io/publications/index.html">
   <link rel="stylesheet" href="../css/main.css">
 
 </head>
@@ -11,32 +13,33 @@
   <header class="site-header">
     <div class="container">
       <a class="brand" href="../index.html">Apiros3</a>
-      <nav class="main-nav">
+      <nav class="main-nav" id="main-navigation" aria-label="Primary navigation">
         <ul class="nav-list">
-          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link">Publications / Talks</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="../notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../reading-list/index.html" class="nav-link">Reading List</a></li>
+          <li class="nav-item"><a href="../index.html" class="nav-link">About</a></li><li class="nav-item"><a href="../publications/index.html" class="nav-link current" aria-current="page">Publications / Talks</a></li><li class="nav-item"><a href="../posts/index.html" class="nav-link">Blog</a></li><li class="nav-item"><a href="../notes-page/index.html" class="nav-link">Notes / Paper Summaries</a></li><li class="nav-item"><a href="../reading-list/index.html" class="nav-link">Reading List</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" onclick="toggleNav()">☰</button>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="main-navigation" aria-expanded="false" onclick="toggleNav()">☰</button>
     </div>
   </header>
 
   <main class="container">
+    <h2 class="section-title">Preprints</h2>
+    <ul class="publication-list">
+        <li class="publication-item">
+          <h3 class="publication-title"><a href="../Notes/publication/pairwise-coprime-nonrepresentable-integers.html">Pairwise Coprime Nonrepresentable Integers for Two Coprime Bases</a></h3>
+          <div class="publication-authors">Tadayoshi Kamegai</div>
+          <div class="publication-venue">Preprint, 2026</div>
+          <div class="publication-links"><a href="https://github.com/Apiros3/erdos1110" class="pub-link code-link" target="_blank">Code</a><a href="../Notes/publication/pairwise-coprime-nonrepresentable-integers.pdf" class="pub-link pdf-link" target="_blank">PDF</a><button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="preprint-abstract-0" onclick="toggleAbstract(this)">Abstract</button></div><p id="preprint-abstract-0" class="publication-abstract" hidden>Let p &gt; q ≥ 2 be coprime integers. Call a positive integer (p, q)-nonrepresentable if it cannot be written as a sum of terms p^i q^j for which no two distinct terms divide each other. Erdős and Lewin asked for which pairs there is an infinite sequence of pairwise coprime (p, q)-nonrepresentable integers. Yu and Chen answered this question except for the pairs (5, 2), (9, 2), and (5, 3). We prove the remaining cases. The proof works by creating a criterion for generating such sequences, which can then be applied to the three pairs.</p>
+        </li>
+    </ul>
     <h2 class="section-title">Publications</h2>
     <ul class="publication-list">
       
         <li class="publication-item">
-          <div class="publication-header">
-            <h3 class="publication-title">Formalising Subject Reduction and Progress for Multiparty Session Processes</h3>
-            <div class="publication-links">
-              <a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2025.19" class="pub-link doi-link" target="_blank">DOI</a><a href="https://github.com/Apiros3/smpst-sr-smer" class="pub-link code-link" target="_blank">Code</a><a href="../Notes/publication/itp25.pdf" class="pub-link pdf-link" target="_blank">PDF</a>
-            </div>
-          </div>
-          <div class="publication-meta">
-            <div class="publication-authors">Burak Ekici, Tadayoshi Kamegai, Nobuko Yoshida</div>
-            <div class="publication-venue">International Conference on Interactive Theorem Proving (ITP), 2025</div>
-            
-          </div>
-          <div class="publication-abstract">Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck. We present a fully mechanised proof of the theorem, where recursive type unfoldings are modelled as infinite trees, leveraging coinductive reasoning. This marks the first formal proof to incorporate precise subtyping, aiming to extend the typability of processes thus precision of the type system. The proof is grounded in fundamental properties such as subject reduction and progress. ...</div>
+          <h3 class="publication-title">Formalising Subject Reduction and Progress for Multiparty Session Processes</h3>
+          <div class="publication-authors">Burak Ekici, Tadayoshi Kamegai, Nobuko Yoshida</div>
+          <div class="publication-venue">ITP, 2025</div>
+          <div class="publication-links"><a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ITP.2025.19" class="pub-link doi-link" target="_blank">DOI: 10.4230/LIPIcs.ITP.2025.19</a><a href="https://github.com/Apiros3/smpst-sr-smer" class="pub-link code-link" target="_blank">Code</a><a href="../Notes/publication/itp25.pdf" class="pub-link pdf-link" target="_blank">PDF</a><button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="publication-abstract-1" onclick="toggleAbstract(this)">Abstract</button></div><p id="publication-abstract-1" class="publication-abstract" hidden>Multiparty session types (MPST) provide a robust typing discipline for specifying and verifying communication protocols in concurrent and distributed systems involving multiple participants. This work formalises the non-stuck theorem for synchronous MPST in the Coq proof assistant, ensuring that well-typed communications never get stuck. We present a fully mechanised proof of the theorem, where recursive type unfoldings are modelled as infinite trees, leveraging coinductive reasoning. This marks the first formal proof to incorporate precise subtyping, aiming to extend the typability of processes thus precision of the type system. The proof is grounded in fundamental properties such as subject reduction and progress. ...</p>
         </li>
     </ul>
     
@@ -44,67 +47,48 @@
     <ul class="publication-list">
       
         <li class="publication-item talk-item">
-          <div class="publication-header">
-            <h3 class="publication-title">"By Chain Completeness"...? Proofs on Infinite Lists</h3>
-            <div class="publication-links">
-              <a href="https://apiros3.github.io/Notes/fp/intro_slides_noskip.pdf" class="pub-link slides-link" target="_blank">Slides</a>
-            </div>
-          </div>
-          <div class="publication-meta">
-            <div class="publication-venue">Oxford CompSoc, Oxford, UK, 2025-11-23</div>
-            <div class="talk-type">Invited Talk</div>
-            
-          </div>
-          <div class="publication-abstract">On a proof scheme as to how we can prove predicates on infinite lists. The scheme itself is introduced to students in Year 1, but this talk covers why the scheme actually works.</div>
+          <h3 class="publication-title">&quot;By Chain Completeness&quot;...? Proofs on Infinite Lists</h3>
+          <div class="publication-venue">Oxford CompSoc, Oxford, UK, 2025-11-23</div>
+          <div class="publication-links"><span class="talk-type">Invited Talk</span><a href="https://apiros3.github.io/Notes/fp/intro_slides_noskip.pdf" class="pub-link slides-link" target="_blank">Slides</a><button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="talk-abstract-0" onclick="toggleAbstract(this)">Abstract</button></div><p id="talk-abstract-0" class="publication-abstract" hidden>On a proof scheme as to how we can prove predicates on infinite lists. The scheme itself is introduced to students in Year 1, but this talk covers why the scheme actually works.</p>
         </li>
         <li class="publication-item talk-item">
-          <div class="publication-header">
-            <h3 class="publication-title">Formalising Subject Reduction and Progress for Multiparty Session Processes</h3>
-            <div class="publication-links">
-              <a href="https://apiros3.github.io/Notes/dptp/itp2025-slides.pdf" class="pub-link slides-link" target="_blank">Slides</a>
-            </div>
-          </div>
-          <div class="publication-meta">
-            <div class="publication-venue">ITP 2025, Reikyavik, Iceland, 2025-09-28</div>
-            <div class="talk-type">Paper Presentation</div>
-            <div class="publication-coauthors">with Nobuko Yoshida</div>
-          </div>
-          <div class="publication-abstract">As part of the Interactive Theorem Proving 2025 conference. Copresented, where I talked about the technical mechanization aspects and design choices.</div>
+          <h3 class="publication-title">Formalising Subject Reduction and Progress for Multiparty Session Processes</h3>
+          <div class="publication-venue">ITP 2025, Reikyavik, Iceland, 2025-09-28</div>
+          <div class="publication-links"><span class="talk-type">Paper Presentation</span><span class="publication-coauthors">with Nobuko Yoshida</span><a href="https://apiros3.github.io/Notes/dptp/itp2025-slides.pdf" class="pub-link slides-link" target="_blank">Slides</a><button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="talk-abstract-1" onclick="toggleAbstract(this)">Abstract</button></div><p id="talk-abstract-1" class="publication-abstract" hidden>As part of the Interactive Theorem Proving 2025 conference. Copresented, where I talked about the technical mechanization aspects and design choices.</p>
         </li>
         <li class="publication-item talk-item">
-          <div class="publication-header">
-            <h3 class="publication-title">Introduction to the Rocq Programming Language</h3>
-            <div class="publication-links">
-              <a href="https://apiros3.github.io/Notes/coq/intro_slides_noskip.pdf" class="pub-link slides-link" target="_blank">Slides</a>
-            </div>
-          </div>
-          <div class="publication-meta">
-            <div class="publication-venue">Oxford CompSoc, Oxford, UK, 2025-03-08</div>
-            <div class="talk-type">Invited Talk</div>
-            
-          </div>
-          <div class="publication-abstract">An introduction to the Rocq programming language, as part of a lecture series on programming languages.</div>
+          <h3 class="publication-title">Introduction to the Rocq Programming Language</h3>
+          <div class="publication-venue">Oxford CompSoc, Oxford, UK, 2025-03-08</div>
+          <div class="publication-links"><span class="talk-type">Invited Talk</span><a href="https://apiros3.github.io/Notes/coq/intro_slides_noskip.pdf" class="pub-link slides-link" target="_blank">Slides</a><button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="talk-abstract-2" onclick="toggleAbstract(this)">Abstract</button></div><p id="talk-abstract-2" class="publication-abstract" hidden>An introduction to the Rocq programming language, as part of a lecture series on programming languages.</p>
         </li>
         <li class="publication-item talk-item">
-          <div class="publication-header">
-            <h3 class="publication-title">Subject Reduction for Synchronous MPST in Coq</h3>
-            <div class="publication-links">
-              <a href="https://apiros3.github.io/Notes/dptp/2024-slides.pdf" class="pub-link slides-link" target="_blank">Slides</a>
-            </div>
-          </div>
-          <div class="publication-meta">
-            <div class="publication-venue">Department of Computer Science, University of Oxford, Oxford, UK, 2024-11-20</div>
-            <div class="talk-type">Invited Talk</div>
-            
-          </div>
-          <div class="publication-abstract">This was the final Lecture of Master's Course in Distributed Processes, Types and Programming at the University of Oxford, presenting my work on mechanising subject reduction for synchronous MPST in Coq. This corresponds to the ITP'25 paper.</div>
+          <h3 class="publication-title">Subject Reduction for Synchronous MPST in Coq</h3>
+          <div class="publication-venue">Department of Computer Science, University of Oxford, Oxford, UK, 2024-11-20</div>
+          <div class="publication-links"><span class="talk-type">Invited Talk</span><a href="https://apiros3.github.io/Notes/dptp/2024-slides.pdf" class="pub-link slides-link" target="_blank">Slides</a><button type="button" class="abstract-toggle" aria-expanded="false" aria-controls="talk-abstract-3" onclick="toggleAbstract(this)">Abstract</button></div><p id="talk-abstract-3" class="publication-abstract" hidden>This was the final Lecture of Master&#x27;s Course in Distributed Processes, Types and Programming at the University of Oxford, presenting my work on mechanising subject reduction for synchronous MPST in Coq. This corresponds to the ITP&#x27;25 paper.</p>
         </li>
     </ul>
   </main>
   <script>
     function toggleNav() {
       const nav = document.querySelector('.main-nav');
-      nav.classList.toggle('show');
+      const expanded = nav.classList.toggle('show');
+      document.querySelector('.nav-toggle').setAttribute('aria-expanded', String(expanded));
+    }
+    document.addEventListener('keydown', function(event) {
+      const nav = document.querySelector('.main-nav');
+      if (event.key === 'Escape' && nav.classList.contains('show')) {
+        toggleNav();
+        document.querySelector('.nav-toggle').focus();
+      }
+    });
+  </script>
+  <script>
+    function toggleAbstract(button) {
+      const panel = document.getElementById(button.getAttribute('aria-controls'));
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      panel.hidden = expanded;
+      button.setAttribute('aria-expanded', String(!expanded));
+      button.textContent = expanded ? 'Abstract' : 'Hide abstract';
     }
   </script>
 </body>

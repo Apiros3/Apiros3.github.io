@@ -1,5 +1,6 @@
 { 
   "title": "User Manual for Apiros3's Website Template", 
+  "date": "2025-09-08",
   "tags": ["Miscellaneous"],
   "abstract": "This guide records the current/previous pipeline of the website template, how the layers are separated between user to webpage, alongside documentation on how new items are to be added to the site."
 }
